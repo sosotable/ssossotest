@@ -1,6 +1,5 @@
 # 환경변수
 ssossotest/.env
-ssossotest/quasar.config.js
 server/.env
 
 # 노드 모듈
