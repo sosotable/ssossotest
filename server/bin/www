@@ -24,12 +24,98 @@ app.set('port', port);
  */
 
 const server = http.createServer(app);
-
+const io = require("socket.io")(server, {
+  cors: {
+    origin: "http://localhost:9000",
+    methods: ["GET", "POST"],
+    credentials: true
+  }
+});
+io.on("connection", async (socket) => {
+  console.log("a user connected");
+  const mysql_dbc = require("../dist/libs/dao/config/db_connection")();
+  const connection = await mysql_dbc.init();
+  socket.on("disconnect", () => {
+    console.log("user disconnected");
+    connection.end();
+  });
+  socket.on("INSERT", async (msg) => {
+    try {
+      /** MARK:
+       *  colmumns 가 undefined 키워드 즉 입력되지 않은 경우 생략하고 모든 열에 입력됨
+       * */
+      if (msg.columns === undefined) {
+        await connection.query(
+            `INSERT INTO ` + `${msg.table} ` + `VALUES(${msg.values})`
+        );
+      } else {
+        await connection.query(
+            `INSERT INTO ` +
+            `${msg.table}(${msg.columns}) ` +
+            `VALUES(${msg.values})`
+        );
+      }
+    } catch (e) {
+      console.error(e);
+    }
+  });
+  socket.on("SELECT", async (msg) => {
+    try {
+      /** MARK:
+       *  where 매개변수를 입력하지 않는 경우 모든 열 검색
+       * */
+      if (msg.where === undefined) {
+        const [rows, fields] = await connection.query(
+            `SELECT ` + `${msg.columns} ` + `FROM ` + `${msg.table}`
+        );
+        io.emit("SELECT", {
+          TAG: msg.TAG,
+          returnValue: rows,
+        });
+      } else {
+        const [rows, fields] = await connection.query(
+            `SELECT ` +
+            `${msg.columns} ` +
+            `from ` +
+            `${msg.table} ` +
+            `WHERE ${msg.where}`
+        );
+        io.emit("SELECT", {
+          TAG: msg.TAG,
+          returnValue: rows,
+        });
+      }
+    } catch (e) {
+      console.error(e);
+    }
+  });
+  socket.on("UPDATE", async (msg) => {
+    try {
+      await connection.query(
+          `UPDATE ` + `${msg.table} ` + `SET ${msg.set} ` + `WHERE ${msg.where}`
+      );
+    } catch (e) {
+      console.error(e);
+    }
+  });
+  socket.on("DELETE", async (msg) => {
+    try {
+      await connection.query(
+          `DELETE ` + `FROM ` + `${msg.table} ` + `WHERE ${msg.where}`
+      );
+    } catch (e) {
+      console.error(e);
+    }
+  });
+});
 /**
  * Listen on provided port, on all network interfaces.
  */
 
-server.listen(port);
+server.listen(port, async () => {
+  const DAO = require('../dist/libs/dao/DAO')
+  await DAO.init();
+});
 server.on('error', onError);
 server.on('listening', onListening);
 
