@@ -11,7 +11,7 @@
 import { defineComponent, ref } from 'vue';
 import SsossotestFooter from 'components/SsossotestFooter.vue';
 export default defineComponent({
-  name: 'MainLayout',
+  name: 'ContentLayout',
   components: {SsossotestFooter},
   setup () {
     return {
