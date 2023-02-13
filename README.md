@@ -26,7 +26,7 @@
 
 ### 참조 문서
 #### 1. 소소테스트 프로젝트 계획서
-https://github.com/sosotable/ssossotest/wiki/%EC%86%8C%EC%86%8C%ED%85%8C%EC%8A%A4%ED%8A%B8-%EC%9A%94%EA%B5%AC%EC%82%AC%ED%95%AD-%EB%AA%85%EC%84%B8%EC%84%9C
+https://github.com/sosotable/ssossotest/wiki/%EC%86%8C%EC%86%8C%ED%85%8C%EC%8A%A4%ED%8A%B8-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EA%B3%84%ED%9A%8D%EC%84%9C
 
 #### 2. 소소테스트 요구사항 명세서
 https://github.com/sosotable/ssossotest/wiki/%EC%86%8C%EC%86%8C%ED%85%8C%EC%8A%A4%ED%8A%B8-%EC%9A%94%EA%B5%AC%EC%82%AC%ED%95%AD-%EB%AA%85%EC%84%B8%EC%84%9C
