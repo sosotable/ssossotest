@@ -21,3 +21,12 @@
 ### Server
 
 <img src="https://img.shields.io/badge/Amazon%20EC2-FF9900?style=for-the-badge&logo=Amazon%20EC2&logoColor=white">
+
+---
+
+### 참조 문서
+#### 1. 소소테스트 프로젝트 계획서
+https://github.com/sosotable/ssossotest/wiki/%EC%86%8C%EC%86%8C%ED%85%8C%EC%8A%A4%ED%8A%B8-%EC%9A%94%EA%B5%AC%EC%82%AC%ED%95%AD-%EB%AA%85%EC%84%B8%EC%84%9C
+
+#### 2. 소소테스트 요구사항 명세서
+https://github.com/sosotable/ssossotest/wiki/%EC%86%8C%EC%86%8C%ED%85%8C%EC%8A%A4%ED%8A%B8-%EC%9A%94%EA%B5%AC%EC%82%AC%ED%95%AD-%EB%AA%85%EC%84%B8%EC%84%9C
