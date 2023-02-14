@@ -15,7 +15,10 @@ import SsossotestFooter from 'components/SsossotestFooter.vue';
 import SsossotestHeader from 'components/SsossotestHeader.vue';
 export default defineComponent({
   name: 'MainLayout',
-  components: {SsossotestHeader, SsossotestFooter},
+  components: {
+    SsossotestHeader,
+    SsossotestFooter
+  },
   setup () {
     return {
     }
