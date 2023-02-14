@@ -4,7 +4,7 @@
       <img src="src/assets/logo.png">
     </q-avatar>
     <div style="width: 100%; padding: 0 20% 0 25%">
-      <q-input bottom-slots v-model="text" counter maxlength="16" >
+      <q-input bottom-slots v-model="user_nickname" counter maxlength="16" >
         <template v-slot:hint>
           닉네임을 입력해주세요
         </template>
@@ -29,12 +29,26 @@ export default defineComponent({
   },
   data() {
     return {
-      text: ''
+      user_nickname: ''
+    }
+  },
+  mounted() {
+    // MARK: 사용자 세션 존재 시 main화면으로 라우팅
+    if(this.$q.sessionStorage.has('user_nickname')) {
+      this.$q.loading.show()
+      setTimeout(()=>{
+        this.$q.loading.hide()
+        this.$router.push('/main')
+      },500)
     }
   },
   methods: {
     onSubmit: function () {
-      // TODO: imple
+      if(this.user_nickname !== '') {
+        this.$q.sessionStorage.set('user_nickname', this.user_nickname)
+        this.$router.push('/main')
+      }
+
     }
   }
 });

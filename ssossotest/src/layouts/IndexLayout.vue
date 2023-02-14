@@ -3,8 +3,9 @@
     <q-page-container>
       <router-view />
     </q-page-container>
+    <ssossotest-footer/>
   </q-layout>
-  <ssossotest-footer/>
+
 </template>
 
 <script lang="ts">

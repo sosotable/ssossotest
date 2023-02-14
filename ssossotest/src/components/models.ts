@@ -1,4 +1,5 @@
-export interface Sample {
-  id: number;
-  content: string;
+export interface Cards {
+  image: string,
+  title: string,
+  desc: string
 }

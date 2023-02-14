@@ -107,8 +107,11 @@ module.exports = configure(function (/* ctx */) {
 
       // Quasar plugins
       plugins: [
+        // 세션 저장소 플러그인
         'LocalStorage',
-        'SessionStorage'
+        'SessionStorage',
+        // 로딩 플러그인
+        'Loading'
       ]
     },
 

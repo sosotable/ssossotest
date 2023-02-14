@@ -1,7 +1,7 @@
 <template>
-  <p class="text-center fixed-bottom text-grey-8">© 2022 -
-    <a class="text-black" href="https://github.com/sosotable">ssosso.table</a> team
-  </p>
+  <q-footer class="text-center bg-amber-12 text-grey-10">
+    2022 - <a class="text-black" href="https://github.com/sosotable">ssosso.table</a>
+  </q-footer>
 </template>
 
 <script>
