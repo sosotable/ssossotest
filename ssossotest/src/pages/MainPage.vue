@@ -10,8 +10,8 @@
           </div>
         </q-img>
         <q-card-actions>
-          <router-link class="text-black" :to="`content/${card.tag}`">
-            <q-btn flat>시작하기</q-btn>
+          <router-link class="text-black" :to="`content/${card.tag}`" style="text-decoration-line: none; width: 100%;">
+            <q-btn flat style="width: 100%;">시작하기</q-btn>
           </router-link>
         </q-card-actions>
       </q-card>
@@ -58,3 +58,8 @@ export default defineComponent({
   }
 });
 </script>
+<style scoped>
+a:hover {
+  color: orange;
+}
+</style>

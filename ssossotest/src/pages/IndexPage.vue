@@ -6,7 +6,7 @@
     <div style="width: 100%; padding: 0 20% 0 25%">
       <q-input bottom-slots v-model="user_nickname" counter maxlength="16" >
         <template v-slot:hint>
-          닉네임을 입력해주세요
+          별명을 입력해주세요
         </template>
         <template v-slot:after>
           <q-btn round flat icon="send" @click="onSubmit()"/>

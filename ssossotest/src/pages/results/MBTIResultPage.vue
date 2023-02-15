@@ -8,6 +8,7 @@
         <q-card-section>
           <div class="text-overline text-orange-9">당신의 결과!</div>
           <div class="text-h5 q-mt-sm q-mb-xs">{{this.title}}</div>
+<!--          TODO: 내용 바꿔야 합니다-->
           <div class="text-caption text-grey">
             {{this.desc}} {{this.desc}} {{this.desc}} {{this.desc}} {{this.desc}}
             {{this.desc}} {{this.desc}} {{this.desc}} {{this.desc}} {{this.desc}}
