@@ -106,10 +106,14 @@ export default class MBTIResult extends Result {
   }
   factory() {
     /**MARK
+     * template method 패턴 통해서 메서드 하나로 일괄처리
      * mbti값 세팅 getResult -> calcMBTI -> defPoint
      * calcMBTI에서 mbti point획득
      * 해당 point기반으로 defPoint에서 상반되는 mbti값 결정
      */
+    /**???:
+     * 함수 내부가 꼬여있는 기분이라 좀 더 직관적으로 바꿀 수는 없을까요?
+     * */
     this.setMBTI();
     this.setTitle();
     this.setDescBuffer();
