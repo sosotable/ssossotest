@@ -78,13 +78,13 @@ export default class MBTIResult extends Result {
       | [eipoint: number, snpoint: number, ftpoint: number, pjpoint: number]
       | undefined = this.calcMBTI(this.answerResult);
     if (calcMBTIResult !== undefined) {
-      const point = this.defPoint(
-        calcMBTIResult[0], // eipoint
-        calcMBTIResult[1], // snpoint
-        calcMBTIResult[2], // ftpoint
-        calcMBTIResult[3] // pjpoint
-      );
-      const result: number | string = this.MBTIPOINT[point];
+      this.type.push(this.defPoint(
+          calcMBTIResult[0], // eipoint
+          calcMBTIResult[1], // snpoint
+          calcMBTIResult[2], // ftpoint
+          calcMBTIResult[3] // pjpoint
+      ))
+      const result: number | string = this.MBTIPOINT[this.type[0]];
       return result;
     } else {
       return null;
@@ -101,7 +101,7 @@ export default class MBTIResult extends Result {
   }
   setDescBuffer() {
     if (this.mbti !== undefined && this.mbti !== null) {
-      this.resultDesc[0] = resultModels.mbtiRestList[this.mbti].desc;
+      this.resultDesc = resultModels.mbtiRestList[this.mbti].desc;
     }
   }
   factory() {

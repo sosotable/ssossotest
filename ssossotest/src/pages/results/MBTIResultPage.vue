@@ -7,14 +7,10 @@
         />
         <q-card-section>
           <div class="text-overline text-orange-9">당신의 결과!</div>
-          <div class="text-h5 q-mt-sm q-mb-xs">{{this.title}}</div>
+          <div class="text-h5 q-mt-sm q-mb-xs">{{this.title}} : {{this.image}}</div>
 <!--          TODO: 내용 바꿔야 합니다-->
-          <div class="text-caption text-grey">
-            {{this.desc}} {{this.desc}} {{this.desc}} {{this.desc}} {{this.desc}}
-            {{this.desc}} {{this.desc}} {{this.desc}} {{this.desc}} {{this.desc}}
-            {{this.desc}} {{this.desc}} {{this.desc}} {{this.desc}} {{this.desc}}
-            {{this.desc}} {{this.desc}} {{this.desc}} {{this.desc}} {{this.desc}}
-            {{this.desc}} {{this.desc}} {{this.desc}} {{this.desc}} {{this.desc}}
+          <div class="text-caption text-grey" v-for="d in desc" v-bind:key="d">
+            {{d}}
           </div>
         </q-card-section>
         <router-link to="/main">
@@ -47,7 +43,7 @@ export default defineComponent({
       // MARK: 쿼리스트링 디코딩
       const decodedResult = JSON.parse(decodeURI(resultQuery))
       this.title = decodedResult.title[0]
-      this.desc = decodedResult.desc[0]
+      this.desc = decodedResult.desc
       this.image = decodedResult.image[0]
     }
   }
