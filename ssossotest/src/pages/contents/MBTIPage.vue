@@ -124,11 +124,26 @@ export default defineComponent({
                 desc: desc,
                 image: image
               }))
-              // MARK: 결과 페이지로 라우팅, 결과는 쿼리스트링을 통해 전달
-              this.$router.push({
-                path: '/result/mbti',
-                query: {result: result}
-              })
+
+
+              if(this.$route.query.friend_id === undefined) {
+                // MARK: 결과 페이지로 라우팅, 결과는 쿼리스트링을 통해 전달
+                this.$router.push({
+                  path: '/result/mbti',
+                  query: {result: result}
+                })
+              }
+              // MARK: 공유받아서 들어온 경우
+              else {
+                this.$router.push({
+                  path: '/result/mbti',
+                  query: {
+                    result: result,
+                    friend_id: encodeURI(String(this.$route.query.friend_id))
+                  }
+                })
+              }
+
             })
             .catch((error) => {
               console.log(error);

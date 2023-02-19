@@ -19,6 +19,7 @@
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
 import { useQuasar } from 'quasar';
+import axios from 'axios';
 
 export default defineComponent({
   name: 'IndexPage',
@@ -38,7 +39,25 @@ export default defineComponent({
       this.$q.loading.show()
       setTimeout(()=>{
         this.$q.loading.hide()
-        this.$router.push('/main')
+        // MARK: 공유되어서 들어온 경우: 쿼리 존재 시 해당 content로 바로 라우팅
+        if(this.$route.query.friend_id !== undefined) {
+          const query = `?friend_id=${this.$route.query.friend_id}`
+          this.$router.push(`/content/${this.$route.query.content}${query}`)
+        }
+        else {
+          this.$router.push('/main')
+        }
+      },500)
+    }
+    else {
+      this.$q.loading.show()
+      setTimeout(()=>{
+        this.$q.loading.hide()
+        // MARK: 공유되어서 들어온 경우: 쿼리 존재 시 해당 content로 바로 라우팅
+        if(this.$route.query.friend_id !== undefined) {
+          const query = `?friend_id=${this.$route.query.friend_id}`
+          this.$router.push(`/content/${this.$route.query.content}${query}`)
+        }
       },500)
     }
   },
@@ -46,7 +65,24 @@ export default defineComponent({
     onSubmit: function () {
       if(this.user_nickname !== '') {
         this.$q.sessionStorage.set('user_nickname', this.user_nickname)
-        this.$router.push('/main')
+        axios.post('http://127.0.0.1:3000/DAO/INSERT', {
+          table: 'user',
+          columns: 'user_id',
+          values: `'${this.user_nickname}'`
+        })
+          .then((response) => {
+            console.log(response);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+        if(this.$route.query.shared !== undefined) {
+          const query = `?friend_id=${this.$route.query.friend_id}`
+          this.$router.push(`/content/${this.$route.query.content}${query}`)
+        }
+        else {
+          this.$router.push('/main')
+        }
       }
 
     }
