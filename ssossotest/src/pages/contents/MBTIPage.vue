@@ -1,7 +1,7 @@
 <template>
   <q-page class="row items-center justify-evenly">
-    <div v-if="this.title" class="row items-start q-gutter-md">
-      <q-card class="my-card" flat bordered >
+    <div v-if="this.title"  class="row justify-center items-start absolute-top" >
+      <q-card class="my-card" style="width: 100%;" flat bordered >
         <q-img
           src="src/assets/images/mbti/title.jpeg"
         />
@@ -26,6 +26,7 @@
               sent
               text-color="white"
               bg-color="primary"
+              style="margin: 10px;"
             >
               <div>
                 {{this.mbtiModel[questionId].question[0]}}
@@ -42,6 +43,7 @@
               name="나"
               avatar="https://i.pinimg.com/564x/c7/ab/9a/c7ab9a58e98a9d0b688957428856aaf4.jpg"
               bg-color="amber"
+              style="margin: 10px;"
             >
 <!--              MARK: 답안을 선택했다면 해당 답안을 chat message로 보여줌-->
               <div v-if="selectedFlag">
@@ -52,7 +54,7 @@
               </div>
             </q-chat-message>
           </div>
-          <Transition>
+          <Transition class="absolute-bottom" style="padding: 0 0 200px 0;">
             <div v-if="!selectedFlag">
               <q-btn color="white" text-color="black" @click="select(1)" :label="mbtiModel[questionId].answer[0].answer" />
               <q-btn color="white" text-color="black" @click="select(2)" :label="mbtiModel[questionId].answer[1].answer" />
@@ -124,8 +126,6 @@ export default defineComponent({
                 desc: desc,
                 image: image
               }))
-
-
               if(this.$route.query.friend_id === undefined) {
                 // MARK: 결과 페이지로 라우팅, 결과는 쿼리스트링을 통해 전달
                 this.$router.push({
@@ -167,5 +167,9 @@ export default defineComponent({
   .v-enter-from,
   .v-leave-to {
     opacity: 0;
+  }
+
+  .q-message-text {
+    margin: 5px 0 5px 5px !important;
   }
 </style>

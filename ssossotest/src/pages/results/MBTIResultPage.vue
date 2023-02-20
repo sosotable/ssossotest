@@ -1,13 +1,13 @@
 <template>
-  <q-page class="row items-center justify-evenly">
-    <div class="q-pa-md row items-start q-gutter-md">
+  <q-page class="row items-center justify-evenly absolute-top">
+    <div class="row items-start">
       <q-card class="my-card" flat bordered>
         <q-img
           :src="`src/assets/images/mbti/${this.image}.jpeg`"
         />
         <q-card-section>
           <div class="text-overline text-orange-9">당신의 결과!</div>
-          <div class="text-h5 q-mt-sm q-mb-xs">{{this.title}} : {{this.image}}</div>
+          <div class="text-h5">{{this.title}} : {{this.image}}</div>
 <!--          TODO: 내용 바꿔야 합니다-->
           <div class="text-caption text-grey" v-for="d in desc" v-bind:key="d">
             {{d}}
@@ -84,7 +84,6 @@ export default defineComponent({
       })
         .then((response) => {
           this.friendResultData = JSON.parse(response.data[0].result)
-          console.log(this.friendResultData);
         })
         .catch((error) => {
           console.log(error);
@@ -97,23 +96,54 @@ export default defineComponent({
       this.title = decodedResult.title[0]
       this.desc = decodedResult.desc
       this.image = decodedResult.image[0]
-      axios.post('http://127.0.0.1:3000/DAO/INSERT', {
+      // MARK: 세션에 저장된 사용자 nickname으로 기록된 mbti결과가 있는지 확인함
+      axios.post('http://127.0.0.1:3000/DAO/SELECT', {
+        columns: '*',
         table: 'mbti',
-        columns: '`key`, result',
-        values: `'${this.$q.sessionStorage.getItem('user_nickname')}','${JSON.stringify({
-          title: decodedResult.title[0],
-          desc: decodedResult.desc,
-          image: decodedResult.image[0]
-        })}'`
+        where: `\`key\` = '${this.$q.sessionStorage.getItem('user_nickname')}'`
       })
-        .then((response) => {
-          console.log(response);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+      .then((response) => {
+        // MARK: 기존 결과가 존재한다면 => UPDATE
+        if(response.data.length > 0) {
+          axios.post('http://127.0.0.1:3000/DAO/UPDATE', {
+            table: 'mbti',
+            set: `result = '${JSON.stringify({
+              title: decodedResult.title[0],
+              desc: decodedResult.desc,
+              image: decodedResult.image[0]
+            })}'`,
+            where: `\`key\` = '${this.$q.sessionStorage.getItem('user_nickname')}'`
+          })
+            .then((response) => {
+              console.log(response)
+            })
+            .catch((error) => {
+              console.log(error);
+            })
+        }
+        // MARK: 기존 결과가 존재하지 않는다면 => INSERT
+        else {
+          axios.post('http://127.0.0.1:3000/DAO/INSERT', {
+            table: 'mbti',
+            columns: '`key`, result',
+            values: `'${this.$q.sessionStorage.getItem('user_nickname')}','${JSON.stringify({
+              title: decodedResult.title[0],
+              desc: decodedResult.desc,
+              image: decodedResult.image[0]
+            })}'`
+          })
+          .then((response) => {
+            console.log(response)
+          })
+          .catch((error) => {
+            console.log(error);
+          })
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
     }
-
   },
   methods: {
     // MARK: 공유하기 클릭 시 클립보드에 url 복사
@@ -140,4 +170,5 @@ export default defineComponent({
   }
 });
 </script>
-
+<style scoped>
+</style>
