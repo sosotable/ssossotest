@@ -12,6 +12,7 @@ const cors = require("cors");
 const indexRouter = require('./routes/index');
 const DAORouter = require("./routes/DAO");
 const resultRouter = require('./routes/result')
+const userRouter = require('./routes/user')
 
 const app = express();
 
@@ -29,6 +30,7 @@ app.use(cors());
 app.use('/', indexRouter);
 app.use("/DAO", DAORouter);
 app.use('/result', resultRouter)
+app.use('/user', userRouter)
 
 // catch 404 and forward to error handler
 app.use((req: Request, res: Response, next: NextFunction) => {

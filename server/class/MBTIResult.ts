@@ -34,15 +34,6 @@ export default class MBTIResult extends Result {
   ) {
     super(_answerResult);
   }
-
-  defPoint(eipoint: number, snpoint: number, ftpoint: number, pjpoint: number) {
-    return (
-      (eipoint < 5 ? "E" : "I") +
-      (snpoint < 5 ? "S" : "N") +
-      (ftpoint < 5 ? "F" : "T") +
-      (pjpoint < 5 ? "P" : "J")
-    );
-  }
   // MARK: point값 계산
   calcMBTI(result: { [key: string]: number | string }[]) {
     for (let i = 0; i < result.length; i++) {
@@ -71,28 +62,27 @@ export default class MBTIResult extends Result {
       return returnValue;
     }
   }
-  getResult() {
+  setType() {
     const calcMBTIResult:
-      | string
-      | String
-      | [eipoint: number, snpoint: number, ftpoint: number, pjpoint: number]
-      | undefined = this.calcMBTI(this.answerResult);
+        | string
+        | String
+        | [eipoint: number, snpoint: number, ftpoint: number, pjpoint: number]
+        | undefined = this.calcMBTI(this.answerResult);
     if (calcMBTIResult !== undefined) {
-      const point = this.defPoint(
-        calcMBTIResult[0], // eipoint
-        calcMBTIResult[1], // snpoint
-        calcMBTIResult[2], // ftpoint
-        calcMBTIResult[3] // pjpoint
-      );
-      const result: number | string = this.MBTIPOINT[point];
-      return result;
+      // MARK: MBTI값(문자열) 을 지정합니다
+      this.type.push((
+          (calcMBTIResult[0] < 5 ? "E" : "I") + // eipoint
+          (calcMBTIResult[1] < 5 ? "S" : "N") + // snpoint
+          (calcMBTIResult[2] < 5 ? "F" : "T") + // ftpoint
+          (calcMBTIResult[3] < 5 ? "P" : "J") // pjpoint
+      ))
     } else {
       return null;
     }
   }
-
   setMBTI() {
-    this.mbti = this.getResult();
+    // MARK: 계산된 mbti 속성값을 이용해 mbti point를 계산합니다
+    this.mbti = this.MBTIPOINT[this.type[0]];
   }
   setTitle() {
     if (this.mbti !== undefined && this.mbti !== null) {
@@ -101,21 +91,20 @@ export default class MBTIResult extends Result {
   }
   setDescBuffer() {
     if (this.mbti !== undefined && this.mbti !== null) {
-      this.resultDesc[0] = resultModels.mbtiRestList[this.mbti].desc;
+      this.resultDesc = resultModels.mbtiRestList[this.mbti].desc;
     }
   }
   factory() {
     /**MARK
      * template method 패턴 통해서 메서드 하나로 일괄처리
-     * mbti값 세팅 getResult -> calcMBTI -> defPoint
-     * calcMBTI에서 mbti point획득
-     * 해당 point기반으로 defPoint에서 상반되는 mbti값 결정
      */
-    /**???:
-     * 함수 내부가 꼬여있는 기분이라 좀 더 직관적으로 바꿀 수는 없을까요?
-     * */
+    // MARK: mbti값(문자열) 지정
+    this.setType()
+    // MARK: mbti point 계산
     this.setMBTI();
+    // MARK: mbti title 지정
     this.setTitle();
+    // MARK: mbti 설명 text 지정
     this.setDescBuffer();
   }
 }
