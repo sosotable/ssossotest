@@ -1,17 +1,22 @@
 export interface Cards {
-  image: string,
-  title: string,
-  desc: string,
-  tag: string
+  image: string;
+  title: string;
+  desc: string;
+  tag: string;
 }
 
 export interface ContentModel {
-  id: number,
-  question: string | [string[]] | any,
-  answer: [] | string | any
+  id: number;
+  question: string | [string[]] | any;
+  answer: [] | string | any;
 }
 
 export interface MBTIContentModel extends ContentModel {
-  type: string,
-  result: number
+  type: string;
+  result: number;
+}
+
+export interface AverageContentModel extends ContentModel {
+  type: string;
+  result: number;
 }
