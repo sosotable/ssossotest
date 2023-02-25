@@ -1,7 +1,7 @@
 <template>
   <q-page class="column items-center justify-center">
     <q-avatar rounded size="240px">
-      <img src="src/assets/logo.png">
+      <img src="/logo.png">
     </q-avatar>
     <div style="width: 100%; padding: 0 20% 0 25%">
       <q-input bottom-slots v-model="user_nickname" counter maxlength="16" >

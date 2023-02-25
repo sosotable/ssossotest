@@ -5,8 +5,55 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4371ba84-6da7-4134-82cd-a05354076c06" name="변경" comment="">
+      <change afterPath="$PROJECT_DIR$/ssossotest/src-ssr/class/AverageResult.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ssossotest/src-ssr/class/MBTIResult.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ssossotest/src-ssr/class/TastesResult.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ssossotest/src-ssr/class/interface/Result.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ssossotest/src-ssr/config/db_info.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ssossotest/src-ssr/interface/Database.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ssossotest/src-ssr/interface/ErrorRequestHandler.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ssossotest/src-ssr/interface/RequestExtension.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ssossotest/src-ssr/libs/dao/DAO.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ssossotest/src-ssr/libs/dao/config/db_connection.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ssossotest/src-ssr/model/average.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ssossotest/src-ssr/model/catch-taste.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ssossotest/src-ssr/model/content.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ssossotest/src-ssr/model/contentHeader.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ssossotest/src-ssr/model/main.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ssossotest/src-ssr/model/result.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/class/MBTIResult.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/class/MBTIResult.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ssossotest/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/ssossotest/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ssossotest/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/ssossotest/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ssossotest/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/ssossotest/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ssossotest/quasar.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/ssossotest/quasar.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ssossotest/src/assets/images/average/title.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/ssossotest/public/images/average/title.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ssossotest/src/assets/images/food_placeholder.png" beforeDir="false" afterPath="$PROJECT_DIR$/ssossotest/public/images/food_placeholder.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ssossotest/src/assets/images/mbti/ENFJ.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/ssossotest/public/images/mbti/ENFJ.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ssossotest/src/assets/images/mbti/ENFP.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/ssossotest/public/images/mbti/ENFP.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ssossotest/src/assets/images/mbti/ENTJ.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/ssossotest/public/images/mbti/ENTJ.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ssossotest/src/assets/images/mbti/ENTP.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/ssossotest/public/images/mbti/ENTP.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ssossotest/src/assets/images/mbti/ESFJ.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/ssossotest/public/images/mbti/ESFJ.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ssossotest/src/assets/images/mbti/ESFP.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/ssossotest/public/images/mbti/ESFP.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ssossotest/src/assets/images/mbti/ESTJ.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/ssossotest/public/images/mbti/ESTJ.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ssossotest/src/assets/images/mbti/ESTP.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/ssossotest/public/images/mbti/ESTP.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ssossotest/src/assets/images/mbti/INFJ.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/ssossotest/public/images/mbti/INFJ.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ssossotest/src/assets/images/mbti/INFP.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/ssossotest/public/images/mbti/INFP.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ssossotest/src/assets/images/mbti/INTJ.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/ssossotest/public/images/mbti/INTJ.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ssossotest/src/assets/images/mbti/INTP.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/ssossotest/public/images/mbti/INTP.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ssossotest/src/assets/images/mbti/ISFJ.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/ssossotest/public/images/mbti/ISFJ.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ssossotest/src/assets/images/mbti/ISFP.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/ssossotest/public/images/mbti/ISFP.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ssossotest/src/assets/images/mbti/ISTJ.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/ssossotest/public/images/mbti/ISTJ.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ssossotest/src/assets/images/mbti/ISTP.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/ssossotest/public/images/mbti/ISTP.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ssossotest/src/assets/images/mbti/food_placeholder.png" beforeDir="false" afterPath="$PROJECT_DIR$/ssossotest/public/images/mbti/food_placeholder.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ssossotest/src/assets/images/mbti/title.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/ssossotest/public/images/mbti/title.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ssossotest/src/assets/images/result_placeholder.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/ssossotest/public/images/result_placeholder.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ssossotest/src/assets/images/tastes/title.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/ssossotest/public/images/tastes/title.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ssossotest/src/assets/logo.png" beforeDir="false" afterPath="$PROJECT_DIR$/ssossotest/public/logo.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ssossotest/src/components/SsossotestHeader.vue" beforeDir="false" afterPath="$PROJECT_DIR$/ssossotest/src/components/SsossotestHeader.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ssossotest/src/pages/IndexPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/ssossotest/src/pages/IndexPage.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ssossotest/src/pages/MainPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/ssossotest/src/pages/MainPage.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ssossotest/src/pages/contents/MBTIPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/ssossotest/src/pages/contents/MBTIPage.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ssossotest/src/pages/results/MBTIResultPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/ssossotest/src/pages/results/MBTIResultPage.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,7 +76,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/valtin/Desktop/project/ssossotest",
+    "last_opened_file_path": "C:/Users/valtin/Desktop/project/ssossotest/ssossotest/public",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -39,6 +86,15 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\valtin\Desktop\project\ssossotest\ssossotest\public" />
+      <recent name="C:\Users\valtin\Desktop\project\ssossotest\ssossotest\src-ssr" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\valtin\Desktop\project\ssossotest\ssossotest\public" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="애플리케이션 수준" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="디폴트 작업">
@@ -50,10 +106,24 @@
       <workItem from="1676108644456" duration="6000" />
       <workItem from="1676375595444" duration="91000" />
       <workItem from="1676879423933" duration="1799000" />
+      <workItem from="1677257695618" duration="101000" />
+      <workItem from="1677313327164" duration="14453000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/ssossotest/src/pages/results/MBTIResultPage.vue</url>
+          <line>78</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

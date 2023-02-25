@@ -3,7 +3,7 @@
     <div class="row items-start">
       <q-card class="my-card" flat bordered>
         <q-img
-          :src="`src/assets/images/mbti/${this.image}.jpeg`"
+          :src="`/images/mbti/${this.image}.jpeg`"
         />
         <q-card-section>
           <div class="text-overline text-orange-9">당신의 결과!</div>
@@ -74,6 +74,7 @@ export default defineComponent({
   },
   // MARK: 페이지 라우팅 시 받아진 쿼리스트링 처리
   mounted() {
+    console.log(this.$route.query)
     // MARK: 공유받아서 들어온 경우: 친구의 결과도 보여줌
     if(this.$route.query.friend_id != undefined) {
       this.friendResult = true

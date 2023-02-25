@@ -3,7 +3,7 @@
     <div v-if="this.title"  class="row justify-center items-start absolute-top" >
       <q-card class="my-card" style="width: 100%;" flat bordered >
         <q-img
-          src="src/assets/images/mbti/title.jpeg"
+          src="/images/mbti/title.jpeg"
         />
         <q-card-section>
           <div class="text-overline text-orange-9"></div>
