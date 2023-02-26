@@ -34,6 +34,7 @@ export default defineComponent({
     }
   },
   mounted() {
+    console.log(this.$route.query)
     // MARK: 사용자 세션 존재 시 main화면으로 라우팅
     if(this.$q.sessionStorage.has('user_nickname')) {
       this.$q.loading.show()
@@ -42,7 +43,7 @@ export default defineComponent({
         // MARK: 공유되어서 들어온 경우: 쿼리 존재 시 해당 content로 바로 라우팅
         if(this.$route.query.friend_id !== undefined) {
           const query = `?friend_id=${this.$route.query.friend_id}`
-          this.$router.push(`/content/${this.$route.query.content}${query}`)
+          this.$router.push(`/content${this.$route.query.content}${query}`)
         }
         else {
           this.$router.push('/main')
@@ -54,7 +55,7 @@ export default defineComponent({
     onSubmit: function () {
       if(this.user_nickname !== '') {
         this.$q.sessionStorage.set('user_nickname', this.user_nickname)
-        if(this.$route.query.shared !== undefined) {
+        if(this.$route.query.friend_id !== undefined) {
           const query = `?friend_id=${this.$route.query.friend_id}`
           this.$router.push(`/content/${this.$route.query.content}${query}`)
         }

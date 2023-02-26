@@ -7,7 +7,7 @@ interface Post extends RowDataPacket {
   content: string;
 }
 
-class DAO {
+export default class DAO {
   // MARK: singleton
   /**FIXME: node.js에서의 싱글톤 필요성?
    * 필요시 일반 클래스로 REFACTOR
@@ -90,5 +90,3 @@ class DAO {
     }
   }
 }
-
-module.exports = new DAO();

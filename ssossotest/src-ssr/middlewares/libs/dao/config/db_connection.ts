@@ -1,6 +1,8 @@
 // @ts-ignore
 const mysql = require("mysql2/promise");
-require("dotenv").config({ path: "../../../.env" });
+require('dotenv').config({
+  path: 'C:\\Users\\valtin\\Desktop\\project\\ssossotest\\ssossotest\\.env'
+})
 
 module.exports = () => {
   return {

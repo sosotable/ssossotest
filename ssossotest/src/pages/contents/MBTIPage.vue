@@ -114,7 +114,7 @@ export default defineComponent({
         this.selectedFlag = false
         if(this.questionId == this.mbtiModel.length) {
           // MARK: 서버로 데이터 송신 백엔드에서 결과처리
-          axios.post('http://127.0.0.1:3000/result/mbti', this.mbtiModel)
+          axios.post('/result/mbti', this.mbtiModel)
             .then((response) => {
               // MARK: response 결과를 받아 result파싱
               const title = response.data.title

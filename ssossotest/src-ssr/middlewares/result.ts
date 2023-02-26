@@ -1,9 +1,9 @@
 import { ssrMiddleware } from 'quasar/wrappers'
 import {Request, Response} from "express";
 
-import MBTIResult from "../class/MBTIResult";
-import TastesResult from "../class/TastesResult";
-import AverageResult from "../class/AverageResult";
+import MBTIResult from "./class/MBTIResult";
+import TastesResult from "./class/TastesResult";
+import AverageResult from "./class/AverageResult";
 
 // MARK: 다형성에 따라 result 객체 지정
 let result: MBTIResult | TastesResult | AverageResult;
