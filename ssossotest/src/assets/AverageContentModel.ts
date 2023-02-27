@@ -9,7 +9,7 @@ export const averageModel: AverageContentModel[] = [
         pMin: 0,
         pMax: 10,
         pStep: 0.5,
-        unit: '병'
+        unit: '병',
       },
     ],
     type: 'range',
@@ -49,7 +49,7 @@ export const averageModel: AverageContentModel[] = [
         pMin: 0,
         pMax: 5,
         pStep: 1,
-        unit: '잔'
+        unit: '잔',
       },
     ],
     type: 'range',
@@ -63,7 +63,7 @@ export const averageModel: AverageContentModel[] = [
         pMin: 0,
         pMax: 10,
         pStep: 1,
-        unit: '조각'
+        unit: '조각',
       },
     ],
     type: 'range',
@@ -77,7 +77,7 @@ export const averageModel: AverageContentModel[] = [
         pMin: 0,
         pMax: 20,
         pStep: 1,
-        unit: '개'
+        unit: '개',
       },
     ],
     type: 'range',
@@ -91,7 +91,7 @@ export const averageModel: AverageContentModel[] = [
         pMin: 0,
         pMax: 5,
         pStep: 1,
-        unit: '끼'
+        unit: '끼',
       },
     ],
     type: 'range',
@@ -105,7 +105,7 @@ export const averageModel: AverageContentModel[] = [
         pMin: 0,
         pMax: 20,
         pStep: 1,
-        unit: '번'
+        unit: '번',
       },
     ],
     type: 'range',
@@ -116,7 +116,7 @@ export const averageModel: AverageContentModel[] = [
     question: '팥붕 vs 슈붕',
     answer: [
       { answer: '팥붕', score: 0 },
-      { answer: '슈붕', score: 1 }
+      { answer: '슈붕', score: 1 },
     ],
     type: 'button',
     result: -1,
@@ -126,7 +126,7 @@ export const averageModel: AverageContentModel[] = [
     question: '물냉 vs 비냉',
     answer: [
       { answer: '물냉', score: 0 },
-      { answer: '비냉', score: 1 }
+      { answer: '비냉', score: 1 },
     ],
     type: 'button',
     result: -1,
@@ -136,7 +136,7 @@ export const averageModel: AverageContentModel[] = [
     question: '민초 vs 반민초',
     answer: [
       { answer: '민초', score: 0 },
-      { answer: '반민초', score: 1 }
+      { answer: '반민초', score: 1 },
     ],
     type: 'button',
     result: -1,
