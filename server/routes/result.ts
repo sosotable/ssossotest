@@ -57,6 +57,7 @@ router
         case "tastes":
           /** TODO: need to imple
            * **/
+          console.log(req.body)
           // result = new TastesResult(resultBody, undefined);
           if (result instanceof TastesResult) {
             result.factory();

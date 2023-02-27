@@ -19,44 +19,46 @@
       <div class="q-pa-md row justify-center">
         <div style="width: 100%; max-width: 400px">
           <div class="absolute-top">
-            <q-chat-message
+            <!--<q-chat-message
               name="내면의 농담곰"
               avatar="https://i.pinimg.com/564x/43/09/78/43097860e53ce742582262908cfafff8.jpg"
               stamp="1 minutes ago"
               sent
               text-color="white"
               bg-color="primary"
-            >
-              <div>
+            >-->
+            <div class="card-header" style="background-color: transparent!important;">
+              <h6>
                 {{this.tasteModel[questionId].question[0]}}
-                <div id="avatar">
+              </h6>
+                <!--<div id="avatar">
                   <img :src="this.tasteModel[questionId].question[2]" style="width: 28px" class="my-emoticon">
-                </div>
+                </div>-->
               </div>
 
 
-            </q-chat-message>
+            <!--</q-chat-message>-->
 
-            <q-chat-message
+            <!--<q-chat-message
               name="나"
               avatar="https://i.pinimg.com/564x/c7/ab/9a/c7ab9a58e98a9d0b688957428856aaf4.jpg"
               bg-color="amber"
-            >
+            >-->
               <!--              MARK: 답안을 선택했다면 해당 답안을 chat message로 보여줌-->
-              <div v-if="selectedFlag">
+              <!--<div v-if="selectedFlag">
                 {{selectedAnswer}}
               </div>
               <div v-else>
                 <q-spinner-dots size="2rem" />
               </div>
-            </q-chat-message>
+            </q-chat-message>-->
           </div>
           <Transition>
             <div v-if="!selectedFlag">
-              <ans v-for = "index in tasteModel[questionId].answer.length" :key="index">
-                <q-btn color="white" text-color="black" @click="select(index)" :label="tasteModel[questionId].answer[index-1].answer">
+              <template v-for = "index in tasteModel[questionId].answer.length" :key="index">
+                <q-btn color="white" text-color="black" @click="select(index-1)" :label="tasteModel[questionId].answer[index-1].answer">
                 </q-btn>
-              </ans>
+              </template>
             </div>
           </Transition>
         </div>
@@ -71,6 +73,8 @@ import { defineComponent, ref } from 'vue';
 // MARK: 사용 데이터 외부화
 import { tasteModel } from 'src/assets/tasteContentModel'
 import axios from 'axios';
+import {stringify} from "querystring";
+import {types} from "util";
 export default defineComponent({
   name: 'TASTEPage',
   setup () {
@@ -88,6 +92,7 @@ export default defineComponent({
       questionId: 0,
       selectedFlag: false,
       selectedAnswer: ''
+      //result: []
     }
   },
   mounted() {
@@ -101,6 +106,7 @@ export default defineComponent({
     },
     // MARK: 문제 버튼 선택 시
     select: function (selected: number) {
+      console.log(selected)
       /** MARK:
        * 문제 버튼 선택 시 selectedFlag값 true로 변경 -> 선택한 답이 chat div에 보여짐
        * 선택 애니메이션 구현을 위해 setTimeout을 통해 0.5초 후 다음 질문으로 넘어가도록 함
@@ -108,6 +114,7 @@ export default defineComponent({
        * */
       this.selectedFlag = true
       this.selectedAnswer = tasteModel[this.questionId].answer[selected].answer
+      console.log(this.selectedAnswer)
       //this.selectedAnswer = selected == 1 ? tasteModel[this.questionId].answer[0].answer : tasteModel[this.questionId].answer[1].answer
       this.tasteModel[this.questionId].result = selected
       setTimeout(()=>{
@@ -115,28 +122,42 @@ export default defineComponent({
         this.selectedFlag = false
         if(this.questionId == this.tasteModel.length) {
           // MARK: 서버로 데이터 송신 백엔드에서 결과처리
-          axios.post('http://127.0.0.1:3000/result/taste', this.tasteModel)
+         /* axios.post('http://127.0.0.1:3000/result/tastes', this.tasteModel)
             .then((response) => {
               // MARK: response 결과를 받아 result파싱
               const title = response.data.title
               const desc = response.data.desc
               const image = response.data.image
               // MARK: 보안을 위해 uri인코딩
-              const result = encodeURI(JSON.stringify({
-                title: title,
-                desc: desc,
-                image: image,
-                selected: selected
-              }))
+              //const result = encodeURI(JSON.stringify({
+                //title: title,
+                //desc: desc,
+                //image: image,
+                //selected: selected
+              //}))
+
+
               // MARK: 결과 페이지로 라우팅, 결과는 쿼리스트링을 통해 전달
               this.$router.push({
-                path: '/result/taste',
-                query: {result: result}
+                path: '/result/tastes',
+                query: {result: selected}
               })
+              console.log("result")
             })
             .catch((error) => {
               console.log(error);
-            })
+            })*/
+          let result: any = []
+          for(let i = 0; i < this.tasteModel.length; i++) {
+             //result.push(this.tasteModel[i].answer[selected].answer)
+              result.push(this.tasteModel[i].result)
+          }
+          console.log(result)
+
+          this.$router.push({
+            path: '/result/tastes',
+            query: {result: JSON.stringify(result)}
+          })
         }
       },500)
     }
