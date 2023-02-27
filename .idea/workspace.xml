@@ -5,29 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4371ba84-6da7-4134-82cd-a05354076c06" name="변경" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ssossotest/src-ssr/class/AverageResult.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ssossotest/src-ssr/middlewares/class/AverageResult.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ssossotest/src-ssr/class/MBTIResult.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ssossotest/src-ssr/middlewares/class/MBTIResult.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ssossotest/src-ssr/class/TastesResult.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ssossotest/src-ssr/middlewares/class/TastesResult.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ssossotest/src-ssr/class/interface/Result.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ssossotest/src-ssr/middlewares/class/interface/Result.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ssossotest/src-ssr/config/db_info.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ssossotest/src-ssr/middlewares/config/db_info.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ssossotest/src-ssr/interface/Database.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ssossotest/src-ssr/middlewares/interface/Database.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ssossotest/src-ssr/interface/ErrorRequestHandler.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ssossotest/src-ssr/middlewares/interface/ErrorRequestHandler.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ssossotest/src-ssr/interface/RequestExtension.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ssossotest/src-ssr/middlewares/interface/RequestExtension.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ssossotest/src-ssr/libs/dao/DAO.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ssossotest/src-ssr/middlewares/libs/dao/DAO.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ssossotest/src-ssr/libs/dao/config/db_connection.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ssossotest/src-ssr/middlewares/libs/dao/config/db_connection.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ssossotest/src-ssr/middlewares/DAO.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ssossotest/src-ssr/middlewares/DAO.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ssossotest/src-ssr/middlewares/result.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ssossotest/src-ssr/middlewares/result.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ssossotest/src-ssr/model/average.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ssossotest/src-ssr/middlewares/model/average.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ssossotest/src-ssr/model/catch-taste.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ssossotest/src-ssr/middlewares/model/catch-taste.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ssossotest/src-ssr/model/content.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ssossotest/src-ssr/middlewares/model/content.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ssossotest/src-ssr/model/contentHeader.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ssossotest/src-ssr/middlewares/model/contentHeader.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ssossotest/src-ssr/model/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ssossotest/src-ssr/middlewares/model/main.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ssossotest/src-ssr/model/result.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ssossotest/src-ssr/middlewares/model/result.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ssossotest/src/pages/IndexPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/ssossotest/src/pages/IndexPage.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ssossotest/src/pages/contents/MBTIPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/ssossotest/src/pages/contents/MBTIPage.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ssossotest/src/pages/results/MBTIResultPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/ssossotest/src/pages/results/MBTIResultPage.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,7 +35,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/valtin/Desktop/project/ssossotest/ssossotest/src-ssr/middlewares",
+    "last_opened_file_path": "C:/Users/valtin/Desktop/project/ssossotable-team-study/SSR/sample",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -92,7 +70,8 @@
       <workItem from="1676879423933" duration="1799000" />
       <workItem from="1677257695618" duration="101000" />
       <workItem from="1677313327164" duration="15390000" />
-      <workItem from="1677410331007" duration="3900000" />
+      <workItem from="1677410331007" duration="4724000" />
+      <workItem from="1677470894651" duration="919000" />
     </task>
     <servers />
   </component>

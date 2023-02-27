@@ -53,6 +53,7 @@ export default defineComponent({
   },
   methods: {
     onSubmit: function () {
+      // MARK: 사용자 닉네임 세션 저장 후 main으로 이동
       if(this.user_nickname !== '') {
         this.$q.sessionStorage.set('user_nickname', this.user_nickname)
         if(this.$route.query.friend_id !== undefined) {
