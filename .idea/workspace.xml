@@ -6,11 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="4371ba84-6da7-4134-82cd-a05354076c06" name="변경" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ssossotest/.eslintrc.js" beforeDir="false" afterPath="$PROJECT_DIR$/ssossotest/.eslintrc.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ssossotest/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/ssossotest/src/App.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ssossotest/src/assets/ContentModel.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ssossotest/src/assets/ContentModel.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ssossotest/src/components/models.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ssossotest/src/components/models.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ssossotest/src/assets/AverageContentModel.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ssossotest/src/assets/AverageContentModel.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ssossotest/src/pages/contents/AveragePage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/ssossotest/src/pages/contents/AveragePage.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ssossotest/src/pages/results/AverageResultPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/ssossotest/src/pages/results/AverageResultPage.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,21 +26,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/valtin/Desktop/project/ssossotest",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "ts.external.directory.path": "C:\\Code\\SST_projects\\ssossotest\\server\\node_modules\\typescript\\lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/valtin/Desktop/project/ssossotest&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Code\\SST_projects\\ssossotest\\server\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="애플리케이션 수준" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="디폴트 작업">
@@ -56,6 +54,7 @@
       <workItem from="1676879423933" duration="1799000" />
       <workItem from="1677129906609" duration="34000" />
       <workItem from="1677129988664" duration="7591000" />
+      <workItem from="1677476433118" duration="12377000" />
     </task>
     <servers />
   </component>

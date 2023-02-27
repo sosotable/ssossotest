@@ -19,12 +19,12 @@
       <div class="q-pa-md row justify-center">
         <div style="width: 100%; max-width: 400px">
           <div class="absolute-top">
-            <div>{{averageModel[questionId].question}}</div>
+
             <div v-if="this.averageModel[questionId].type === 'range'">
+              <div class ="text-h6">
+                {{averageModel[questionId].question + rangeValue + averageModel[questionId].answer[0].unit}}
+              </div>
               <div class="q-pa-md">
-                <q-badge color="secondary">
-                  Model: {{ rangeValue }}
-                </q-badge>
                 <q-slider
                   v-model="rangeValue"
                   :min="averageModel[questionId].answer[0].pMin"
@@ -39,16 +39,19 @@
             </div>
 
             <div v-else-if="this.averageModel[questionId].type === 'button'" >
+              <div class ="text-h6">
+                {{averageModel[questionId].question}}
+              </div>
               <div v-if="!selectedFlag">
                 <div v-for="(item, i) in this.averageModel[questionId].answer" :key="i">
-                  <q-btn color="white" text-color="black" @click="select(i)" :label="item.answer" />
+                  <q-btn color="white" text-color="black" @click="select(i)" :label="item.answer + i" />
                 </div>
               </div>
+
 
             </div>
 
           </div>
-
         </div>
       </div>
     </div>
@@ -77,7 +80,6 @@ export default defineComponent({
       questionId: 0,
       answerId: 0,
       selectedFlag: false,
-      // selectedAnswer: ""
       rangeValue: 0
     }
   },
@@ -98,36 +100,49 @@ export default defineComponent({
        * Transition을 통한 fade out 구현
        * */
       this.selectedFlag = true
-      // this.selectedAnswer = averageModel[this.questionId].answer[selected]
       this.averageModel[this.questionId].result = selected
-      setTimeout(()=>{
-        this.questionId += 1
-        this.selectedFlag = false
-        if(this.questionId == this.averageModel.length) {
-          // MARK: 서버로 데이터 송신 백엔드에서 결과처리
-          axios.post("http://127.0.0.1:3000/result/average", this.averageModel)
-            .then((response) => {
-              // MARK: response 결과를 받아 result파싱
-              const title = response.data.title
-              const desc = response.data.desc
-              const image = response.data.image
-              // MARK: 보안을 위해 uri인코딩
-              const result = encodeURI(JSON.stringify({
-                title: title,
-                desc: desc,
-                image: image
-              }))
-              // MARK: 결과 페이지로 라우팅, 결과는 쿼리스트링을 통해 전달
-              this.$router.push({
-                path: "/result/average",
-                query: {result: result}
-              })
+      console.log(selected)
+      console.log(this.averageModel[this.questionId].result)
+      this.rangeValue = 0
+      this.questionId += 1
+      this.selectedFlag = false
+
+      /*
+      if (this.questionId == this.averageModel.length) {
+
+        // MARK: 서버로 데이터 송신 백엔드에서 결과처리
+        axios.post("http://127.0.0.1:3000/result/average", this.averageModel)
+
+          .then((response) => {
+            // MARK: response 결과를 받아 result파싱
+            const title = response.data.title
+            const desc = response.data.desc
+            const image = response.data.image
+            // MARK: 보안을 위해 uri인코딩
+            const result = encodeURI(JSON.stringify({
+              title: title,
+              desc: desc,
+              image: image
+            }))
+            // MARK: 결과 페이지로 라우팅, 결과는 쿼리스트링을 통해 전달
+            this.$router.push({
+              path: "/result/average",
+              query: {result: result}
             })
-            .catch((error) => {
-              console.log(error);
-            })
-        }
-      },500)
+          })
+
+          .catch((error) => {
+            console.log(error);
+          })
+
+      }
+      */
+
+      if (this.questionId == this.averageModel.length) {
+        this.$router.push({
+          path: "/result/average"
+        })
+      }
     }
   }
 
