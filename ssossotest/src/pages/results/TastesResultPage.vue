@@ -1,36 +1,26 @@
 <template>
   <q-page class="row items-center justify-evenly">
     <div class="q-pa-md row items-start q-gutter-md">
-      <q-card v-for="(model, index) in tasteModel" :key = "index" class="my-card" flat bordered>
-        {{model.question[0]}}
-        <q-img
-          :src="`src/assets/images/taste/${this.image}.jpeg`"
-        />
-        {{model.answer[result[index]].answer}}
-        <!--<template v-for = "i in result.length" : key = "i">
-        {{result[0]}}
-        </template>-->
-        <!--<q-card-section>
-          <div class="text-overline text-orange-9">당신의 취향 결과!</div>
-          <div class="text-h5 q-mt-sm q-mb-xs">{{this.title}}</div>-->
-          <!--          TODO: 내용 바꿔야 합니다-->
-          <!--<div class="text-caption text-grey">
-            {{this.desc}}
+      <div class="card text-center">
+      <ul class="list-group list-group-flush">
+        <q-card v-for="(model, index) in tasteModel" :key = "index" class="my-card" flat bordered>
+          <div class="card" style="width: 17rem;">
+            <h6><p class="card-title">  {{model.question[0]}}</p></h6>
+            <q-separator/>
+            <q-separator/>
+            <text-h6><p class = "card-subtitle mb-2 text-muted"> {{result[index]}}</p></text-h6>
+            <q-separator/><q-separator/><q-separator/><q-separator/>
           </div>
-          <template v-for="card in tasteModel" v-bind:key="card">
-            <q-card class="my-card" style="width: 70%; margin: 10px;">
-              <div class="absolute-bottom">
-                <div class="text-h6">{{card.question}}</div>
-                <div class="text-subtitle2">{{card.answer[selected]}}</div>
-              </div>
-            </q-card>
-          </template>
-        </q-card-section>-->
-      </q-card>
-        <router-link to="/main">
-          <q-btn flat color="dark" label="처음으로"/>
-        </router-link>
-      <!--</q-card>-->
+        </q-card>
+      </ul>
+      </div>
+
+      <q-separator/>
+      <q-btn flat color="dark" @click="copyLink" style="width: 100%;" label="친구에게 공유하기"/>
+      <q-separator/>
+      <router-link to="/main" style="width: 100%;">
+        <q-btn flat color="dark" style="width: 100%;" label="처음으로"/>
+      </router-link>
     </div>
   </q-page>
 </template>
@@ -67,10 +57,29 @@ export default defineComponent({
        this.result = JSON.parse(decodeURI(resultQuery))
       console.log(this.result)
       console.log(this.result[0])
-      // this.title = decodedResult.title[0]
-      // this.desc = decodedResult.desc[0]
-      // this.image = decodedResult.image[0]
-      // this.selected = decodedResult.selected[0]
+    }
+  },
+  methods: {
+    // MARK: 공유하기 클릭 시 클립보드에 url 복사
+    copyLink: function () {
+      const copy = (text: string) => {
+        // 임시의 textarea 생성
+        const $textarea = document.createElement("textarea");
+
+        // body 요소에 존재해야 복사가 진행됨
+        document.body.appendChild($textarea);
+
+        // 복사할 특정 텍스트를 임시의 textarea에 넣어주고 모두 셀렉션 상태
+        $textarea.value = text;
+        $textarea.select();
+
+        // 복사 후 textarea 지우기
+        document.execCommand('copy');
+        document.body.removeChild($textarea);
+      }
+      const query = encodeURI(`?friend_id=${this.$q.sessionStorage.getItem('user_nickname')}&content=mbti`)
+      copy(`http://127.0.0.1:9000/#/${query}`)
+      alert('링크가 클립보드에 공유되었어요!')
     }
   }
 });

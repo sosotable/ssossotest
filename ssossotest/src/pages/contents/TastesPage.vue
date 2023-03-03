@@ -19,45 +19,23 @@
       <div class="q-pa-md row justify-center">
         <div style="width: 100%; max-width: 400px">
           <div class="absolute-top">
-            <!--<q-chat-message
-              name="내면의 농담곰"
-              avatar="https://i.pinimg.com/564x/43/09/78/43097860e53ce742582262908cfafff8.jpg"
-              stamp="1 minutes ago"
-              sent
-              text-color="white"
-              bg-color="primary"
-            >-->
             <div class="card-header" style="background-color: transparent!important;">
-              <h6>
+              <h6 class = "card text-center">
                 {{this.tasteModel[questionId].question[0]}}
+                <q-separator/><q-separator/><q-separator/>
               </h6>
-                <!--<div id="avatar">
-                  <img :src="this.tasteModel[questionId].question[2]" style="width: 28px" class="my-emoticon">
-                </div>-->
               </div>
 
 
-            <!--</q-chat-message>-->
 
-            <!--<q-chat-message
-              name="나"
-              avatar="https://i.pinimg.com/564x/c7/ab/9a/c7ab9a58e98a9d0b688957428856aaf4.jpg"
-              bg-color="amber"
-            >-->
-              <!--              MARK: 답안을 선택했다면 해당 답안을 chat message로 보여줌-->
-              <!--<div v-if="selectedFlag">
-                {{selectedAnswer}}
-              </div>
-              <div v-else>
-                <q-spinner-dots size="2rem" />
-              </div>
-            </q-chat-message>-->
           </div>
           <Transition>
             <div v-if="!selectedFlag">
               <template v-for = "index in tasteModel[questionId].answer.length" :key="index">
-                <q-btn color="white" text-color="black" @click="select(index-1)" :label="tasteModel[questionId].answer[index-1].answer">
+                <div class="btn-group-vertical">
+                <q-btn color="warning" text-color="black" @click="select(index-1)" :label="tasteModel[questionId].answer[index-1].answer">
                 </q-btn>
+                </div>
               </template>
             </div>
           </Transition>
@@ -107,11 +85,8 @@ export default defineComponent({
     // MARK: 문제 버튼 선택 시
     select: function (selected: number) {
       console.log(selected)
-      /** MARK:
-       * 문제 버튼 선택 시 selectedFlag값 true로 변경 -> 선택한 답이 chat div에 보여짐
-       * 선택 애니메이션 구현을 위해 setTimeout을 통해 0.5초 후 다음 질문으로 넘어가도록 함
-       * Transition을 통한 fade out 구현
-       * */
+
+
       this.selectedFlag = true
       this.selectedAnswer = tasteModel[this.questionId].answer[selected].answer
       console.log(this.selectedAnswer)
@@ -149,8 +124,7 @@ export default defineComponent({
             })*/
           let result: any = []
           for(let i = 0; i < this.tasteModel.length; i++) {
-             //result.push(this.tasteModel[i].answer[selected].answer)
-              result.push(this.tasteModel[i].result)
+             result.push(this.tasteModel[i].answer[selected].answer)
           }
           console.log(result)
 
