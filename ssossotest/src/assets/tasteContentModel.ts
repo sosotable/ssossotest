@@ -21,7 +21,7 @@ export const tasteModel: TASTEContentModel[] = [
     answer: [
       { answer: "아메리카노", score: 1 },
       { answer: "라떼", score: 2 },
-      { answer: "에아드", score: 3 },
+      { answer: "에이드", score: 3 },
       { answer: "스무디", score: 4 },
       { answer: "티", score: 5 },
       { answer: "안먹음", score: 6 },
@@ -64,7 +64,7 @@ export const tasteModel: TASTEContentModel[] = [
   },
   {
     id:5,
-    question: ["붕어빵"],
+    question: ["좋아하는 붕어빵"],
     answer: [
       { answer: "팥붕", score: 1 },
       { answer: "슈붕", score: 2 },
@@ -74,7 +74,7 @@ export const tasteModel: TASTEContentModel[] = [
   },
   {
     id: 6,
-    question: ["호빵"],
+    question: ["좋아하는 호빵"],
     answer: [
       { answer: "팥호빵", score: 1 },
       { answer: "야채호빵", score: 2 },
@@ -94,7 +94,7 @@ export const tasteModel: TASTEContentModel[] = [
   },
   {
     id:8,
-    question: ["좋아하는 주종"],
+    question: ["주종"],
     answer: [
       { answer: "소주", score: 1 },
       { answer: "맥주", score: 2 },
@@ -106,7 +106,7 @@ export const tasteModel: TASTEContentModel[] = [
   },
   {
     id:9,
-    question: ["소주 종류"],
+    question: ["좋아하는 소주 종류"],
     answer: [
       { answer: "처음처럼", score: 1 },
       { answer: "참이슬", score: 2 },
@@ -141,7 +141,7 @@ export const tasteModel: TASTEContentModel[] = [
   },
   {
     id:12,
-    question: ["복숭아"],
+    question: ["물복 vs 딱복"],
     answer: [
       { answer: "물복", score: 1 },
       { answer: "딱복", score: 2 },
@@ -151,7 +151,7 @@ export const tasteModel: TASTEContentModel[] = [
   },
   {
     id:13,
-    question: ["탕수육"],
+    question: ["탕수육 먹는 방법"],
     answer: [
       { answer: "부먹", score: 1 },
       { answer: "찍먹", score: 2 },
@@ -161,7 +161,7 @@ export const tasteModel: TASTEContentModel[] = [
   },
   {
     id:14,
-    question: ["떡볶이 떡"],
+    question: ["좋아하는 떡볶이 떡"],
     answer: [
       { answer: "밀떡", score: 1 },
       { answer: "쌀떡", score: 2 },
@@ -171,7 +171,7 @@ export const tasteModel: TASTEContentModel[] = [
   },
   {
     id:15,
-    question: ["파스타"],
+    question: ["좋아하는 파스타"],
     answer: [
       { answer: "토마토 파스타", score: 1 },
       { answer: "크림 파스타", score: 2 },
@@ -183,7 +183,7 @@ export const tasteModel: TASTEContentModel[] = [
   },
   {
     id: 16,
-    question: ["라면"],
+    question: ["좋아하는 라면"],
     answer: [
       { answer: "빨간 국물", score: 1 },
       { answer: "흰 국물", score: 2 },
@@ -215,7 +215,7 @@ export const tasteModel: TASTEContentModel[] = [
   },
   {
     id:19,
-    question: ["떡볶이"],
+    question: ["좋아하는 떡볶이"],
     answer: [
       { answer: "시장 떡볶이", score: 1 },
       { answer: "브랜드 떡볶이", score: 2 },
