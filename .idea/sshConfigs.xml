@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SshConfigs">
+    <configs>
+      <sshConfig host="3.144.87.26" id="7a2e6a88-8d2c-4bcb-a38d-85f76247332b" keyPath="C:\Code\SST_projects\server-info\ssossotest\ssossotest.pem" port="22" nameFormat="DESCRIPTIVE" username="ubuntu" useOpenSSHConfig="true" />
+    </configs>
+  </component>
+</project>

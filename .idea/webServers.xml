@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="3837630f-f658-40e0-8c1b-3f590a7ec510" name="ssossotest-server">
+        <fileTransfer accessType="SFTP" host="3.144.87.26" port="22" sshConfigId="7a2e6a88-8d2c-4bcb-a38d-85f76247332b" sshConfig="ubuntu@3.144.87.26:22 key" keyPair="true">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+      <webServer id="fc9691b2-563a-41ab-9c12-f90bdf171f29" name="ssossotest">
+        <fileTransfer accessType="SFTP" host="3.144.87.26" port="22" sshConfigId="7a2e6a88-8d2c-4bcb-a38d-85f76247332b" sshConfig="ubuntu@3.144.87.26:22 key" keyPair="true">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
