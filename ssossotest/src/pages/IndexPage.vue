@@ -4,12 +4,10 @@
       <img src="/logo.png">
     </q-avatar>
     <div style="width: 100%; padding: 0 20% 0 25%">
-      <q-input bottom-slots v-model="user_nickname" counter maxlength="16" >
-        <template v-slot:hint>
-          별명을 입력해주세요
-        </template>
+      <q-input bottom-slots v-model="user_nickname" counter maxlength="16">
+        <template v-slot:hint> 별명을 입력해주세요 </template>
         <template v-slot:after>
-          <q-btn round flat icon="send" @click="onSubmit()"/>
+          <q-btn round flat icon="send" @click="onSubmit()" />
         </template>
       </q-input>
     </div>
@@ -23,23 +21,23 @@ import axios from 'axios';
 
 export default defineComponent({
   name: 'IndexPage',
-  setup () {
+  setup() {
     return {
-      $q: useQuasar()
+      $q: useQuasar(),
     };
   },
   data() {
     return {
-      user_nickname: ''
-    }
+      user_nickname: '',
+    };
   },
   mounted() {
     console.log(this.$route.query)
     // MARK: 사용자 세션 존재 시 main화면으로 라우팅
-    if(this.$q.sessionStorage.has('user_nickname')) {
-      this.$q.loading.show()
-      setTimeout(()=>{
-        this.$q.loading.hide()
+    if (this.$q.sessionStorage.has('user_nickname')) {
+      this.$q.loading.show();
+      setTimeout(() => {
+        this.$q.loading.hide();
         // MARK: 공유되어서 들어온 경우: 쿼리 존재 시 해당 content로 바로 라우팅
         if(this.$route.query.friend_id !== undefined) {
           const query = `?friend_id=${this.$route.query.friend_id}`
@@ -48,7 +46,7 @@ export default defineComponent({
         else {
           this.$router.push('/main')
         }
-      },500)
+      }, 500);
     }
   },
   methods: {
@@ -64,8 +62,7 @@ export default defineComponent({
           this.$router.push('/main')
         }
       }
-
-    }
-  }
+    },
+  },
 });
 </script>

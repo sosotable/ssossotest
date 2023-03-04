@@ -1,12 +1,11 @@
 <template>
   <q-layout view="lHh Lpr lFf">
-    <ssossotest-header/>
+    <ssossotest-header />
     <q-page-container>
       <router-view />
     </q-page-container>
-    <ssossotest-footer/>
+    <ssossotest-footer />
   </q-layout>
-
 </template>
 
 <script lang="ts">
@@ -17,11 +16,10 @@ export default defineComponent({
   name: 'MainLayout',
   components: {
     SsossotestHeader,
-    SsossotestFooter
+    SsossotestFooter,
   },
-  setup () {
-    return {
-    }
-  }
+  setup() {
+    return {};
+  },
 });
 </script>

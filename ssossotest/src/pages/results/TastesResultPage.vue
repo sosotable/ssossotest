@@ -32,9 +32,9 @@ import { tasteModel } from 'src/assets/tasteContentModel'
 
 export default defineComponent({
   name: 'TastesResultPage',
-  setup () {
+  setup() {
     return {
-      tasteModel
+      tasteModel,
     };
   },
   data() {
@@ -81,6 +81,6 @@ export default defineComponent({
       copy(`http://127.0.0.1:9000/#/${query}`)
       alert('링크가 클립보드에 공유되었어요!')
     }
-  }
+  },
 });
 </script>

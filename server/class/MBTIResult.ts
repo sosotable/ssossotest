@@ -64,18 +64,18 @@ export default class MBTIResult extends Result {
   }
   setType() {
     const calcMBTIResult:
-        | string
-        | String
-        | [eipoint: number, snpoint: number, ftpoint: number, pjpoint: number]
-        | undefined = this.calcMBTI(this.answerResult);
+      | string
+      | String
+      | [eipoint: number, snpoint: number, ftpoint: number, pjpoint: number]
+      | undefined = this.calcMBTI(this.answerResult);
     if (calcMBTIResult !== undefined) {
       // MARK: MBTI값(문자열) 을 지정합니다
-      this.type.push((
-          (calcMBTIResult[0] < 5 ? "E" : "I") + // eipoint
+      this.type.push(
+        (calcMBTIResult[0] < 5 ? "E" : "I") + // eipoint
           (calcMBTIResult[1] < 5 ? "S" : "N") + // snpoint
           (calcMBTIResult[2] < 5 ? "F" : "T") + // ftpoint
           (calcMBTIResult[3] < 5 ? "P" : "J") // pjpoint
-      ))
+      );
     } else {
       return null;
     }
@@ -99,7 +99,7 @@ export default class MBTIResult extends Result {
      * template method 패턴 통해서 메서드 하나로 일괄처리
      */
     // MARK: mbti값(문자열) 지정
-    this.setType()
+    this.setType();
     // MARK: mbti point 계산
     this.setMBTI();
     // MARK: mbti title 지정
