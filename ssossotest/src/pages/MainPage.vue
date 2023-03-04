@@ -23,6 +23,7 @@
 import { defineComponent, ref } from 'vue';
 import {useQuasar} from 'quasar';
 import { Cards } from 'components/models';
+import axios from "axios";
 
 export default defineComponent({
   name: 'MainPage',
@@ -32,19 +33,19 @@ export default defineComponent({
       // MARK: 테스트 카드 상단 v-for에서 사용
       cards: ref<Cards[]>([
         {
-          image: 'src/assets/images/mbti/title.jpeg',
+          image: '/images/mbti/title.jpeg',
           title: '음식 MBTI 알아보기',
           desc: '선택을 통해 알아보는 나의 음식 성격유형',
           tag: 'mbti'
         },
         {
-          image: 'src/assets/images/tastes/title.jpg',
+          image: '/images/tastes/title.jpg',
           title: '음식 취향 알아보기',
           desc: '나의 음식 취향을 기록하고 공유해보세요',
           tag: 'tastes'
         },
         {
-          image: 'src/assets/images/average/title.jpg',
+          image: '/images/average/title.jpg',
           title: '음식 평균 알아보기',
           desc: '나의 음식 성향을 대한민국 평균과 비교해보세요',
           tag: 'average'

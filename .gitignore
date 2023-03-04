@@ -1,3 +1,6 @@
+# webstorm 관련 파일
+.idea
+
 # 빌드 파일
 ssossotest/dist
 server/dist
