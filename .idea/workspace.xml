@@ -5,22 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4371ba84-6da7-4134-82cd-a05354076c06" name="변경" comment="">
-<<<<<<< Updated upstream
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/class/MBTIResult.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/class/MBTIResult.ts" afterDir="false" />
-=======
-      <change afterPath="$PROJECT_DIR$/ssossotest/src/assets/tasteContentModel.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ssossotest/src/components/tastemodels.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ssossotest/src/pages/contents/MBTIPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/ssossotest/src/pages/contents/MBTIPage.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ssossotest/src/pages/contents/TastesPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/ssossotest/src/pages/contents/TastesPage.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ssossotest/src/pages/results/TastesResultPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/ssossotest/src/pages/results/TastesResultPage.vue" afterDir="false" />
->>>>>>> Stashed changes
+    
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="TypeScript File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -33,33 +30,9 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-<<<<<<< Updated upstream
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/valtin/Desktop/project/ssossotest",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "ts.external.directory.path": "C:\\Users\\valtin\\Desktop\\project\\ssossotest\\server\\node_modules\\typescript\\lib",
-    "vue.rearranger.settings.migration": "true"
-=======
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Admin/Desktop/food-mbti/ssossotest&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\Admin\\Desktop\\food-mbti\\ssossotest\\server\\node_modules\\typescript\\lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
->>>>>>> Stashed changes
+
   }
-}</component>
+
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="애플리케이션 수준" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="디폴트 작업">
@@ -70,27 +43,12 @@
       <updated>1676108643347</updated>
       <workItem from="1676108644456" duration="6000" />
       <workItem from="1676375595444" duration="91000" />
-<<<<<<< Updated upstream
-      <workItem from="1676879423933" duration="1799000" />
-=======
-      <workItem from="1676538226116" duration="18342000" />
-      <workItem from="1677088236882" duration="788000" />
->>>>>>> Stashed changes
+
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
   </component>
 </project>
