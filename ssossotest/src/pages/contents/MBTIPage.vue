@@ -1,8 +1,10 @@
 <template>
   <q-page class="row items-center justify-evenly">
-    <div v-if="this.title" class="row justify-center items-start absolute-top">
-      <q-card class="my-card" style="width: 100%" flat bordered>
-        <q-img src="src/assets/images/mbti/title.jpeg" />
+    <div v-if="this.title"  class="row justify-center items-start absolute-top" >
+      <q-card class="my-card" style="width: 100%;" flat bordered >
+        <q-img
+          src="/images/mbti/title.jpeg"
+        />
         <q-card-section>
           <div class="text-overline text-orange-9"></div>
           <div class="text-h5 q-mt-sm q-mb-xs">음식 MBTI 알아보기</div>
@@ -104,7 +106,6 @@ export default defineComponent({
     };
   },
   mounted() {
-    console.log(mbtiModel);
   },
   methods: {
     // MARK: 시작하기 버튼을 누를 경우 타이틀 이미지를 보이지 않게(false) 변환, 문제를 보이게(true) 변환
@@ -129,9 +130,7 @@ export default defineComponent({
         this.questionId += 1;
         this.selectedFlag = false;
         if (this.questionId == this.mbtiModel.length) {
-          // MARK: 서버로 데이터 송신 백엔드에서 결과처리
-          axios
-            .post('http://127.0.0.1:3000/result/mbti', this.mbtiModel)
+          axios.post('/result/mbti', this.mbtiModel)
             .then((response) => {
               // MARK: response 결과를 받아 result파싱
               const title = response.data.title;

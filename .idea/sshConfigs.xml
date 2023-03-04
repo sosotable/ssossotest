@@ -2,7 +2,11 @@
 <project version="4">
   <component name="SshConfigs">
     <configs>
+<<<<<<< HEAD
       <sshConfig host="3.144.87.26" id="7a2e6a88-8d2c-4bcb-a38d-85f76247332b" keyPath="C:\Code\SST_projects\server-info\ssossotest\ssossotest.pem" port="22" nameFormat="DESCRIPTIVE" username="ubuntu" useOpenSSHConfig="true" />
+=======
+      <sshConfig host="3.144.87.26" id="ff176d47-b8b3-4485-b37d-d04924f62527" keyPath="C:\Users\Admin\Desktop\food-mbti\server-info\ssossotest\ssossotest.pem" port="22" nameFormat="DESCRIPTIVE" username="ubuntu" useOpenSSHConfig="true" />
+>>>>>>> 4d0d1a67363ce1eeec5371205a462c5ee72b8174
     </configs>
   </component>
 </project>

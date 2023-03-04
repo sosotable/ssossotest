@@ -2,6 +2,7 @@
 <project version="4">
   <component name="WebServers">
     <option name="servers">
+<<<<<<< HEAD
       <webServer id="3837630f-f658-40e0-8c1b-3f590a7ec510" name="ssossotest-server">
         <fileTransfer accessType="SFTP" host="3.144.87.26" port="22" sshConfigId="7a2e6a88-8d2c-4bcb-a38d-85f76247332b" sshConfig="ubuntu@3.144.87.26:22 key" keyPair="true">
           <advancedOptions>
@@ -13,6 +14,9 @@
         <fileTransfer accessType="SFTP" host="3.144.87.26" port="22" sshConfigId="7a2e6a88-8d2c-4bcb-a38d-85f76247332b" sshConfig="ubuntu@3.144.87.26:22 key" keyPair="true">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" />
+=======
+
+>>>>>>> 4d0d1a67363ce1eeec5371205a462c5ee72b8174
           </advancedOptions>
         </fileTransfer>
       </webServer>
