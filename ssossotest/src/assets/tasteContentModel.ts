@@ -23,7 +23,7 @@ export const tasteModel: TASTEContentModel[] = [
       { answer: "에이드", score: 3 },
       { answer: "스무디", score: 4 },
       { answer: "티", score: 5 },
-      { answer: "안먹음", score: 6 }
+      { answer: "안먹음", score: 6 },
     ],
     result: -1,
   },

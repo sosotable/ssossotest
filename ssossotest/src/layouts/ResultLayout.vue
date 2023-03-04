@@ -1,12 +1,11 @@
 <template>
   <q-layout view="lHh Lpr lFf">
-    <ssossotest-header/>
+    <ssossotest-header />
     <q-page-container>
       <router-view />
     </q-page-container>
-    <ssossotest-footer/>
+    <ssossotest-footer />
   </q-layout>
-
 </template>
 
 <script lang="ts">
@@ -15,10 +14,9 @@ import SsossotestHeader from 'components/SsossotestHeader.vue';
 import SsossotestFooter from 'components/SsossotestFooter.vue';
 export default defineComponent({
   name: 'ResultLayout',
-  components: {SsossotestHeader, SsossotestFooter},
-  setup () {
-    return {
-    }
-  }
+  components: { SsossotestHeader, SsossotestFooter },
+  setup() {
+    return {};
+  },
 });
 </script>

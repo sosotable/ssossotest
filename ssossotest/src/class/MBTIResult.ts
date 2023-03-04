@@ -1,8 +1,8 @@
 // MARK: mbti 결과 처리
 
-import Result from "./interface/Result";
+import Result from './interface/Result';
 
-const resultModels = require("../model/result");
+const resultModels = require('../model/result');
 
 export default class MBTIResult extends Result {
   MBTIPOINT: {
@@ -25,7 +25,7 @@ export default class MBTIResult extends Result {
     ENFP: 14,
     INFP: 15,
   };
-  mbti: number | string | null = "";
+  mbti: number | string | null = '';
   constructor(
     _answerResult: {
       [type: string]: number | string;
@@ -37,10 +37,10 @@ export default class MBTIResult extends Result {
 
   defPoint(eipoint: number, snpoint: number, ftpoint: number, pjpoint: number) {
     return (
-      (eipoint < 5 ? "E" : "I") +
-      (snpoint < 5 ? "S" : "N") +
-      (ftpoint < 5 ? "F" : "T") +
-      (pjpoint < 5 ? "P" : "J")
+      (eipoint < 5 ? 'E' : 'I') +
+      (snpoint < 5 ? 'S' : 'N') +
+      (ftpoint < 5 ? 'F' : 'T') +
+      (pjpoint < 5 ? 'P' : 'J')
     );
   }
   calcMBTI(result: { [key: string]: number | string }[]) {
@@ -53,16 +53,16 @@ export default class MBTIResult extends Result {
       ] = [0, 0, 0, 0];
       for (let i = 0; i < result.length; i++) {
         switch (result[i].type) {
-          case "EI":
+          case 'EI':
             returnValue[0] += <number>result[i].score;
             break;
-          case "SN":
+          case 'SN':
             returnValue[1] += <number>result[i].score;
             break;
-          case "FT":
+          case 'FT':
             returnValue[2] += <number>result[i].score;
             break;
-          case "PJ":
+          case 'PJ':
             returnValue[3] += <number>result[i].score;
             break;
         }

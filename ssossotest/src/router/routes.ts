@@ -15,14 +15,20 @@ const routes: RouteRecordRaw[] = [
   },
   /** MARK: 테스트 페이지
    * /content/:path에 의해서 각각의 페이지가 라우팅: 예시 /content/mbti => MBTIPage 라우팅
-  */
+   */
   {
     path: '/content',
     component: () => import('layouts/ContentLayout.vue'),
     children: [
       { path: 'mbti', component: () => import('pages/contents/MBTIPage.vue') },
-      { path: 'tastes', component: () => import('pages/contents/TastesPage.vue') },
-      { path: 'average', component: () => import('pages/contents/AveragePage.vue') }
+      {
+        path: 'tastes',
+        component: () => import('pages/contents/TastesPage.vue'),
+      },
+      {
+        path: 'average',
+        component: () => import('pages/contents/AveragePage.vue'),
+      },
     ],
   },
   // MARK: 결과 페이지
@@ -30,9 +36,18 @@ const routes: RouteRecordRaw[] = [
     path: '/result',
     component: () => import('layouts/ResultLayout.vue'),
     children: [
-      { path: 'mbti', component: () => import('pages/results/MBTIResultPage.vue') },
-      { path: 'tastes', component: () => import('pages/results/TastesResultPage.vue') },
-      { path: 'average', component: () => import('pages/results/AverageResultPage.vue') }
+      {
+        path: 'mbti',
+        component: () => import('pages/results/MBTIResultPage.vue'),
+      },
+      {
+        path: 'tastes',
+        component: () => import('pages/results/TastesResultPage.vue'),
+      },
+      {
+        path: 'average',
+        component: () => import('pages/results/AverageResultPage.vue'),
+      },
     ],
   },
   // Always leave this as last one,

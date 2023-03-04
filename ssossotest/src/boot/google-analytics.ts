@@ -6,6 +6,6 @@ import ga from './analytics'
 // more info on params: https://v2.quasar.dev/quasar-cli/boot-files
 export default boot(async ({ app, router}) => {
   router.afterEach((to, from) => {
-    ga.logPage(to.path, to.name, 'G-LS6B8GXN7W')
+    ga.logPage(to.path, to.name, 'G-00B6BM1P0J')
   })
 })

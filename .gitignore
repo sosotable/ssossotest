@@ -8,6 +8,9 @@ ssossotest/.idea
 ssossotest/dist
 server/dist
 
+# webstrom workspace
+workspace.xml
+
 # 환경변수
 ssossotest/.env
 server/.env

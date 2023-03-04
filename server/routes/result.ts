@@ -25,23 +25,23 @@ router
     try {
       // MARK: 결과값 파싱
       switch (path) {
-          /** MARK: path 값(mbti, tastes, average)에 따라 result 객체를 지정
-           *  --Factory 패턴 사용하여 코드 간소화--
-           *  Template method 패턴입니다(착각함)
-           * */
+        /** MARK: path 값(mbti, tastes, average)에 따라 result 객체를 지정
+         *  --Factory 패턴 사용하여 코드 간소화--
+         *  Template method 패턴입니다(착각함)
+         * */
         case "mbti":
           let answerResult: {
             [type: string]: number | string;
             [score: number]: number | string;
-          }[] = []
-            // MARK: 결과 데이터 파싱: type과 score만을 뽑아내서 사용함
+          }[] = [];
+          // MARK: 결과 데이터 파싱: type과 score만을 뽑아내서 사용함
           req.body.forEach((element: any) => {
             answerResult.push({
               type: element.type,
-              score: element.result
-            })
-          })
-            // MARK: 클래스를 통해 데이터 파싱
+              score: element.result,
+            });
+          });
+          // MARK: 클래스를 통해 데이터 파싱
           result = new MBTIResult(answerResult);
           if (result instanceof MBTIResult) {
             result.factory();
@@ -51,12 +51,13 @@ router
             image: result.resultTitle,
             title: result.resultTitle,
             desc: result.resultDesc,
-            type: result.type
-          })
+            type: result.type,
+          });
           break;
         case "tastes":
           /** TODO: need to imple
            * **/
+          console.log(req.body)
           // result = new TastesResult(resultBody, undefined);
           if (result instanceof TastesResult) {
             result.factory();

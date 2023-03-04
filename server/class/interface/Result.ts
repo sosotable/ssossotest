@@ -7,7 +7,7 @@ export default class Result {
   resultTitle: string[] = [];
   resultDesc: string[] = [];
   resultDescBuffer: string[] = [];
-  type: string[] = []
+  type: string[] = [];
   constructor(
     _answerResult: {
       [key: string]: number | string;

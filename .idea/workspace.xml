@@ -4,6 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="4371ba84-6da7-4134-82cd-a05354076c06" name="변경" comment="">
 <<<<<<< Updated upstream
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
@@ -22,12 +23,79 @@
       <change beforePath="$PROJECT_DIR$/ssossotest/src/pages/contents/MBTIPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/ssossotest/src/pages/contents/MBTIPage.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ssossotest/src/pages/contents/TastesPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/ssossotest/src/pages/contents/TastesPage.vue" afterDir="false" />
 >>>>>>> Stashed changes
+=======
+    <list default="true" id="f1bf8884-aefc-40f9-83b4-6e0cf546cc8a" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/ssossotest/public/naverdcdb2a4bc84f1a110080528f3e30b458.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ssossotest/src-ssr/middlewares/DAO.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ssossotest/src-ssr/middlewares/class/AverageResult.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ssossotest/src-ssr/middlewares/class/MBTIResult.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ssossotest/src-ssr/middlewares/class/TastesResult.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ssossotest/src-ssr/middlewares/class/interface/Result.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ssossotest/src-ssr/middlewares/config/db_info.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ssossotest/src-ssr/middlewares/interface/Database.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ssossotest/src-ssr/middlewares/interface/ErrorRequestHandler.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ssossotest/src-ssr/middlewares/interface/RequestExtension.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ssossotest/src-ssr/middlewares/libs/dao/DAO.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ssossotest/src-ssr/middlewares/libs/dao/config/db_connection.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ssossotest/src-ssr/middlewares/model/average.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ssossotest/src-ssr/middlewares/model/catch-taste.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ssossotest/src-ssr/middlewares/model/content.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ssossotest/src-ssr/middlewares/model/contentHeader.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ssossotest/src-ssr/middlewares/model/main.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ssossotest/src-ssr/middlewares/model/result.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ssossotest/src-ssr/middlewares/render.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ssossotest/src-ssr/middlewares/result.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ssossotest/src-ssr/server.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ssossotest/src-ssr/ssr-flag.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/deployment.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/deployment.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sshConfigs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sshConfigs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/webServers.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/webServers.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/routes/result.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/routes/result.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ssossotest/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/ssossotest/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ssossotest/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/ssossotest/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ssossotest/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/ssossotest/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ssossotest/quasar.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/ssossotest/quasar.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ssossotest/src/assets/images/average/title.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/ssossotest/public/images/average/title.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ssossotest/src/assets/images/food_placeholder.png" beforeDir="false" afterPath="$PROJECT_DIR$/ssossotest/public/images/food_placeholder.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ssossotest/src/assets/images/mbti/ENFJ.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/ssossotest/public/images/mbti/ENFJ.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ssossotest/src/assets/images/mbti/ENFP.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/ssossotest/public/images/mbti/ENFP.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ssossotest/src/assets/images/mbti/ENTJ.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/ssossotest/public/images/mbti/ENTJ.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ssossotest/src/assets/images/mbti/ENTP.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/ssossotest/public/images/mbti/ENTP.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ssossotest/src/assets/images/mbti/ESFJ.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/ssossotest/public/images/mbti/ESFJ.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ssossotest/src/assets/images/mbti/ESFP.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/ssossotest/public/images/mbti/ESFP.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ssossotest/src/assets/images/mbti/ESTJ.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/ssossotest/public/images/mbti/ESTJ.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ssossotest/src/assets/images/mbti/ESTP.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/ssossotest/public/images/mbti/ESTP.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ssossotest/src/assets/images/mbti/INFJ.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/ssossotest/public/images/mbti/INFJ.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ssossotest/src/assets/images/mbti/INFP.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/ssossotest/public/images/mbti/INFP.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ssossotest/src/assets/images/mbti/INTJ.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/ssossotest/public/images/mbti/INTJ.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ssossotest/src/assets/images/mbti/INTP.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/ssossotest/public/images/mbti/INTP.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ssossotest/src/assets/images/mbti/ISFJ.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/ssossotest/public/images/mbti/ISFJ.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ssossotest/src/assets/images/mbti/ISFP.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/ssossotest/public/images/mbti/ISFP.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ssossotest/src/assets/images/mbti/ISTJ.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/ssossotest/public/images/mbti/ISTJ.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ssossotest/src/assets/images/mbti/ISTP.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/ssossotest/public/images/mbti/ISTP.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ssossotest/src/assets/images/mbti/food_placeholder.png" beforeDir="false" afterPath="$PROJECT_DIR$/ssossotest/public/images/mbti/food_placeholder.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ssossotest/src/assets/images/mbti/title.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/ssossotest/public/images/mbti/title.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ssossotest/src/assets/images/result_placeholder.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/ssossotest/public/images/result_placeholder.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ssossotest/src/assets/images/tastes/title.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/ssossotest/public/images/tastes/title.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ssossotest/src/assets/logo.png" beforeDir="false" afterPath="$PROJECT_DIR$/ssossotest/public/logo.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ssossotest/src/assets/tasteContentModel.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ssossotest/src/assets/tasteContentModel.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ssossotest/src/components/SsossotestHeader.vue" beforeDir="false" afterPath="$PROJECT_DIR$/ssossotest/src/components/SsossotestHeader.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ssossotest/src/pages/IndexPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/ssossotest/src/pages/IndexPage.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ssossotest/src/pages/MainPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/ssossotest/src/pages/MainPage.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ssossotest/src/pages/contents/MBTIPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/ssossotest/src/pages/contents/MBTIPage.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ssossotest/src/pages/contents/TastesPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/ssossotest/src/pages/contents/TastesPage.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ssossotest/src/pages/results/MBTIResultPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/ssossotest/src/pages/results/MBTIResultPage.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ssossotest/src/pages/results/TastesResultPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/ssossotest/src/pages/results/TastesResultPage.vue" afterDir="false" />
+>>>>>>> 1b3636dc97732b204de00ed595da316349b6939a
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+<<<<<<< HEAD
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
@@ -39,17 +107,20 @@
       </list>
     </option>
   </component>
+=======
+>>>>>>> 1b3636dc97732b204de00ed595da316349b6939a
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectId" id="2LaUN3eTtiBuq4W31TWoUf8w73v" />
+  <component name="ProjectId" id="2MJpbygCn7K89PkjKXs8k19u1k8" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
+<<<<<<< HEAD
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
@@ -89,12 +160,35 @@
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="애플리케이션 수준" UseSingleDictionary="true" transferred="true" />
+=======
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowPanel.toolwindow.highlight.mappings&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowPanel.toolwindow.highlight.symlinks&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowPanel.toolwindow.show.date&quot;: &quot;false&quot;,
+    &quot;WebServerToolWindowPanel.toolwindow.show.permissions&quot;: &quot;false&quot;,
+    &quot;WebServerToolWindowPanel.toolwindow.show.size&quot;: &quot;false&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Code\\SST_projects\\ssossotest\\server\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+>>>>>>> 1b3636dc97732b204de00ed595da316349b6939a
   <component name="TaskManager">
-    <task active="true" id="Default" summary="디폴트 작업">
-      <changelist id="4371ba84-6da7-4134-82cd-a05354076c06" name="변경" comment="" />
-      <created>1676108643347</created>
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="f1bf8884-aefc-40f9-83b4-6e0cf546cc8a" name="Changes" comment="" />
+      <created>1677489312650</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
+<<<<<<< HEAD
       <updated>1676108643347</updated>
       <workItem from="1676108644456" duration="6000" />
       <workItem from="1676375595444" duration="91000" />
@@ -115,6 +209,8 @@
       <created>1677489312650</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
+=======
+>>>>>>> 1b3636dc97732b204de00ed595da316349b6939a
       <updated>1677489312650</updated>
       <workItem from="1677489318028" duration="2612000" />
       <workItem from="1677495619613" duration="379000" />
@@ -123,25 +219,17 @@
       <workItem from="1677906900426" duration="2926000" />
       <workItem from="1677912658837" duration="623000" />
       <workItem from="1677913307638" duration="573000" />
+<<<<<<< HEAD
       <workItem from="1677943858469" duration="65000" />
       <workItem from="1677943934173" duration="1995000" />
       <workItem from="1677945991500" duration="3316000" />
 >>>>>>> Stashed changes
+=======
+>>>>>>> 1b3636dc97732b204de00ed595da316349b6939a
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/ssossotest/src/pages/results/MBTIResultPage.vue</url>
-          <line>76</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

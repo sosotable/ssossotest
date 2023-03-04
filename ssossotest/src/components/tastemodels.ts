@@ -11,12 +11,6 @@ export interface ContentModel {
   answer: [] | string | any;
 }
 
-export interface MBTIContentModel extends ContentModel {
-  type: string;
-  result: number;
-}
-
-export interface AverageContentModel extends ContentModel {
-  type: string;
+export interface TASTEContentModel extends ContentModel {
   result: number;
 }
