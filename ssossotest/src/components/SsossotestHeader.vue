@@ -8,7 +8,6 @@
               <img src="/logo.png">
             </q-avatar>
           </router-link>
-
           소소테스트
         </q-toolbar-title>
       </q-toolbar>

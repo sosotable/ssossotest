@@ -1,5 +1,8 @@
 # webstorm 관련 파일
-.idea
+**/.idea
+*/.idea
+server/.idea
+ssossotest/.idea
 
 # 빌드 파일
 ssossotest/dist

@@ -67,7 +67,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue';
+import { defineComponent } from 'vue';
 // MARK: 사용 데이터 외부화
 import { mbtiModel } from 'src/assets/ContentModel'
 import axios from 'axios';
