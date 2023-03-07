@@ -59,7 +59,7 @@
               </div>
             </q-chat-message>
           </div>
-          <Transition class="absolute-bottom" style="padding: 0 0 200px 0">
+          <Transition class="absolute-bottom flex column" style="padding: 0 0 200px 0">
             <div v-if="!selectedFlag">
               <q-btn
                 color="white"

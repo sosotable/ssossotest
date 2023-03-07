@@ -9,6 +9,7 @@
 // https://v2.quasar.dev/quasar-cli-vite/quasar-config-js
 
 const { configure } = require('quasar/wrappers');
+require('dotenv').config()
 
 module.exports = configure(function (/* ctx */) {
   return {
@@ -65,7 +66,10 @@ module.exports = configure(function (/* ctx */) {
 
       // publicPath: '/',
       // analyze: true,
-      // env: {},
+
+      env: {
+        DAO_ENDPOINT: process.env.DAO_ENDPOINT
+      },
       // rawDefine: {}
       // ignorePublicFolder: true,
       // minify: false,
