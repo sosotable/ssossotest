@@ -25,7 +25,7 @@
               avatar="https://i.pinimg.com/564x/43/09/78/43097860e53ce742582262908cfafff8.jpg"
               stamp="1 minutes ago"
               sent
-              text-color="white"
+              text-color="black"
               bg-color="primary"
               style="margin: 10px"
             >
