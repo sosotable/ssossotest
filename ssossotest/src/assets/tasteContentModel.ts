@@ -18,21 +18,12 @@ export const tasteModel: TASTEContentModel[] = [
     id: 1,
     question: ['즐겨먹는 커피, 카페 음료'],
     answer: [
-<<<<<<< HEAD
-      { answer: '아메리카노', score: 1 },
-      { answer: '라떼', score: 2 },
-      { answer: '에아드', score: 3 },
-      { answer: '스무디', score: 4 },
-      { answer: '티', score: 5 },
-      { answer: '안먹음', score: 6 },
-=======
       { answer: "아메리카노", score: 1 },
       { answer: "라떼", score: 2 },
       { answer: "에이드", score: 3 },
       { answer: "스무디", score: 4 },
       { answer: "티", score: 5 },
       { answer: "안먹음", score: 6 },
->>>>>>> 4d0d1a67363ce1eeec5371205a462c5ee72b8174
     ],
     result: -1,
   },
@@ -71,13 +62,8 @@ export const tasteModel: TASTEContentModel[] = [
     result: -1,
   },
   {
-<<<<<<< HEAD
-    id: 5,
-    question: ['붕어빵'],
-=======
     id:5,
     question: ["좋아하는 붕어빵"],
->>>>>>> 4d0d1a67363ce1eeec5371205a462c5ee72b8174
     answer: [
       { answer: '팥붕', score: 1 },
       { answer: '슈붕', score: 2 },
@@ -87,11 +73,7 @@ export const tasteModel: TASTEContentModel[] = [
   },
   {
     id: 6,
-<<<<<<< HEAD
-    question: ['호빵'],
-=======
     question: ["좋아하는 호빵"],
->>>>>>> 4d0d1a67363ce1eeec5371205a462c5ee72b8174
     answer: [
       { answer: '팥호빵', score: 1 },
       { answer: '야채호빵', score: 2 },
@@ -110,13 +92,8 @@ export const tasteModel: TASTEContentModel[] = [
     result: -1,
   },
   {
-<<<<<<< HEAD
-    id: 8,
-    question: ['좋아하는 주종'],
-=======
     id:8,
     question: ["주종"],
->>>>>>> 4d0d1a67363ce1eeec5371205a462c5ee72b8174
     answer: [
       { answer: '소주', score: 1 },
       { answer: '맥주', score: 2 },
@@ -127,13 +104,8 @@ export const tasteModel: TASTEContentModel[] = [
     result: -1,
   },
   {
-<<<<<<< HEAD
-    id: 9,
-    question: ['소주 종류'],
-=======
     id:9,
     question: ["좋아하는 소주 종류"],
->>>>>>> 4d0d1a67363ce1eeec5371205a462c5ee72b8174
     answer: [
       { answer: '처음처럼', score: 1 },
       { answer: '참이슬', score: 2 },
@@ -167,13 +139,8 @@ export const tasteModel: TASTEContentModel[] = [
     result: -1,
   },
   {
-<<<<<<< HEAD
-    id: 12,
-    question: ['복숭아'],
-=======
     id:12,
     question: ["물복 vs 딱복"],
->>>>>>> 4d0d1a67363ce1eeec5371205a462c5ee72b8174
     answer: [
       { answer: '물복', score: 1 },
       { answer: '딱복', score: 2 },
@@ -182,13 +149,8 @@ export const tasteModel: TASTEContentModel[] = [
     result: -1,
   },
   {
-<<<<<<< HEAD
-    id: 13,
-    question: ['탕수육'],
-=======
     id:13,
     question: ["탕수육 먹는 방법"],
->>>>>>> 4d0d1a67363ce1eeec5371205a462c5ee72b8174
     answer: [
       { answer: '부먹', score: 1 },
       { answer: '찍먹', score: 2 },
@@ -197,13 +159,8 @@ export const tasteModel: TASTEContentModel[] = [
     result: -1,
   },
   {
-<<<<<<< HEAD
-    id: 14,
-    question: ['떡볶이 떡'],
-=======
     id:14,
     question: ["좋아하는 떡볶이 떡"],
->>>>>>> 4d0d1a67363ce1eeec5371205a462c5ee72b8174
     answer: [
       { answer: '밀떡', score: 1 },
       { answer: '쌀떡', score: 2 },
@@ -212,13 +169,8 @@ export const tasteModel: TASTEContentModel[] = [
     result: -1,
   },
   {
-<<<<<<< HEAD
-    id: 15,
-    question: ['파스타'],
-=======
     id:15,
     question: ["좋아하는 파스타"],
->>>>>>> 4d0d1a67363ce1eeec5371205a462c5ee72b8174
     answer: [
       { answer: '토마토 파스타', score: 1 },
       { answer: '크림 파스타', score: 2 },
@@ -230,11 +182,7 @@ export const tasteModel: TASTEContentModel[] = [
   },
   {
     id: 16,
-<<<<<<< HEAD
-    question: ['라면'],
-=======
     question: ["좋아하는 라면"],
->>>>>>> 4d0d1a67363ce1eeec5371205a462c5ee72b8174
     answer: [
       { answer: '빨간 국물', score: 1 },
       { answer: '흰 국물', score: 2 },
@@ -265,13 +213,8 @@ export const tasteModel: TASTEContentModel[] = [
     result: -1,
   },
   {
-<<<<<<< HEAD
-    id: 19,
-    question: ['떡볶이'],
-=======
     id:19,
     question: ["좋아하는 떡볶이"],
->>>>>>> 4d0d1a67363ce1eeec5371205a462c5ee72b8174
     answer: [
       { answer: '시장 떡볶이', score: 1 },
       { answer: '브랜드 떡볶이', score: 2 },

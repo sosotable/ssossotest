@@ -4,6 +4,26 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+<<<<<<< HEAD
+    <list default="true" id="4371ba84-6da7-4134-82cd-a05354076c06" name="변경" comment="">
+<<<<<<< Updated upstream
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+=======
+      <change afterPath="$PROJECT_DIR$/ssossotest/src/boot/analytics.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/deployment.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/deployment.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/webServers.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/webServers.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ssossotest/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/ssossotest/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ssossotest/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/ssossotest/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ssossotest/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/ssossotest/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ssossotest/quasar.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/ssossotest/quasar.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ssossotest/src/assets/tasteContentModel.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ssossotest/src/assets/tasteContentModel.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ssossotest/src/components/SsossotestHeader.vue" beforeDir="false" afterPath="$PROJECT_DIR$/ssossotest/src/components/SsossotestHeader.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ssossotest/src/pages/contents/MBTIPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/ssossotest/src/pages/contents/MBTIPage.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ssossotest/src/pages/contents/TastesPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/ssossotest/src/pages/contents/TastesPage.vue" afterDir="false" />
+>>>>>>> Stashed changes
+=======
     <list default="true" id="f1bf8884-aefc-40f9-83b4-6e0cf546cc8a" name="Changes" comment="">
       <change afterPath="$PROJECT_DIR$/ssossotest/public/naverdcdb2a4bc84f1a110080528f3e30b458.html" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/ssossotest/src-ssr/middlewares/DAO.ts" afterDir="false" />
@@ -68,12 +88,27 @@
       <change beforePath="$PROJECT_DIR$/ssossotest/src/pages/contents/TastesPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/ssossotest/src/pages/contents/TastesPage.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ssossotest/src/pages/results/MBTIResultPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/ssossotest/src/pages/results/MBTIResultPage.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ssossotest/src/pages/results/TastesResultPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/ssossotest/src/pages/results/TastesResultPage.vue" afterDir="false" />
+>>>>>>> 1b3636dc97732b204de00ed595da316349b6939a
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+<<<<<<< HEAD
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+<<<<<<< Updated upstream
+        <option value="TypeScript File" />
+=======
+        <option value="JavaScript File" />
+>>>>>>> Stashed changes
+      </list>
+    </option>
+  </component>
+=======
+>>>>>>> 1b3636dc97732b204de00ed595da316349b6939a
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -85,6 +120,47 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
+<<<<<<< HEAD
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+<<<<<<< Updated upstream
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Users/valtin/Desktop/project/ssossotable-team-study/SSR/sample",
+=======
+    "WebServerToolWindowFactoryState": "true",
+    "WebServerToolWindowPanel.toolwindow.highlight.mappings": "true",
+    "WebServerToolWindowPanel.toolwindow.highlight.symlinks": "true",
+    "WebServerToolWindowPanel.toolwindow.show.date": "false",
+    "WebServerToolWindowPanel.toolwindow.show.permissions": "false",
+    "WebServerToolWindowPanel.toolwindow.show.size": "false",
+    "last_opened_file_path": "C:/Users/valtin/Desktop/project/ssossotest/ssossotest/src/boot",
+>>>>>>> Stashed changes
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "ts.external.directory.path": "C:\\Users\\valtin\\Desktop\\project\\ssossotest\\server\\node_modules\\typescript\\lib",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+<<<<<<< Updated upstream
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\valtin\Desktop\project\ssossotest\ssossotest\src-ssr\middlewares" />
+      <recent name="C:\Users\valtin\Desktop\project\ssossotest\ssossotest\public" />
+      <recent name="C:\Users\valtin\Desktop\project\ssossotest\ssossotest\src-ssr" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\valtin\Desktop\project\ssossotest\ssossotest\src-ssr\middlewares" />
+      <recent name="C:\Users\valtin\Desktop\project\ssossotest\ssossotest\src-ssr\middlewares\libs" />
+      <recent name="C:\Users\valtin\Desktop\project\ssossotest\ssossotest\public" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="애플리케이션 수준" UseSingleDictionary="true" transferred="true" />
+=======
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
@@ -105,12 +181,36 @@
   }
 }</component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+>>>>>>> 1b3636dc97732b204de00ed595da316349b6939a
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="f1bf8884-aefc-40f9-83b4-6e0cf546cc8a" name="Changes" comment="" />
       <created>1677489312650</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
+<<<<<<< HEAD
+      <updated>1676108643347</updated>
+      <workItem from="1676108644456" duration="6000" />
+      <workItem from="1676375595444" duration="91000" />
+      <workItem from="1676879423933" duration="1799000" />
+      <workItem from="1677257695618" duration="101000" />
+      <workItem from="1677313327164" duration="15390000" />
+      <workItem from="1677410331007" duration="4724000" />
+      <workItem from="1677470894651" duration="919000" />
+=======
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\valtin\Desktop\project\ssossotest\ssossotest\src\boot" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="4371ba84-6da7-4134-82cd-a05354076c06" name="변경" comment="" />
+      <created>1677489312650</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+=======
+>>>>>>> 1b3636dc97732b204de00ed595da316349b6939a
       <updated>1677489312650</updated>
       <workItem from="1677489318028" duration="2612000" />
       <workItem from="1677495619613" duration="379000" />
@@ -119,6 +219,13 @@
       <workItem from="1677906900426" duration="2926000" />
       <workItem from="1677912658837" duration="623000" />
       <workItem from="1677913307638" duration="573000" />
+<<<<<<< HEAD
+      <workItem from="1677943858469" duration="65000" />
+      <workItem from="1677943934173" duration="1995000" />
+      <workItem from="1677945991500" duration="3316000" />
+>>>>>>> Stashed changes
+=======
+>>>>>>> 1b3636dc97732b204de00ed595da316349b6939a
     </task>
     <servers />
   </component>

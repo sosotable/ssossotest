@@ -59,7 +59,7 @@
               </div>
             </q-chat-message>
           </div>
-          <Transition class="absolute-bottom" style="padding: 0 0 200px 0">
+          <Transition class="absolute-bottom flex column" style="padding: 0 0 200px 0">
             <div v-if="!selectedFlag">
               <q-btn
                 color="white"
@@ -82,7 +82,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue';
+import { defineComponent } from 'vue';
 // MARK: 사용 데이터 외부화
 import { mbtiModel } from 'src/assets/ContentModel';
 import axios from 'axios';
@@ -106,6 +106,7 @@ export default defineComponent({
     };
   },
   mounted() {
+    //
   },
   methods: {
     // MARK: 시작하기 버튼을 누를 경우 타이틀 이미지를 보이지 않게(false) 변환, 문제를 보이게(true) 변환

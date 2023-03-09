@@ -66,17 +66,12 @@ export default defineComponent({
       // MARK: 문제 아이디: 해당 id의 문제만을 보여지도록 함
       questionId: 0,
       selectedFlag: false,
-<<<<<<< HEAD
-      selectedAnswer: '',
-    };
-=======
       selectedAnswer: ''
       //result: []
     }
->>>>>>> 4d0d1a67363ce1eeec5371205a462c5ee72b8174
   },
   mounted() {
-    console.log(tasteModel);
+    //
   },
   methods: {
     // MARK: 시작하기 버튼을 누를 경우 타이틀 이미지를 보이지 않게(false) 변환, 문제를 보이게(true) 변환
@@ -86,89 +81,21 @@ export default defineComponent({
     },
     // MARK: 문제 버튼 선택 시
     select: function (selected: number) {
-<<<<<<< HEAD
-      /** MARK:
-       * 문제 버튼 선택 시 selectedFlag값 true로 변경 -> 선택한 답이 chat div에 보여짐
-       * 선택 애니메이션 구현을 위해 setTimeout을 통해 0.5초 후 다음 질문으로 넘어가도록 함
-       * Transition을 통한 fade out 구현
-       * */
-      this.selectedFlag = true;
-      this.selectedAnswer = tasteModel[this.questionId].answer[selected].answer;
-=======
-      console.log(selected)
-
-
       this.selectedFlag = true
       this.selectedAnswer = tasteModel[this.questionId].answer[selected].answer
-      console.log(this.selectedAnswer)
->>>>>>> 4d0d1a67363ce1eeec5371205a462c5ee72b8174
-      //this.selectedAnswer = selected == 1 ? tasteModel[this.questionId].answer[0].answer : tasteModel[this.questionId].answer[1].answer
       this.tasteModel[this.questionId].result = selected;
       setTimeout(() => {
         this.questionId += 1;
         this.selectedFlag = false;
         if (this.questionId == this.tasteModel.length) {
-          // MARK: 서버로 데이터 송신 백엔드에서 결과처리
-<<<<<<< HEAD
-          axios
-            .post('http://127.0.0.1:3000/result/taste', this.tasteModel)
-=======
-         /* axios.post('http://127.0.0.1:3000/result/tastes', this.tasteModel)
->>>>>>> 4d0d1a67363ce1eeec5371205a462c5ee72b8174
-            .then((response) => {
-              // MARK: response 결과를 받아 result파싱
-              const title = response.data.title;
-              const desc = response.data.desc;
-              const image = response.data.image;
-              // MARK: 보안을 위해 uri인코딩
-<<<<<<< HEAD
-              const result = encodeURI(
-                JSON.stringify({
-                  title: title,
-                  desc: desc,
-                  image: image,
-                  selected: selected,
-                })
-              );
-              // MARK: 결과 페이지로 라우팅, 결과는 쿼리스트링을 통해 전달
-              this.$router.push({
-                path: '/result/taste',
-                query: { result: result },
-              });
-            })
-            .catch((error) => {
-              console.log(error);
-            });
-=======
-              //const result = encodeURI(JSON.stringify({
-                //title: title,
-                //desc: desc,
-                //image: image,
-                //selected: selected
-              //}))
-
-
-              // MARK: 결과 페이지로 라우팅, 결과는 쿼리스트링을 통해 전달
-              this.$router.push({
-                path: '/result/tastes',
-                query: {result: selected}
-              })
-              console.log("result")
-            })
-            .catch((error) => {
-              console.log(error);
-            })*/
           let result: any = []
           for(let i = 0; i < this.tasteModel.length; i++) {
              result.push(this.tasteModel[i].answer[selected].answer)
           }
-          console.log(result)
-
           this.$router.push({
             path: '/result/tastes',
             query: {result: JSON.stringify(result)}
           })
->>>>>>> 4d0d1a67363ce1eeec5371205a462c5ee72b8174
         }
       }, 500);
     },

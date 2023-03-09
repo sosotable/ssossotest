@@ -85,10 +85,12 @@ export default defineComponent({
   },
   // MARK: 페이지 라우팅 시 받아진 쿼리스트링 처리
   mounted() {
+    console.log(process.env.DAO_ENDPOINT)
     // MARK: 공유받아서 들어온 경우: 친구의 결과도 보여줌
-    if(this.$route.query.friend_id != undefined) {
+    if(this.$route.query.friend_id != undefined && process.env.DAO_ENDPOINT != undefined) {
       this.friendResult = true
-      axios.post('/DAO/SELECT', {
+      axios.post(process.env.DAO_ENDPOINT, {
+        DML: 'SELECT',
         columns: '*',
         table: 'mbti',
         where: `\`key\` = '${decodeURI(String(this.$route.query.friend_id))}'`
@@ -100,7 +102,7 @@ export default defineComponent({
           console.log(error);
         });
     }
-    if (this.$route.query.result != null) {
+    if (this.$route.query.result != null && process.env.DAO_ENDPOINT != undefined) {
       const resultQuery: string | any = this.$route.query.result;
       // MARK: 쿼리스트링 디코딩
       const decodedResult = JSON.parse(decodeURI(resultQuery));
@@ -108,15 +110,17 @@ export default defineComponent({
       this.desc = decodedResult.desc;
       this.image = decodedResult.image[0];
       // MARK: 세션에 저장된 사용자 nickname으로 기록된 mbti결과가 있는지 확인함
-      axios.post('/DAO/SELECT', {
+      axios.post(process.env.DAO_ENDPOINT, {
+        DML: 'SELECT',
         columns: '*',
         table: 'mbti',
         where: `\`key\` = '${this.$q.sessionStorage.getItem('user_nickname')}'`
       })
       .then((response) => {
         // MARK: 기존 결과가 존재한다면 => UPDATE
-        if(response.data.length > 0) {
-          axios.post('/DAO/UPDATE', {
+        if(response.data.length > 0 && process.env.DAO_ENDPOINT != undefined) {
+          axios.post(process.env.DAO_ENDPOINT, {
+            DML: 'UPDATE',
             table: 'mbti',
             set: `result = '${JSON.stringify({
               title: decodedResult.title[0],
@@ -134,21 +138,24 @@ export default defineComponent({
         }
         // MARK: 기존 결과가 존재하지 않는다면 => INSERT
         else {
-          axios.post('/DAO/INSERT', {
-            table: 'mbti',
-            columns: '`key`, result',
-            values: `'${this.$q.sessionStorage.getItem('user_nickname')}','${JSON.stringify({
-              title: decodedResult.title[0],
-              desc: decodedResult.desc,
-              image: decodedResult.image[0]
-            })}'`
-          })
-          .then((response) => {
-            console.log(response)
-          })
-          .catch((error) => {
-            console.log(error);
-          })
+          if(process.env.DAO_ENDPOINT != undefined) {
+            axios.post(process.env.DAO_ENDPOINT, {
+              DML: 'INSERT',
+              table: 'mbti',
+              columns: '`key`, result',
+              values: `'${this.$q.sessionStorage.getItem('user_nickname')}','${JSON.stringify({
+                title: decodedResult.title[0],
+                desc: decodedResult.desc,
+                image: decodedResult.image[0]
+              })}'`
+            })
+              .then((response) => {
+                console.log(response)
+              })
+              .catch((error) => {
+                console.log(error);
+              })
+          }
         }
       })
       .catch((error) => {
