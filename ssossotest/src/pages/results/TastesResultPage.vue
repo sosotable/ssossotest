@@ -8,7 +8,10 @@
             <h6><p class="card-title">  {{model.question[0]}}</p></h6>
             <q-separator/>
             <q-separator/>
-            <text-h6><p class = "card-subtitle mb-2 text-muted"> {{result[index]}}</p></text-h6>
+            <text-h6><p class = "card-subtitle mb-2 text-muted"> {{tasteModel[index].answer[tasteModel[index].result].answer}}</p></text-h6>
+            <div v-if="friendResult">
+              <text-h6><p class = "card-subtitle mb-2 text-muted"> {{friendResult[index]}}</p></text-h6>
+            </div>
             <q-separator/><q-separator/><q-separator/><q-separator/>
           </div>
         </q-card>
@@ -43,13 +46,16 @@ export default defineComponent({
       desc: '',
       image: '',
       selected: '',
-      result: []
+      friendResult: false,
+      result: [],
     }
   },
   // MARK: 페이지 라우팅 시 받아진 쿼리스트링 처리
   mounted() {
+    console.log(tasteModel[0].result)
+    console.log(this.tasteModel[0].result)
     // const decoderesult = JSON.parse()
-    if(this.$route.query.result != null) {
+    /**if(this.$route.query.result != null) {
       console.log(this.$route.query.result)
        const resultQuery: string | any  = this.$route.query.result
        // MARK: 쿼리스트링 디코딩
@@ -57,6 +63,32 @@ export default defineComponent({
        this.result = JSON.parse(decodeURI(resultQuery))
       console.log(this.result)
       console.log(this.result[0])
+    }**/
+
+    if (this.$route.query.friend_id === undefined) {
+      if(this.$route.query.result != null) {
+        console.log("결과")
+        console.log(this.$route.query.result)
+        const resultQuery: string | any  = this.$route.query.result
+        // MARK: 쿼리스트링 디코딩
+        //this.result = this.$route.query.result
+        this.result = JSON.parse(decodeURI(resultQuery))
+        console.log(this.result)
+        console.log(this.result[0])
+        console.log(this.tasteModel[0].result)
+      }
+    }
+    else {
+      if(this.$route.query.result != null) {
+        this.friendResult = true
+        console.log("친구 결과")
+        console.log(this.$route.query.result)
+        const resultQuery: string | any  = this.$route.query.result
+        // MARK: 쿼리스트링 디코딩
+        //this.result = this.$route.query.result
+        this.result = JSON.parse(decodeURI(resultQuery))
+        console.log(this.result[0])
+      }
     }
   },
   methods: {
@@ -77,8 +109,8 @@ export default defineComponent({
         document.execCommand('copy');
         document.body.removeChild($textarea);
       }
-      const query = encodeURI(`?friend_id=${this.$q.sessionStorage.getItem('user_nickname')}&content=mbti`)
-      copy(`http://127.0.0.1:9000/#/${query}`)
+      const query = encodeURI(`?friend_id=${this.$q.sessionStorage.getItem('user_nickname')}&content=tastes`)
+      copy(`http://127.0.0.1:9100${query}`)
       alert('링크가 클립보드에 공유되었어요!')
     }
   },
