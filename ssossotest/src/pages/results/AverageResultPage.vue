@@ -60,9 +60,65 @@ export default defineComponent({
   },
   // MARK: 페이지 라우팅 시 받아진 쿼리스트링 처리
   mounted() {
-    if (this.$route.query.result != undefined) {
+    if (
+      this.$route.query.result != null &&
+      process.env.DAO_ENDPOINT != undefined
+    ) {
       const resultQuery: string | any = this.$route.query.result;
       this.resultList = JSON.parse(decodeURI(resultQuery));
+
+      axios
+        .post(process.env.DAO_ENDPOINT, {
+          DML: 'SELECT',
+          columns: '*',
+          table: 'average',
+          where: `\`key\` = '${this.$q.sessionStorage.getItem(
+            'user_nickname'
+          )}'`,
+        })
+        .then((response) => {
+          // MARK: 기존 결과가 존재한다면 => UPDATE
+          if (
+            response.data.length > 0 &&
+            process.env.DAO_ENDPOINT != undefined
+          ) {
+            axios
+              .post(process.env.DAO_ENDPOINT, {
+                DML: 'UPDATE',
+                table: 'average',
+                set: `result = '${resultQuery}'`,
+                where: `\`key\` = '${this.$q.sessionStorage.getItem(
+                  'user_nickname'
+                )}'`,
+              })
+              .then((response) => {
+                console.log(response);
+              })
+              .catch((error) => {
+                console.log(error);
+              });
+          }
+          // MARK: 기존 결과가 존재한다면 => UPDATE
+          else {
+            if (process.env.DAO_ENDPOINT != undefined) {
+              axios
+                .post(process.env.DAO_ENDPOINT, {
+                  DML: 'INSERT',
+                  table: 'average',
+                  columns: '`key`, result',
+                  values: `'${this.$q.sessionStorage.getItem(
+                    'user_nickname'
+                  )}','${resultQuery}'`,
+                })
+                .then((response) => {
+                  console.log(response);
+                })
+                .catch((error) => {
+                  console.log(error);
+                });
+            }
+          }
+        });
     }
   },
   methods: {},
