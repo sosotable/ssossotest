@@ -2,12 +2,10 @@
   <q-page class="row items-center justify-evenly absolute-top">
     <div class="row items-start">
       <q-card class="my-card" flat bordered>
-        <q-img
-          :src="`/images/mbti/${this.image}.jpeg`"
-        />
+        <q-img :src="`/images/mbti/${this.image}.jpeg`" />
         <q-card-section>
           <div class="text-overline text-orange-9">당신의 결과!</div>
-          <div class="text-h5">{{this.title}} : {{this.image}}</div>
+          <div class="text-h5">{{ this.title }} : {{ this.image }}</div>
           <div class="text-caption text-grey" v-for="d in desc" v-bind:key="d">
             {{ d }}
           </div>
@@ -30,9 +28,16 @@
               />
               <q-card-section>
                 <div class="text-overline text-orange-9">친구의 결과!</div>
-                <div class="text-h5 q-mt-sm q-mb-xs">{{this.friendResultData.title}} : {{this.friendResultData.image}}</div>
-                <div class="text-caption text-grey" v-for="d in desc" v-bind:key="d">
-                  {{d}}
+                <div class="text-h5 q-mt-sm q-mb-xs">
+                  {{ this.friendResultData.title }} :
+                  {{ this.friendResultData.image }}
+                </div>
+                <div
+                  class="text-caption text-grey"
+                  v-for="d in desc"
+                  v-bind:key="d"
+                >
+                  {{ d }}
                 </div>
               </q-card-section>
             </q-card>
@@ -85,16 +90,22 @@ export default defineComponent({
   },
   // MARK: 페이지 라우팅 시 받아진 쿼리스트링 처리
   mounted() {
-    console.log(process.env.DAO_ENDPOINT)
+    console.log(process.env.DAO_ENDPOINT);
     // MARK: 공유받아서 들어온 경우: 친구의 결과도 보여줌
-    if(this.$route.query.friend_id != undefined && process.env.DAO_ENDPOINT != undefined) {
-      this.friendResult = true
-      axios.post(process.env.DAO_ENDPOINT, {
-        DML: 'SELECT',
-        columns: '*',
-        table: 'mbti',
-        where: `\`key\` = '${decodeURI(String(this.$route.query.friend_id))}'`
-      })
+    if (
+      this.$route.query.friend_id != undefined &&
+      process.env.DAO_ENDPOINT != undefined
+    ) {
+      this.friendResult = true;
+      axios
+        .post(process.env.DAO_ENDPOINT, {
+          DML: 'SELECT',
+          columns: '*',
+          table: 'mbti',
+          where: `\`key\` = '${decodeURI(
+            String(this.$route.query.friend_id)
+          )}'`,
+        })
         .then((response) => {
           this.friendResultData = JSON.parse(response.data[0].result);
         })
@@ -102,7 +113,10 @@ export default defineComponent({
           console.log(error);
         });
     }
-    if (this.$route.query.result != null && process.env.DAO_ENDPOINT != undefined) {
+    if (
+      this.$route.query.result != null &&
+      process.env.DAO_ENDPOINT != undefined
+    ) {
       const resultQuery: string | any = this.$route.query.result;
       // MARK: 쿼리스트링 디코딩
       const decodedResult = JSON.parse(decodeURI(resultQuery));
@@ -110,57 +124,69 @@ export default defineComponent({
       this.desc = decodedResult.desc;
       this.image = decodedResult.image[0];
       // MARK: 세션에 저장된 사용자 nickname으로 기록된 mbti결과가 있는지 확인함
-      axios.post(process.env.DAO_ENDPOINT, {
-        DML: 'SELECT',
-        columns: '*',
-        table: 'mbti',
-        where: `\`key\` = '${this.$q.sessionStorage.getItem('user_nickname')}'`
-      })
-      .then((response) => {
-        // MARK: 기존 결과가 존재한다면 => UPDATE
-        if(response.data.length > 0 && process.env.DAO_ENDPOINT != undefined) {
-          axios.post(process.env.DAO_ENDPOINT, {
-            DML: 'UPDATE',
-            table: 'mbti',
-            set: `result = '${JSON.stringify({
-              title: decodedResult.title[0],
-              desc: decodedResult.desc,
-              image: decodedResult.image[0]
-            })}'`,
-            where: `\`key\` = '${this.$q.sessionStorage.getItem('user_nickname')}'`
-          })
-            .then((response) => {
-              console.log(response)
-            })
-            .catch((error) => {
-              console.log(error);
-            })
-        }
-        // MARK: 기존 결과가 존재하지 않는다면 => INSERT
-        else {
-          if(process.env.DAO_ENDPOINT != undefined) {
-            axios.post(process.env.DAO_ENDPOINT, {
-              DML: 'INSERT',
-              table: 'mbti',
-              columns: '`key`, result',
-              values: `'${this.$q.sessionStorage.getItem('user_nickname')}','${JSON.stringify({
-                title: decodedResult.title[0],
-                desc: decodedResult.desc,
-                image: decodedResult.image[0]
-              })}'`
-            })
+      axios
+        .post(process.env.DAO_ENDPOINT, {
+          DML: 'SELECT',
+          columns: '*',
+          table: 'mbti',
+          where: `\`key\` = '${this.$q.sessionStorage.getItem(
+            'user_nickname'
+          )}'`,
+        })
+        .then((response) => {
+          // MARK: 기존 결과가 존재한다면 => UPDATE
+          if (
+            response.data.length > 0 &&
+            process.env.DAO_ENDPOINT != undefined
+          ) {
+            axios
+              .post(process.env.DAO_ENDPOINT, {
+                DML: 'UPDATE',
+                table: 'mbti',
+                set: `result = '${JSON.stringify({
+                  title: decodedResult.title[0],
+                  desc: decodedResult.desc,
+                  image: decodedResult.image[0],
+                })}'`,
+                where: `\`key\` = '${this.$q.sessionStorage.getItem(
+                  'user_nickname'
+                )}'`,
+              })
               .then((response) => {
-                console.log(response)
+                console.log(response);
               })
               .catch((error) => {
                 console.log(error);
-              })
+              });
           }
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+          // MARK: 기존 결과가 존재하지 않는다면 => INSERT
+          else {
+            if (process.env.DAO_ENDPOINT != undefined) {
+              axios
+                .post(process.env.DAO_ENDPOINT, {
+                  DML: 'INSERT',
+                  table: 'mbti',
+                  columns: '`key`, result',
+                  values: `'${this.$q.sessionStorage.getItem(
+                    'user_nickname'
+                  )}','${JSON.stringify({
+                    title: decodedResult.title[0],
+                    desc: decodedResult.desc,
+                    image: decodedResult.image[0],
+                  })}'`,
+                })
+                .then((response) => {
+                  console.log(response);
+                })
+                .catch((error) => {
+                  console.log(error);
+                });
+            }
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     }
   },
   methods: {
@@ -180,12 +206,16 @@ export default defineComponent({
         // 복사 후 textarea 지우기
         document.execCommand('copy');
         document.body.removeChild($textarea);
-      }
-      const query = encodeURI(`?friend_id=${this.$q.sessionStorage.getItem('user_nickname')}&content=mbti`)
-      copy(`http://127.0.0.1:9100${query}`)
-      alert('링크가 클립보드에 공유되었어요!')
-    }
-  }
+      };
+      const query = encodeURI(
+        `?friend_id=${this.$q.sessionStorage.getItem(
+          'user_nickname'
+        )}&content=mbti`
+      );
+      copy(`http://127.0.0.1:9100${query}`);
+      alert('링크가 클립보드에 공유되었어요!');
+    },
+  },
 });
 </script>
 <style scoped></style>

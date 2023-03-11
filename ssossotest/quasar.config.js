@@ -9,7 +9,7 @@
 // https://v2.quasar.dev/quasar-cli-vite/quasar-config-js
 
 const { configure } = require('quasar/wrappers');
-require('dotenv').config()
+require('dotenv').config();
 
 module.exports = configure(function (/* ctx */) {
   return {
@@ -28,10 +28,7 @@ module.exports = configure(function (/* ctx */) {
     // app boot file (/src/boot)
     // --> boot files are part of "main.js"
     // https://v2.quasar.dev/quasar-cli-vite/boot-files
-    boot: [
-      'axios',
-      'google-analytics'
-    ],
+    boot: ['axios', 'google-analytics'],
 
     // https://v2.quasar.dev/quasar-cli-vite/quasar-config-js#css
     css: ['app.scss'],
@@ -68,7 +65,7 @@ module.exports = configure(function (/* ctx */) {
       // analyze: true,
 
       env: {
-        DAO_ENDPOINT: process.env.DAO_ENDPOINT
+        DAO_ENDPOINT: process.env.DAO_ENDPOINT,
       },
       // rawDefine: {}
       // ignorePublicFolder: true,
@@ -149,8 +146,8 @@ module.exports = configure(function (/* ctx */) {
       middlewares: [
         'DAO',
         'result',
-        'render' // keep this as last one
-      ]
+        'render', // keep this as last one
+      ],
     },
 
     // https://v2.quasar.dev/quasar-cli-vite/developing-pwa/configuring-pwa

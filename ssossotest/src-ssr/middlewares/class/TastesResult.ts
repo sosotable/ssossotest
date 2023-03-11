@@ -1,8 +1,8 @@
 // MARK: tastes 결과 처리
 
-import Result from "./interface/Result";
+import Result from './interface/Result';
 
-const contentModels = require("../model/content");
+const contentModels = require('../model/content');
 
 export default class TastesResult extends Result {
   friendResult:

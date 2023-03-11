@@ -1,8 +1,8 @@
 // MARK: mbti 결과 처리
 
-import Result from "./interface/Result";
+import Result from './interface/Result';
 
-const resultModels = require("../model/result");
+const resultModels = require('../model/result');
 
 export default class MBTIResult extends Result {
   MBTIPOINT: {
@@ -25,7 +25,7 @@ export default class MBTIResult extends Result {
     ENFP: 14,
     INFP: 15,
   };
-  mbti: number | string | null = "";
+  mbti: number | string | null = '';
   constructor(
     _answerResult: {
       [type: string]: number | string;
@@ -45,16 +45,16 @@ export default class MBTIResult extends Result {
       ] = [0, 0, 0, 0];
       for (let i = 0; i < result.length; i++) {
         switch (result[i].type) {
-          case "EI":
+          case 'EI':
             returnValue[0] += <number>result[i].score;
             break;
-          case "SN":
+          case 'SN':
             returnValue[1] += <number>result[i].score;
             break;
-          case "FT":
+          case 'FT':
             returnValue[2] += <number>result[i].score;
             break;
-          case "PJ":
+          case 'PJ':
             returnValue[3] += <number>result[i].score;
             break;
         }
@@ -64,18 +64,18 @@ export default class MBTIResult extends Result {
   }
   setType() {
     const calcMBTIResult:
-        | string
-        | String
-        | [eipoint: number, snpoint: number, ftpoint: number, pjpoint: number]
-        | undefined = this.calcMBTI(this.answerResult);
+      | string
+      | String
+      | [eipoint: number, snpoint: number, ftpoint: number, pjpoint: number]
+      | undefined = this.calcMBTI(this.answerResult);
     if (calcMBTIResult !== undefined) {
       // MARK: MBTI값(문자열) 을 지정합니다
-      this.type.push((
-          (calcMBTIResult[0] < 5 ? "E" : "I") + // eipoint
-          (calcMBTIResult[1] < 5 ? "S" : "N") + // snpoint
-          (calcMBTIResult[2] < 5 ? "F" : "T") + // ftpoint
-          (calcMBTIResult[3] < 5 ? "P" : "J") // pjpoint
-      ))
+      this.type.push(
+        (calcMBTIResult[0] < 5 ? 'E' : 'I') + // eipoint
+          (calcMBTIResult[1] < 5 ? 'S' : 'N') + // snpoint
+          (calcMBTIResult[2] < 5 ? 'F' : 'T') + // ftpoint
+          (calcMBTIResult[3] < 5 ? 'P' : 'J') // pjpoint
+      );
     } else {
       return null;
     }
@@ -99,7 +99,7 @@ export default class MBTIResult extends Result {
      * template method 패턴 통해서 메서드 하나로 일괄처리
      */
     // MARK: mbti값(문자열) 지정
-    this.setType()
+    this.setType();
     // MARK: mbti point 계산
     this.setMBTI();
     // MARK: mbti title 지정

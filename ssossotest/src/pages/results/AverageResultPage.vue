@@ -12,17 +12,9 @@
               v-for="(item, i) in this.averageModel"
               :key="i"
             >
-              <q-item v-if="(item.type = 'range')">
-                <q-item-section>{{ item.question }}</q-item-section>
-                <q-item-section>{{
-                  item.result + item.answer[0].unit
-                }}</q-item-section>
-              </q-item>
-              <q-item v-else-if="(item.type = 'button')">
-                <q-item-section>{{ item.question }}</q-item-section>
-                <!-- error -->
-                <q-item-section>{{ item.result }}</q-item-section>
-              </q-item>
+              <q-item-section>{{ item.question }}</q-item-section>
+              <!-- error -->
+              <q-item-section>{{ this.resultList[i] }}</q-item-section>
             </q-list>
           </div>
         </q-card-section>
@@ -63,73 +55,14 @@ export default defineComponent({
       image: '',
       questionId: 0,
       answerId: 0,
+      resultList: [],
     };
   },
   // MARK: 페이지 라우팅 시 받아진 쿼리스트링 처리
   mounted() {
-    if (this.$route.query.result != null) {
+    if (this.$route.query.result != undefined) {
       const resultQuery: string | any = this.$route.query.result;
-      // MARK: 쿼리스트링 디코딩
-      const decodedResult = JSON.parse(decodeURI(resultQuery));
-      this.title = decodedResult.title[0];
-      this.desc = decodedResult.desc;
-      this.image = decodedResult.image[0];
-      // MARK: 세션에 저장된 사용자 nickname으로 기록된 average결과가 있는지 확인함
-      axios
-        .post('http://127.0.0.1:3000/DAO/SELECT', {
-          columns: '*',
-          table: 'average',
-          where: `\`key\` = '${this.$q.sessionStorage.getItem(
-            'user_nickname'
-          )}'`,
-        })
-        .then((response) => {
-          // MARK: 기존 결과가 존재한다면 => UPDATE
-          if (response.data.length > 0) {
-            axios
-              .post('http://127.0.0.1:3000/DAO/UPDATE', {
-                table: 'average',
-                set: `result = '${JSON.stringify({
-                  title: decodedResult.title[0],
-                  desc: decodedResult.desc,
-                  image: decodedResult.image[0],
-                })}'`,
-                where: `\`key\` = '${this.$q.sessionStorage.getItem(
-                  'user_nickname'
-                )}'`,
-              })
-              .then((response) => {
-                console.log(response);
-              })
-              .catch((error) => {
-                console.log(error);
-              });
-          }
-          // MARK: 기존 결과가 존재하지 않는다면 => INSERT
-          else {
-            axios
-              .post('http://127.0.0.1:3000/DAO/INSERT', {
-                table: 'average',
-                columns: '`key`, result',
-                values: `'${this.$q.sessionStorage.getItem(
-                  'user_nickname'
-                )}','${JSON.stringify({
-                  title: decodedResult.title[0],
-                  desc: decodedResult.desc,
-                  image: decodedResult.image[0],
-                })}'`,
-              })
-              .then((response) => {
-                console.log(response);
-              })
-              .catch((error) => {
-                console.log(error);
-              });
-          }
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+      this.resultList = JSON.parse(decodeURI(resultQuery));
     }
   },
   methods: {},

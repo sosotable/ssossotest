@@ -1,6 +1,6 @@
-import Result from "./interface/Result";
+import Result from './interface/Result';
 
-const contentModels = require("../model/content");
+const contentModels = require('../model/content');
 
 export default class AverageResult extends Result {
   constructor(
@@ -22,7 +22,7 @@ export default class AverageResult extends Result {
     for (let i = 0; i < this.answerResult.length; i++) {
       let score = Number(this.answerResult[i].score);
       if (contentModels.average[i].a == undefined) {
-        this.resultDesc[i] = score + "";
+        this.resultDesc[i] = score + '';
       } else {
         this.resultDesc[i] = contentModels.average[i].a[score].answer;
       }
@@ -33,7 +33,7 @@ export default class AverageResult extends Result {
     for (let i = 0; i < this.answerResult.length; i++) {
       let score = Number(this.answerResult[i].score);
       if (contentModels.average[i].a == undefined) {
-        this.resultDesc[i] = score + "";
+        this.resultDesc[i] = score + '';
       } else {
         this.resultDesc[i] = contentModels.average[i].a[score].answer;
       }
