@@ -27,7 +27,7 @@
 import { defineComponent, ref } from 'vue';
 import { useQuasar } from 'quasar';
 import { Cards } from 'components/models';
-import axios from "axios";
+import axios from 'axios';
 
 export default defineComponent({
   name: 'MainPage',

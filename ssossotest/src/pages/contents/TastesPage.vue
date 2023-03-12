@@ -27,22 +27,30 @@
       <div class="q-pa-md row justify-center">
         <div style="width: 100%; max-width: 400px">
           <div class="absolute-top">
-            <div class="card-header" style="background-color: transparent!important;">
-              <h6 class = "card text-center">
-                {{this.tasteModel[questionId].question[0]}}
-                <q-separator/><q-separator/><q-separator/>
+            <div
+              class="card-header"
+              style="background-color: transparent !important"
+            >
+              <h6 class="card text-center">
+                {{ this.tasteModel[questionId].question[0] }}
+                <q-separator /><q-separator /><q-separator />
               </h6>
-              </div>
-
-
-
+            </div>
           </div>
           <Transition>
             <div v-if="!selectedFlag">
-              <template v-for = "index in tasteModel[questionId].answer.length" :key="index">
+              <template
+                v-for="index in tasteModel[questionId].answer.length"
+                :key="index"
+              >
                 <div class="btn-group-vertical">
-                <q-btn color="warning" text-color="black" @click="select(index-1)" :label="tasteModel[questionId].answer[index-1].answer">
-                </q-btn>
+                  <q-btn
+                    color="warning"
+                    text-color="black"
+                    @click="select(index - 1)"
+                    :label="tasteModel[questionId].answer[index - 1].answer"
+                  >
+                  </q-btn>
                 </div>
               </template>
             </div>
@@ -58,8 +66,8 @@ import { defineComponent, ref } from 'vue';
 // MARK: 사용 데이터 외부화
 import { tasteModel } from 'src/assets/tasteContentModel';
 import axios from 'axios';
-import {stringify} from "querystring";
-import {types} from "util";
+import { stringify } from 'querystring';
+import { types } from 'util';
 export default defineComponent({
   name: 'TASTEPage',
   setup() {

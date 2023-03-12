@@ -70,15 +70,17 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue';
+import { defineComponent } from 'vue';
 import { averageModel } from 'src/assets/AverageContentModel';
 import axios from 'axios';
 
 export default defineComponent({
   name: 'AveragePage',
   setup() {
+    const selectedAnswerList: any[] = [];
     return {
       averageModel,
+      selectedAnswerList,
     };
   },
   data() {
@@ -92,10 +94,8 @@ export default defineComponent({
       answerId: 0,
       selectedFlag: false,
       rangeValue: 0,
+      selectedAnswer: '',
     };
-  },
-  mounted() {
-    console.log(averageModel);
   },
   methods: {
     // MARK: 시작하기 버튼을 누를 경우 타이틀 이미지를 보이지 않게(false) 변환, 문제를 보이게(true) 변환
@@ -105,53 +105,22 @@ export default defineComponent({
     },
     // MARK: 문제 버튼 선택 시
     select: function (selected: number) {
-      /** MARK:
-       * 문제 버튼 선택 시 selectedFlag값 true로 변경 -> 선택한 답이 chat div에 보여짐
-       * 선택 애니메이션 구현을 위해 setTimeout을 통해 0.5초 후 다음 질문으로 넘어가도록 함
-       * Transition을 통한 fade out 구현
-       * */
       this.selectedFlag = true;
+      this.selectedAnswer =
+        averageModel[this.questionId].type == 'button'
+          ? averageModel[this.questionId].answer[selected].answer
+          : selected + averageModel[this.questionId].answer[0].unit;
+      this.selectedAnswerList.push(this.selectedAnswer);
       this.averageModel[this.questionId].result = selected;
-      console.log(selected);
-      console.log(this.averageModel[this.questionId].result);
       this.rangeValue = 0;
       this.questionId += 1;
       this.selectedFlag = false;
 
-      /*
       if (this.questionId == this.averageModel.length) {
-
-        // MARK: 서버로 데이터 송신 백엔드에서 결과처리
-        axios.post("http://127.0.0.1:3000/result/average", this.averageModel)
-
-          .then((response) => {
-            // MARK: response 결과를 받아 result파싱
-            const title = response.data.title
-            const desc = response.data.desc
-            const image = response.data.image
-            // MARK: 보안을 위해 uri인코딩
-            const result = encodeURI(JSON.stringify({
-              title: title,
-              desc: desc,
-              image: image
-            }))
-            // MARK: 결과 페이지로 라우팅, 결과는 쿼리스트링을 통해 전달
-            this.$router.push({
-              path: "/result/average",
-              query: {result: result}
-            })
-          })
-
-          .catch((error) => {
-            console.log(error);
-          })
-
-      }
-      */
-
-      if (this.questionId == this.averageModel.length) {
+        axios.post('/result/average', this.selectedAnswerList);
         this.$router.push({
           path: '/result/average',
+          query: { result: encodeURI(JSON.stringify(this.selectedAnswerList)) },
         });
       }
     },

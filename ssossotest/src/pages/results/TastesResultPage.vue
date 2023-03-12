@@ -18,11 +18,17 @@
       </ul>
       </div>
 
-      <q-separator/>
-      <q-btn flat color="dark" @click="copyLink" style="width: 100%;" label="친구에게 공유하기"/>
-      <q-separator/>
-      <router-link to="/main" style="width: 100%;">
-        <q-btn flat color="dark" style="width: 100%;" label="처음으로"/>
+      <q-separator />
+      <q-btn
+        flat
+        color="dark"
+        @click="copyLink"
+        style="width: 100%"
+        label="친구에게 공유하기"
+      />
+      <q-separator />
+      <router-link to="/main" style="width: 100%">
+        <q-btn flat color="dark" style="width: 100%" label="처음으로" />
       </router-link>
     </div>
   </q-page>
@@ -31,7 +37,7 @@
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
 import axios from 'axios';
-import { tasteModel } from 'src/assets/tasteContentModel'
+import { tasteModel } from 'src/assets/tasteContentModel';
 
 export default defineComponent({
   name: 'TastesResultPage',
@@ -55,6 +61,7 @@ export default defineComponent({
     console.log(tasteModel[0].result)
     console.log(this.tasteModel[0].result)
     // const decoderesult = JSON.parse()
+    
     /**if(this.$route.query.result != null) {
       console.log(this.$route.query.result)
        const resultQuery: string | any  = this.$route.query.result
@@ -96,7 +103,7 @@ export default defineComponent({
     copyLink: function () {
       const copy = (text: string) => {
         // 임시의 textarea 생성
-        const $textarea = document.createElement("textarea");
+        const $textarea = document.createElement('textarea');
 
         // body 요소에 존재해야 복사가 진행됨
         document.body.appendChild($textarea);
