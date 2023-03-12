@@ -2,24 +2,42 @@
   <q-page class="row items-center justify-evenly">
     <div class="q-pa-md row items-start q-gutter-md">
       <div class="card text-center">
-      <ul class="list-group list-group-flush">
-        <q-card v-for="(model, index) in tasteModel" :key = "index" class="my-card" flat bordered>
-          <div class="card" style="width: 17rem;">
-            <h6><p class="card-title">  {{model.question[0]}}</p></h6>
-            <q-separator/>
-            <q-separator/>
-            <text-h6><p class = "card-subtitle mb-2 text-muted"> {{result[index]}}</p></text-h6>
-            <q-separator/><q-separator/><q-separator/><q-separator/>
-          </div>
-        </q-card>
-      </ul>
+        <ul class="list-group list-group-flush">
+          <q-card
+            v-for="(model, index) in tasteModel"
+            :key="index"
+            class="my-card"
+            flat
+            bordered
+          >
+            <div class="card" style="width: 17rem">
+              <h6>
+                <p class="card-title">{{ model.question[0] }}</p>
+              </h6>
+              <q-separator />
+              <q-separator />
+              <text-h6
+                ><p class="card-subtitle mb-2 text-muted">
+                  {{ result[index] }}
+                </p></text-h6
+              >
+              <q-separator /><q-separator /><q-separator /><q-separator />
+            </div>
+          </q-card>
+        </ul>
       </div>
 
-      <q-separator/>
-      <q-btn flat color="dark" @click="copyLink" style="width: 100%;" label="친구에게 공유하기"/>
-      <q-separator/>
-      <router-link to="/main" style="width: 100%;">
-        <q-btn flat color="dark" style="width: 100%;" label="처음으로"/>
+      <q-separator />
+      <q-btn
+        flat
+        color="dark"
+        @click="copyLink"
+        style="width: 100%"
+        label="친구에게 공유하기"
+      />
+      <q-separator />
+      <router-link to="/main" style="width: 100%">
+        <q-btn flat color="dark" style="width: 100%" label="처음으로" />
       </router-link>
     </div>
   </q-page>
@@ -28,7 +46,7 @@
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
 import axios from 'axios';
-import { tasteModel } from 'src/assets/tasteContentModel'
+import { tasteModel } from 'src/assets/tasteContentModel';
 
 export default defineComponent({
   name: 'TastesResultPage',
@@ -43,20 +61,20 @@ export default defineComponent({
       desc: '',
       image: '',
       selected: '',
-      result: []
-    }
+      result: [],
+    };
   },
   // MARK: 페이지 라우팅 시 받아진 쿼리스트링 처리
   mounted() {
     // const decoderesult = JSON.parse()
-    if(this.$route.query.result != null) {
-      console.log(this.$route.query.result)
-       const resultQuery: string | any  = this.$route.query.result
-       // MARK: 쿼리스트링 디코딩
+    if (this.$route.query.result != null) {
+      console.log(this.$route.query.result);
+      const resultQuery: string | any = this.$route.query.result;
+      // MARK: 쿼리스트링 디코딩
       //this.result = this.$route.query.result
-       this.result = JSON.parse(decodeURI(resultQuery))
-      console.log(this.result)
-      console.log(this.result[0])
+      this.result = JSON.parse(decodeURI(resultQuery));
+      console.log(this.result);
+      console.log(this.result[0]);
     }
   },
   methods: {
@@ -64,7 +82,7 @@ export default defineComponent({
     copyLink: function () {
       const copy = (text: string) => {
         // 임시의 textarea 생성
-        const $textarea = document.createElement("textarea");
+        const $textarea = document.createElement('textarea');
 
         // body 요소에 존재해야 복사가 진행됨
         document.body.appendChild($textarea);
@@ -76,11 +94,15 @@ export default defineComponent({
         // 복사 후 textarea 지우기
         document.execCommand('copy');
         document.body.removeChild($textarea);
-      }
-      const query = encodeURI(`?friend_id=${this.$q.sessionStorage.getItem('user_nickname')}&content=mbti`)
-      copy(`http://127.0.0.1:9000/#/${query}`)
-      alert('링크가 클립보드에 공유되었어요!')
-    }
+      };
+      const query = encodeURI(
+        `?friend_id=${this.$q.sessionStorage.getItem(
+          'user_nickname'
+        )}&content=mbti`
+      );
+      copy(`http://127.0.0.1:9000/#/${query}`);
+      alert('링크가 클립보드에 공유되었어요!');
+    },
   },
 });
 </script>

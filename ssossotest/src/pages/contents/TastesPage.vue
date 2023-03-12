@@ -17,22 +17,30 @@
       <div class="q-pa-md row justify-center">
         <div style="width: 100%; max-width: 400px">
           <div class="absolute-top">
-            <div class="card-header" style="background-color: transparent!important;">
-              <h6 class = "card text-center">
-                {{this.tasteModel[questionId].question[0]}}
-                <q-separator/><q-separator/><q-separator/>
+            <div
+              class="card-header"
+              style="background-color: transparent !important"
+            >
+              <h6 class="card text-center">
+                {{ this.tasteModel[questionId].question[0] }}
+                <q-separator /><q-separator /><q-separator />
               </h6>
-              </div>
-
-
-
+            </div>
           </div>
           <Transition>
             <div v-if="!selectedFlag">
-              <template v-for = "index in tasteModel[questionId].answer.length" :key="index">
+              <template
+                v-for="index in tasteModel[questionId].answer.length"
+                :key="index"
+              >
                 <div class="btn-group-vertical">
-                <q-btn color="warning" text-color="black" @click="select(index-1)" :label="tasteModel[questionId].answer[index-1].answer">
-                </q-btn>
+                  <q-btn
+                    color="warning"
+                    text-color="black"
+                    @click="select(index - 1)"
+                    :label="tasteModel[questionId].answer[index - 1].answer"
+                  >
+                  </q-btn>
                 </div>
               </template>
             </div>
@@ -48,8 +56,8 @@ import { defineComponent, ref } from 'vue';
 // MARK: 사용 데이터 외부화
 import { tasteModel } from 'src/assets/tasteContentModel';
 import axios from 'axios';
-import {stringify} from "querystring";
-import {types} from "util";
+import { stringify } from 'querystring';
+import { types } from 'util';
 export default defineComponent({
   name: 'TASTEPage',
   setup() {
@@ -66,9 +74,9 @@ export default defineComponent({
       // MARK: 문제 아이디: 해당 id의 문제만을 보여지도록 함
       questionId: 0,
       selectedFlag: false,
-      selectedAnswer: ''
+      selectedAnswer: '',
       //result: []
-    }
+    };
   },
   mounted() {
     //
@@ -81,21 +89,21 @@ export default defineComponent({
     },
     // MARK: 문제 버튼 선택 시
     select: function (selected: number) {
-      this.selectedFlag = true
-      this.selectedAnswer = tasteModel[this.questionId].answer[selected].answer
+      this.selectedFlag = true;
+      this.selectedAnswer = tasteModel[this.questionId].answer[selected].answer;
       this.tasteModel[this.questionId].result = selected;
       setTimeout(() => {
         this.questionId += 1;
         this.selectedFlag = false;
         if (this.questionId == this.tasteModel.length) {
-          let result: any = []
-          for(let i = 0; i < this.tasteModel.length; i++) {
-             result.push(this.tasteModel[i].answer[selected].answer)
+          let result: any = [];
+          for (let i = 0; i < this.tasteModel.length; i++) {
+            result.push(this.tasteModel[i].answer[selected].answer);
           }
           this.$router.push({
             path: '/result/tastes',
-            query: {result: JSON.stringify(result)}
-          })
+            query: { result: JSON.stringify(result) },
+          });
         }
       }, 500);
     },

@@ -5,7 +5,7 @@
         <q-toolbar-title class="text-center">
           <router-link to="/">
             <q-avatar rounded>
-              <img src="/logo.png">
+              <img src="/logo.png" />
             </q-avatar>
           </router-link>
           소소테스트

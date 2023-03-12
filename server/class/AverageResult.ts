@@ -1,6 +1,7 @@
 import Result from "./interface/Result";
 
 const contentModels = require("../model/content");
+const averageModels = contentModels.average;
 
 export default class AverageResult extends Result {
   constructor(
@@ -13,29 +14,29 @@ export default class AverageResult extends Result {
   }
 
   setTitle() {
-    for (let i = 0; i < this.answerResult.length; i++) {
-      this.resultTitle[i] = contentModels.average[i].q;
+    for (let i = 0; i < averageModels.length; i++) {
+      this.resultTitle[i] = averageModels.average[i].q;
     }
   }
 
   setDesc() {
-    for (let i = 0; i < this.answerResult.length; i++) {
-      let score = Number(this.answerResult[i].score);
-      if (contentModels.average[i].a == undefined) {
+    for (let i = 0; i < averageModels.length; i++) {
+      let score = Number(averageModels[i].score);
+      if (averageModels[i].a == undefined) {
         this.resultDesc[i] = score + "";
       } else {
-        this.resultDesc[i] = contentModels.average[i].a[score].answer;
+        this.resultDesc[i] = averageModels[i].a[score].answer;
       }
     }
   }
 
   setDescBuffer() {
-    for (let i = 0; i < this.answerResult.length; i++) {
-      let score = Number(this.answerResult[i].score);
-      if (contentModels.average[i].a == undefined) {
+    for (let i = 0; i < averageModels.length; i++) {
+      let score = Number(averageModels[i].score);
+      if (averageModels[i].a == undefined) {
         this.resultDesc[i] = score + "";
       } else {
-        this.resultDesc[i] = contentModels.average[i].a[score].answer;
+        this.resultDesc[i] = averageModels[i].a[score].answer;
       }
     }
   }
