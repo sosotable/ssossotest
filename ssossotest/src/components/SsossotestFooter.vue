@@ -1,5 +1,5 @@
 <template>
-  <q-footer class="text-center bg-amber-12 text-grey-10">
+  <q-footer style="background-color: wheat;" class="text-center text-grey-10">
     2022 -
     <a class="text-black" href="https://github.com/sosotable">ssosso.table</a>
   </q-footer>
