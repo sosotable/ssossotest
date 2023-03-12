@@ -13,6 +13,16 @@
         <q-btn flat color="dark" label="시작하기" @click="start" />
       </q-card>
     </div>
+    <div v-if="friendResult">
+      <q-btn
+        class="text-black"
+        style="width: 100%"
+        label="친구의 결과는 뭐였을까요?"
+        icon="face"
+        color="white"
+        @click="open('bottom')"
+      />
+    </div>
     <div v-if="this.question && this.questionId < this.tasteModel.length">
       <div class="q-pa-md row justify-center">
         <div style="width: 100%; max-width: 400px">
@@ -75,10 +85,13 @@ export default defineComponent({
       questionId: 0,
       selectedFlag: false,
       selectedAnswer: '',
-      //result: []
-    };
+      friend: [],
+    }
   },
   mounted() {
+    /**if(this.$route.query.friend_id != undefined && process.env.DAO_ENDPOINT != undefined) {
+      this.friendResult = true
+    }**/
     //
   },
   methods: {
@@ -89,21 +102,47 @@ export default defineComponent({
     },
     // MARK: 문제 버튼 선택 시
     select: function (selected: number) {
-      this.selectedFlag = true;
-      this.selectedAnswer = tasteModel[this.questionId].answer[selected].answer;
+      console.log(friend)
+      this.selectedFlag = true
+      console.log(selected)
+      this.selectedAnswer = tasteModel[this.questionId].answer[selected].answer
+      console.log(tasteModel[this.questionId].answer[selected].answer)
+      console.log(this.selectedAnswer)
       this.tasteModel[this.questionId].result = selected;
+      //this.tasteModel[this.questionId].answer = this.selectedAnswer
+      //console.log(this.tasteModel[this.questionId].answer)
       setTimeout(() => {
         this.questionId += 1;
         this.selectedFlag = false;
+
         if (this.questionId == this.tasteModel.length) {
-          let result: any = [];
-          for (let i = 0; i < this.tasteModel.length; i++) {
-            result.push(this.tasteModel[i].answer[selected].answer);
+          let result: any = []
+          for(let i = 0; i < this.tasteModel.length; i++) {
+            //result.push(this.tasteModel[i].answer)
+            result.push(tasteModel[i].answer[this.tasteModel[i].result].answer)
           }
-          this.$router.push({
-            path: '/result/tastes',
-            query: { result: JSON.stringify(result) },
-          });
+          console.log(result)
+
+          if (this.$route.query.friend_id === undefined) {
+            console.log("메인")
+
+            // MARK: 결과 페이지로 라우팅, 결과는 쿼리스트링을 통해 전달
+            this.$router.push({
+              path: '/result/tastes',
+              query: {result: JSON.stringify(result)}
+            })
+          }
+          // MARK: 공유받아서 들어온 경우
+          else {
+            console.log("친구")
+            this.$router.push({
+              path: '/result/tastes',
+              query: {
+                result: JSON.stringify(result),
+                friend_id: encodeURI(String(this.$route.query.friend_id))
+              },
+            });
+          }
         }
       }, 500);
     },
