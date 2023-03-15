@@ -2,8 +2,8 @@
   <q-page class="column items-center justify-center">
     <!--    MARK: 테스트 선택 페이지: v-for을 통한 카드 반복 -->
     <template v-for="card in cards" v-bind:key="card">
-      <q-card class="my-card" style="width: 70%; margin: 10px">
-        <q-img :src="card.image">
+      <q-card class="my-card" style="width: 70%; margin: 8px">
+        <q-img :src="card.image" height="140px">
           <div class="absolute-bottom">
             <div class="text-h6">{{ card.title }}</div>
             <div class="text-subtitle2">{{ card.desc }}</div>
@@ -13,7 +13,7 @@
           <router-link
             class="text-black"
             :to="`content/${card.tag}`"
-            style="text-decoration-line: none; width: 100%"
+            style="text-decoration-line: none; width: 100%; height: 25px"
           >
             <q-btn flat style="width: 100%">시작하기</q-btn>
           </router-link>
