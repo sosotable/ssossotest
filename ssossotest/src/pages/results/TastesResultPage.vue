@@ -61,7 +61,7 @@ export default defineComponent({
     console.log(tasteModel[0].result)
     console.log(this.tasteModel[0].result)
     // const decoderesult = JSON.parse()
-    
+
     /**if(this.$route.query.result != null) {
       console.log(this.$route.query.result)
        const resultQuery: string | any  = this.$route.query.result

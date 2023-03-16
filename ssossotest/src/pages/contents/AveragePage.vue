@@ -10,7 +10,7 @@
             나의 음식 취향을 대한민국 평균과 비교해보세요
           </div>
         </q-card-section>
-        <q-btn flat color="dark" label="시작하기" @click="start" />
+        <q-btn class = "float-right" flat color="dark" label="시작하기" @click="start" />
       </q-card>
     </div>
     <div v-if="this.question && this.questionId < this.averageModel.length">

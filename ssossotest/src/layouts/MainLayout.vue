@@ -1,7 +1,7 @@
 <template>
   <q-layout view="lHh Lpr lFf">
     <ssossotest-header />
-    <q-page-container>
+    <q-page-container style="padding-top: 21px">
       <router-view />
     </q-page-container>
     <ssossotest-footer />

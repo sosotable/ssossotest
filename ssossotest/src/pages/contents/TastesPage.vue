@@ -10,7 +10,7 @@
             나의 음식 취향을 기록하고 친구들의 음식 취향을 맞춰보세요!
           </div>
         </q-card-section>
-        <q-btn flat color="dark" label="시작하기" @click="start" />
+        <q-btn class = "float-right" flat color="dark" label="시작하기" @click="start"/>
       </q-card>
     </div>
     <div v-if="friendResult">
@@ -37,16 +37,20 @@
               </h6>
             </div>
           </div>
-          <Transition>
+          <Transition
+            class="absolute-bottom flex column"
+            style="padding: 0 20px 200px 10px"
+          >
             <div v-if="!selectedFlag">
               <template
                 v-for="index in tasteModel[questionId].answer.length"
                 :key="index"
               >
-                <div class="btn-group-vertical">
+                <div class="q-btn-group--vertical">
                   <q-btn
-                    color="warning"
+                    color="white"
                     text-color="black"
+                    style="width: 100%"
                     @click="select(index - 1)"
                     :label="tasteModel[questionId].answer[index - 1].answer"
                   >
@@ -102,7 +106,7 @@ export default defineComponent({
     },
     // MARK: 문제 버튼 선택 시
     select: function (selected: number) {
-      console.log(friend)
+      //console.log(friend)
       this.selectedFlag = true
       console.log(selected)
       this.selectedAnswer = tasteModel[this.questionId].answer[selected].answer
@@ -127,11 +131,17 @@ export default defineComponent({
             console.log("메인")
 
             // MARK: 결과 페이지로 라우팅, 결과는 쿼리스트링을 통해 전달
-            this.$router.push({
+            /**this.$router.push({
               path: '/result/tastes',
               query: {result: JSON.stringify(result)}
-            })
-          }
+            })**/
+              axios.post('/result/tastes', result);
+              this.$router.push({
+                path: '/result/tastes',
+                query: { result: encodeURI(JSON.stringify(result)) },
+              });
+            }
+
           // MARK: 공유받아서 들어온 경우
           else {
             console.log("친구")
