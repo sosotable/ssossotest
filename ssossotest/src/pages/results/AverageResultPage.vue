@@ -16,12 +16,21 @@
 
               <div v-if="item.type === 'button' && item.answer[resultList[i]]">
                 <q-item-section>{{ item.answer[resultList[i]].answer }}</q-item-section>
+                <q-item-section>평균</q-item-section>
+                <div v-if="i === 1 || i === 2">
+                  <q-item-section>{{ averageList[i] }}단계</q-item-section>
+                </div>
+                <div v-else>
+                  <q-item-section>{{item.answer[0].answer}} : {{100-(averageList[i])*100}}%</q-item-section>
+                  <q-item-section>{{item.answer[1].answer}} : {{(averageList[i])*100}}%</q-item-section>
+                </div>
+
               </div>
 
               <div v-else>
                 <q-item-section>{{ resultList[i] + item.answer[0].unit }}</q-item-section>
-              </div>
-            </q-list>
+                <q-item-section> 평균:{{ averageList[i] + item.answer[0].unit }}</q-item-section>
+              </div>            </q-list>
           </div>
         </q-card-section>
 
