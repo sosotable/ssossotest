@@ -57,7 +57,7 @@
                     color="white"
                     text-color="black"
                     @click="select(i)"
-                    :label="item.answer + i"
+                    :label="item.answer"
                   />
                 </div>
               </div>
@@ -95,8 +95,35 @@ export default defineComponent({
       selectedFlag: false,
       rangeValue: 0,
       selectedAnswer: '',
+      resultList: [{answer: ""}],
+      resultString: '',
     };
   },
+  mounted() {
+    if (
+      this.$route.query.result != null &&
+      process.env.DAO_ENDPOINT != undefined
+    ) {
+      const resultQuery: string | any = this.$route.query.result;
+      this.resultString = resultQuery.slice(1,-1)
+      this.resultList = JSON.parse((resultQuery));
+
+      // MARK: 결과 값 insert
+      axios
+        .post(process.env.DAO_ENDPOINT, {
+          DML: 'INSERT',
+          table: 'average_result',
+          values: this.resultString
+        })
+        .then((response) => {
+          console.log(response);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+  },
+
   methods: {
     // MARK: 시작하기 버튼을 누를 경우 타이틀 이미지를 보이지 않게(false) 변환, 문제를 보이게(true) 변환
     start: function () {
@@ -115,7 +142,7 @@ export default defineComponent({
       if (this.questionId == this.averageModel.length) {
         axios.post('/result/average', this.selectedAnswerList);
         this.$router.push({
-          path: '/result/averageLoading',
+          path: '/result/average',
           query: { result: (JSON.stringify(this.selectedAnswerList))},
         });
       }
