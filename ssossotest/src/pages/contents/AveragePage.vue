@@ -57,7 +57,7 @@
                     color="white"
                     text-color="black"
                     @click="select(i)"
-                    :label="item.answer + i"
+                    :label="item.answer"
                   />
                 </div>
               </div>
@@ -78,9 +78,11 @@ export default defineComponent({
   name: 'AveragePage',
   setup() {
     const selectedAnswerList: any[] = [];
+    let avgString: string | undefined;
     return {
       averageModel,
       selectedAnswerList,
+      avgString
     };
   },
   data() {
@@ -95,6 +97,8 @@ export default defineComponent({
       selectedFlag: false,
       rangeValue: 0,
       selectedAnswer: '',
+      resultList: [{answer: ""}],
+      resultString: '',
     };
   },
   methods: {
@@ -106,24 +110,40 @@ export default defineComponent({
     // MARK: 문제 버튼 선택 시
     select: function (selected: number) {
       this.selectedFlag = true;
-      this.selectedAnswer =
-        averageModel[this.questionId].type == 'button'
-          ? averageModel[this.questionId].answer[selected].answer
-          : selected + averageModel[this.questionId].answer[0].unit;
-      this.selectedAnswerList.push(this.selectedAnswer);
+      this.selectedAnswerList.push(selected);
       this.averageModel[this.questionId].result = selected;
       this.rangeValue = 0;
       this.questionId += 1;
       this.selectedFlag = false;
 
-      if (this.questionId == this.averageModel.length) {
-        axios.post('/result/average', this.selectedAnswerList);
+      if (this.questionId == this.averageModel.length
+      && process.env.DAO_ENDPOINT != undefined) {
+
+        this.resultString = JSON.stringify(this.selectedAnswerList).slice(1,-1)
+
+        // MARK: 결과 값 insert
+        axios
+          .post(process.env.DAO_ENDPOINT, {
+            DML: 'INSERT',
+            table: 'average_result',
+            values: this.resultString
+          })
+          .then((response) => {
+            console.log(response);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+
+        axios.post('/result/calcaverage', this.selectedAnswerList);
+
         this.$router.push({
-          path: '/result/average',
-          query: { result: encodeURI(JSON.stringify(this.selectedAnswerList)) },
+          path: '/result/calc-average',
+          query: { result: (JSON.stringify(this.selectedAnswerList))
+          },
         });
       }
-    },
+    }
   },
 });
 </script>
