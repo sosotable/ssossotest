@@ -13,8 +13,14 @@
               :key="i"
             >
               <q-item-section>{{ item.question }}</q-item-section>
-              <!-- error -->
-              <q-item-section>{{ this.resultList[i] }}</q-item-section>
+
+              <div v-if="item.type === 'button' && item.answer[resultList[i]]">
+                <q-item-section>{{ item.answer[resultList[i]].answer }}</q-item-section>
+              </div>
+
+              <div v-else>
+                <q-item-section>{{ resultList[i] + item.answer[0].unit }}</q-item-section>
+              </div>
             </q-list>
           </div>
         </q-card-section>
@@ -55,7 +61,9 @@ export default defineComponent({
       image: '',
       questionId: 0,
       answerId: 0,
-      resultList: [],
+      // MARK: undefined error 발생하여 임시로 answer key 넣어 줌
+      resultList: [{answer: ""}],
+      resultString: '',
     };
   },
   // MARK: 페이지 라우팅 시 받아진 쿼리스트링 처리
@@ -65,7 +73,9 @@ export default defineComponent({
       process.env.DAO_ENDPOINT != undefined
     ) {
       const resultQuery: string | any = this.$route.query.result;
-      this.resultList = JSON.parse(decodeURI(resultQuery));
+      const avgQuery: string | any = this.$route.query.avg;
+
+      this.resultList = JSON.parse(resultQuery);
 
       axios
         .post(process.env.DAO_ENDPOINT, {

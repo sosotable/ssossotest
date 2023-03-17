@@ -106,11 +106,7 @@ export default defineComponent({
     // MARK: 문제 버튼 선택 시
     select: function (selected: number) {
       this.selectedFlag = true;
-      this.selectedAnswer =
-        averageModel[this.questionId].type == 'button'
-          ? averageModel[this.questionId].answer[selected].answer
-          : selected + averageModel[this.questionId].answer[0].unit;
-      this.selectedAnswerList.push(this.selectedAnswer);
+      this.selectedAnswerList.push(selected);
       this.averageModel[this.questionId].result = selected;
       this.rangeValue = 0;
       this.questionId += 1;
@@ -119,8 +115,8 @@ export default defineComponent({
       if (this.questionId == this.averageModel.length) {
         axios.post('/result/average', this.selectedAnswerList);
         this.$router.push({
-          path: '/result/average',
-          query: { result: encodeURI(JSON.stringify(this.selectedAnswerList)) },
+          path: '/result/averageLoading',
+          query: { result: (JSON.stringify(this.selectedAnswerList))},
         });
       }
     },
