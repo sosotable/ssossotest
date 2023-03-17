@@ -99,31 +99,6 @@ export default defineComponent({
       resultString: '',
     };
   },
-  mounted() {
-    if (
-      this.$route.query.result != null &&
-      process.env.DAO_ENDPOINT != undefined
-    ) {
-      const resultQuery: string | any = this.$route.query.result;
-      this.resultString = resultQuery.slice(1,-1)
-      this.resultList = JSON.parse((resultQuery));
-
-      // MARK: 결과 값 insert
-      axios
-        .post(process.env.DAO_ENDPOINT, {
-          DML: 'INSERT',
-          table: 'average_result',
-          values: this.resultString
-        })
-        .then((response) => {
-          console.log(response);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    }
-  },
-
   methods: {
     // MARK: 시작하기 버튼을 누를 경우 타이틀 이미지를 보이지 않게(false) 변환, 문제를 보이게(true) 변환
     start: function () {
@@ -139,7 +114,24 @@ export default defineComponent({
       this.questionId += 1;
       this.selectedFlag = false;
 
-      if (this.questionId == this.averageModel.length) {
+      if (this.questionId == this.averageModel.length
+      && process.env.DAO_ENDPOINT != undefined) {
+        this.resultString = JSON.stringify(this.selectedAnswerList).slice(1,-1)
+
+        // MARK: 결과 값 insert
+        axios
+          .post(process.env.DAO_ENDPOINT, {
+            DML: 'INSERT',
+            table: 'average_result',
+            values: this.resultString
+          })
+          .then((response) => {
+            console.log(response);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+
         axios.post('/result/average', this.selectedAnswerList);
         this.$router.push({
           path: '/result/average',

@@ -77,58 +77,6 @@ export default defineComponent({
 
       this.resultList = JSON.parse(resultQuery);
 
-      axios
-        .post(process.env.DAO_ENDPOINT, {
-          DML: 'SELECT',
-          columns: '*',
-          table: 'average',
-          where: `\`key\` = '${this.$q.sessionStorage.getItem(
-            'user_nickname'
-          )}'`,
-        })
-        .then((response) => {
-          // MARK: 기존 결과가 존재한다면 => UPDATE
-          if (
-            response.data.length > 0 &&
-            process.env.DAO_ENDPOINT != undefined
-          ) {
-            axios
-              .post(process.env.DAO_ENDPOINT, {
-                DML: 'UPDATE',
-                table: 'average',
-                set: `result = '${resultQuery}'`,
-                where: `\`key\` = '${this.$q.sessionStorage.getItem(
-                  'user_nickname'
-                )}'`,
-              })
-              .then((response) => {
-                console.log(response);
-              })
-              .catch((error) => {
-                console.log(error);
-              });
-          }
-          // MARK: 기존 결과가 존재한다면 => UPDATE
-          else {
-            if (process.env.DAO_ENDPOINT != undefined) {
-              axios
-                .post(process.env.DAO_ENDPOINT, {
-                  DML: 'INSERT',
-                  table: 'average',
-                  columns: '`key`, result',
-                  values: `'${this.$q.sessionStorage.getItem(
-                    'user_nickname'
-                  )}','${resultQuery}'`,
-                })
-                .then((response) => {
-                  console.log(response);
-                })
-                .catch((error) => {
-                  console.log(error);
-                });
-            }
-          }
-        });
     }
   },
   methods: {},
