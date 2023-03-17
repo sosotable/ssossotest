@@ -64,6 +64,7 @@ export default defineComponent({
       // MARK: undefined error 발생하여 임시로 answer key 넣어 줌
       resultList: [{answer: ""}],
       resultString: '',
+      averageList: [],
     };
   },
   // MARK: 페이지 라우팅 시 받아진 쿼리스트링 처리
@@ -76,10 +77,13 @@ export default defineComponent({
       const avgQuery: string | any = this.$route.query.avg;
 
       this.resultList = JSON.parse(resultQuery);
+      this.averageList = JSON.parse(avgQuery);
 
     }
   },
-  methods: {},
+  methods: {
+
+  },
 });
 </script>
 <style scoped></style>

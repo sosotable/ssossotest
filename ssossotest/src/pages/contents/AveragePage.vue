@@ -78,9 +78,11 @@ export default defineComponent({
   name: 'AveragePage',
   setup() {
     const selectedAnswerList: any[] = [];
+    let avgString: string | undefined;
     return {
       averageModel,
       selectedAnswerList,
+      avgString
     };
   },
   data() {
@@ -116,6 +118,7 @@ export default defineComponent({
 
       if (this.questionId == this.averageModel.length
       && process.env.DAO_ENDPOINT != undefined) {
+
         this.resultString = JSON.stringify(this.selectedAnswerList).slice(1,-1)
 
         // MARK: 결과 값 insert
@@ -132,13 +135,15 @@ export default defineComponent({
             console.log(error);
           });
 
-        axios.post('/result/average', this.selectedAnswerList);
+        axios.post('/result/calcaverage', this.selectedAnswerList);
+
         this.$router.push({
-          path: '/result/average',
-          query: { result: (JSON.stringify(this.selectedAnswerList))},
+          path: '/result/calc-average',
+          query: { result: (JSON.stringify(this.selectedAnswerList))
+          },
         });
       }
-    },
+    }
   },
 });
 </script>
