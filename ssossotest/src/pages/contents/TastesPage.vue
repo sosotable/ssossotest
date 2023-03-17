@@ -1,6 +1,24 @@
 <template>
   <q-page class="row items-center justify-evenly">
     <div v-if="this.title" class="row items-start q-gutter-md">
+
+
+      <div v-if="friendResult">
+        <q-card class="my-card" flat bordered>
+          <q-img src="src/assets/images/tastes/title.jpg" />
+          <q-card-section>
+            <div class="text-overline text-orange-9"></div>
+            <div class="text-h5 q-mt-sm q-mb-xs">친구 음식 취향 맞추기</div>
+            <div class="text-caption text-grey">
+              친구들의 음식 취향을 맞춰보세요!
+            </div>
+          </q-card-section>
+          <q-btn class = "float-right" flat color="dark" label="시작하기" @click="start"/>
+        </q-card>
+      </div>
+
+
+      <div v-else>
       <q-card class="my-card" flat bordered>
         <q-img src="src/assets/images/tastes/title.jpg" />
         <q-card-section>
@@ -12,8 +30,10 @@
         </q-card-section>
         <q-btn class = "float-right" flat color="dark" label="시작하기" @click="start"/>
       </q-card>
+      </div>
+
     </div>
-    <div v-if="friendResult">
+    <!--<div v-if="friendResult===true">
       <q-btn
         class="text-black"
         style="width: 100%"
@@ -22,7 +42,7 @@
         color="white"
         @click="open('bottom')"
       />
-    </div>
+    </div>-->
     <div v-if="this.question && this.questionId < this.tasteModel.length">
       <div class="q-pa-md row justify-center">
         <div style="width: 100%; max-width: 400px">
@@ -33,13 +53,12 @@
             >
               <h6 class="card text-center">
                 {{ this.tasteModel[questionId].question[0] }}
-                <q-separator /><q-separator /><q-separator />
               </h6>
             </div>
           </div>
           <Transition
             class="absolute-bottom flex column"
-            style="padding: 0 20px 200px 10px"
+            style="padding: 0 10px 200px 0px"
           >
             <div v-if="!selectedFlag">
               <template
@@ -89,14 +108,18 @@ export default defineComponent({
       questionId: 0,
       selectedFlag: false,
       selectedAnswer: '',
+      friendResult: false,
       friend: [],
     }
   },
   mounted() {
-    /**if(this.$route.query.friend_id != undefined && process.env.DAO_ENDPOINT != undefined) {
+    if(this.$route.query.friend_id != undefined) {
       this.friendResult = true
-    }**/
-    //
+    }
+    console.log(this.$route.query);
+    console.log(this.$route.query.friend)
+
+    //&& process.env.DAO_ENDPOINT != undefined
   },
   methods: {
     // MARK: 시작하기 버튼을 누를 경우 타이틀 이미지를 보이지 않게(false) 변환, 문제를 보이게(true) 변환
@@ -144,12 +167,20 @@ export default defineComponent({
 
           // MARK: 공유받아서 들어온 경우
           else {
+            let friend: any = []
+            friend.push(this.$route.query.friend)
+            console.log(friend)
+            console.log(friend[0])
+            let friend_result = (friend[0].split(','))
+            console.log(friend_result)
             console.log("친구")
+            console.log(this.$route.query.friend)
             this.$router.push({
               path: '/result/tastes',
               query: {
-                result: JSON.stringify(result),
-                friend_id: encodeURI(String(this.$route.query.friend_id))
+                result: encodeURI(JSON.stringify(result)),
+                friend_id: encodeURI(String(this.$route.query.friend_id)),
+                friend_result: encodeURI(JSON.stringify(friend_result))
               },
             });
           }

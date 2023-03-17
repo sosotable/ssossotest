@@ -18,13 +18,13 @@
         <div style="width: 100%; max-width: 400px">
           <div class="absolute-top">
             <div v-if="this.averageModel[questionId].type === 'range'">
-              <div class="text-h6">
+              <h6 class="card text-center">
                 {{
                   averageModel[questionId].question +
                   rangeValue +
                   averageModel[questionId].answer[0].unit
                 }}
-              </div>
+              </h6>
               <div class="q-pa-md">
                 <q-slider
                   v-model="rangeValue"
@@ -45,9 +45,9 @@
             </div>
 
             <div v-else-if="this.averageModel[questionId].type === 'button'">
-              <div class="text-h6">
+              <h6 class="card text-center">
                 {{ averageModel[questionId].question }}
-              </div>
+              </h6>
               <div v-if="!selectedFlag">
                 <div
                   v-for="(item, i) in this.averageModel[questionId].answer"
@@ -56,6 +56,7 @@
                   <q-btn
                     color="white"
                     text-color="black"
+                    style="width: 100%"
                     @click="select(i)"
                     :label="item.answer + i"
                   />
@@ -127,3 +128,19 @@ export default defineComponent({
   },
 });
 </script>
+
+<style scoped>
+.q-btn {
+  margin: 5px !important;
+}
+/* we will explain what these classes do next! */
+.v-enter-active,
+.v-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
+}
+</style>
