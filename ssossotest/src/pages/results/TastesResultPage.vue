@@ -18,18 +18,26 @@
       </ul>
       </div>
 
-      <q-separator />
-      <q-btn
-        flat
-        color="dark"
-        @click="copyLink"
-        style="width: 100%"
-        label="친구에게 공유하기"
-      />
-      <q-separator />
-      <router-link to="/main" style="width: 100%">
-        <q-btn flat color="dark" style="width: 100%" label="처음으로" />
-      </router-link>
+        <q-separator />
+        <div v-if = "!this.friendResult">
+        <q-btn
+          flat
+          color="dark"
+          @click="copyLink"
+          style="width: 100%"
+          label="친구에게 공유하기"
+        />
+          <router-link to="/main" style="width: 100%">
+            <q-btn flat color="dark" style="width: 100%" label="처음으로" />
+          </router-link>
+        </div>
+
+        <div v-else>
+        <q-separator />
+        <router-link to="/main" style="width: 100%">
+          <q-btn flat color="dark" style="width: 100%" label="다른 테스트 하기" />
+        </router-link>
+        </div>
     </div>
   </q-page>
 </template>
@@ -53,7 +61,8 @@ export default defineComponent({
       image: '',
       selected: '',
       friendResult: false,
-      result: [],
+      result: [], /** 링크 받은 사용자의 선택 결과 **/
+      resultFriend: [], /**링크 공유한 친구의 결과**/
     }
   },
   // MARK: 페이지 라우팅 시 받아진 쿼리스트링 처리
@@ -91,10 +100,16 @@ export default defineComponent({
         console.log("친구 결과")
         console.log(this.$route.query.result)
         const resultQuery: string | any  = this.$route.query.result
+        const friendQuery: string | any = this.$route.query.friend_result
         // MARK: 쿼리스트링 디코딩
         //this.result = this.$route.query.result
         this.result = JSON.parse(decodeURI(resultQuery))
+        this.resultFriend = JSON.parse(decodeURI(friendQuery))
+        console.log(JSON.parse(decodeURI(friendQuery)))
+        console.log(this.result)
         console.log(this.result[0])
+        console.log(this.resultFriend)
+        console.log(this.resultFriend[0])
       }
     }
   },
@@ -116,7 +131,7 @@ export default defineComponent({
         document.execCommand('copy');
         document.body.removeChild($textarea);
       }
-      const query = encodeURI(`?friend_id=${this.$q.sessionStorage.getItem('user_nickname')}&content=tastes`)
+      const query = encodeURI(`?friend_id=${this.$q.sessionStorage.getItem('user_nickname')}&content=tastes&friend=${this.$route.query.result}`)
       copy(`http://127.0.0.1:9100${query}`)
       alert('링크가 클립보드에 공유되었어요!')
     }
