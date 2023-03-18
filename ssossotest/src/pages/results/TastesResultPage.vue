@@ -102,10 +102,11 @@ export default defineComponent({
         const resultQuery: string | any  = this.$route.query.result
         const friendQuery: string | any = this.$route.query.friend_result
         // MARK: 쿼리스트링 디코딩
-        //this.result = this.$route.query.result
+
         this.result = JSON.parse(decodeURI(resultQuery))
         this.resultFriend = JSON.parse(decodeURI(friendQuery))
-        console.log(JSON.parse(decodeURI(friendQuery)))
+        console.log(resultQuery)
+        console.log(friendQuery)
         console.log(this.result)
         console.log(this.result[0])
         console.log(this.resultFriend)
