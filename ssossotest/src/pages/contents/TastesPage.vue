@@ -171,8 +171,15 @@ export default defineComponent({
             friend.push(this.$route.query.friend)
             console.log(friend)
             console.log(friend[0])
-            let friend_result = (friend[0].split(','))
-            console.log(friend_result)
+            console.log(friend[1])
+            /*let newStr: any = []
+            newStr.push(friend.replace('[', ''))
+            let nowStr: any = []
+            nowStr.push(newStr.replace(']', ''))*/
+
+            let friend__result = (friend[0].split(','))
+
+            console.log(friend__result)
             console.log("친구")
             console.log(this.$route.query.friend)
             this.$router.push({
@@ -180,7 +187,7 @@ export default defineComponent({
               query: {
                 result: encodeURI(JSON.stringify(result)),
                 friend_id: encodeURI(String(this.$route.query.friend_id)),
-                friend_result: encodeURI(JSON.stringify(friend_result))
+                friend_result: friend__result
               },
             });
           }
