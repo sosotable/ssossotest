@@ -2,30 +2,10 @@
 <project version="4">
   <component name="WebServers">
     <option name="servers">
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-      <webServer id="0760dd5d-9211-43fa-90fa-199b802402e6" name="ssossotest">
-=======
-      <webServer id="beae4fc7-27dd-475c-821b-8f1f3d24b005" name="ssossotest">
->>>>>>> Stashed changes
-        <fileTransfer accessType="SFTP" host="3.144.87.26" port="22" sshConfigId="10b26bc9-d956-46f8-b5e0-486395c0d02c" sshConfig="ubuntu@3.144.87.26:22 key" keyPair="true">
-=======
-<<<<<<< HEAD
-      <webServer id="3837630f-f658-40e0-8c1b-3f590a7ec510" name="ssossotest-server">
-        <fileTransfer accessType="SFTP" host="3.144.87.26" port="22" sshConfigId="7a2e6a88-8d2c-4bcb-a38d-85f76247332b" sshConfig="ubuntu@3.144.87.26:22 key" keyPair="true">
->>>>>>> 1b3636dc97732b204de00ed595da316349b6939a
+      <webServer id="d7a55bca-584d-4260-a60b-7a000dabfe64" name="ssossotest">
+        <fileTransfer accessType="SFTP" host="3.145.5.230" port="22" sshConfigId="aea00d0a-b894-4074-931a-7a0ef1cfe936" sshConfig="ubuntu@3.145.5.230:22 key" keyPair="true">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" />
-          </advancedOptions>
-        </fileTransfer>
-      </webServer>
-      <webServer id="fc9691b2-563a-41ab-9c12-f90bdf171f29" name="ssossotest">
-        <fileTransfer accessType="SFTP" host="3.144.87.26" port="22" sshConfigId="7a2e6a88-8d2c-4bcb-a38d-85f76247332b" sshConfig="ubuntu@3.144.87.26:22 key" keyPair="true">
-          <advancedOptions>
-            <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" />
-=======
-
->>>>>>> 4d0d1a67363ce1eeec5371205a462c5ee72b8174
           </advancedOptions>
         </fileTransfer>
       </webServer>
