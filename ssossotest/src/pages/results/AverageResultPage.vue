@@ -13,9 +13,24 @@
               :key="i"
             >
               <q-item-section>{{ item.question }}</q-item-section>
-              <!-- error -->
-              <q-item-section>{{ this.resultList[i] }}</q-item-section>
-            </q-list>
+
+              <div v-if="item.type === 'button' && item.answer[resultList[i]]">
+                <q-item-section>{{ item.answer[resultList[i]].answer }}</q-item-section>
+                <q-item-section>평균</q-item-section>
+                <div v-if="i === 1 || i === 2">
+                  <q-item-section>{{ averageList[i] }}단계</q-item-section>
+                </div>
+                <div v-else>
+                  <q-item-section>{{item.answer[0].answer}} : {{100-(averageList[i])*100}}%</q-item-section>
+                  <q-item-section>{{item.answer[1].answer}} : {{(averageList[i])*100}}%</q-item-section>
+                </div>
+
+              </div>
+
+              <div v-else>
+                <q-item-section>{{ resultList[i] + item.answer[0].unit }}</q-item-section>
+                <q-item-section> 평균:{{ averageList[i] + item.answer[0].unit }}</q-item-section>
+              </div>            </q-list>
           </div>
         </q-card-section>
 
@@ -55,7 +70,10 @@ export default defineComponent({
       image: '',
       questionId: 0,
       answerId: 0,
-      resultList: [],
+      // MARK: undefined error 발생하여 임시로 answer key 넣어 줌
+      resultList: [{answer: ""}],
+      resultString: '',
+      averageList: [],
     };
   },
   // MARK: 페이지 라우팅 시 받아진 쿼리스트링 처리
@@ -65,63 +83,16 @@ export default defineComponent({
       process.env.DAO_ENDPOINT != undefined
     ) {
       const resultQuery: string | any = this.$route.query.result;
-      this.resultList = JSON.parse(decodeURI(resultQuery));
+      const avgQuery: string | any = this.$route.query.avg;
 
-      axios
-        .post(process.env.DAO_ENDPOINT, {
-          DML: 'SELECT',
-          columns: '*',
-          table: 'average',
-          where: `\`key\` = '${this.$q.sessionStorage.getItem(
-            'user_nickname'
-          )}'`,
-        })
-        .then((response) => {
-          // MARK: 기존 결과가 존재한다면 => UPDATE
-          if (
-            response.data.length > 0 &&
-            process.env.DAO_ENDPOINT != undefined
-          ) {
-            axios
-              .post(process.env.DAO_ENDPOINT, {
-                DML: 'UPDATE',
-                table: 'average',
-                set: `result = '${resultQuery}'`,
-                where: `\`key\` = '${this.$q.sessionStorage.getItem(
-                  'user_nickname'
-                )}'`,
-              })
-              .then((response) => {
-                console.log(response);
-              })
-              .catch((error) => {
-                console.log(error);
-              });
-          }
-          // MARK: 기존 결과가 존재한다면 => UPDATE
-          else {
-            if (process.env.DAO_ENDPOINT != undefined) {
-              axios
-                .post(process.env.DAO_ENDPOINT, {
-                  DML: 'INSERT',
-                  table: 'average',
-                  columns: '`key`, result',
-                  values: `'${this.$q.sessionStorage.getItem(
-                    'user_nickname'
-                  )}','${resultQuery}'`,
-                })
-                .then((response) => {
-                  console.log(response);
-                })
-                .catch((error) => {
-                  console.log(error);
-                });
-            }
-          }
-        });
+      this.resultList = JSON.parse(resultQuery);
+      this.averageList = JSON.parse(avgQuery);
+
     }
   },
-  methods: {},
+  methods: {
+
+  },
 });
 </script>
 <style scoped></style>

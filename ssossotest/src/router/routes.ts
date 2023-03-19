@@ -48,6 +48,10 @@ const routes: RouteRecordRaw[] = [
         path: 'average',
         component: () => import('pages/results/AverageResultPage.vue'),
       },
+      {
+        path: 'calc-average',
+        component: () => import('pages/results/AverageCalcPage.vue'),
+      }
     ],
   },
   // Always leave this as last one,
