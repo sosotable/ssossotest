@@ -3,9 +3,9 @@
     <div class="row items-start">
       <q-card class="my-card" flat bordered>
         <q-img :src="`src/assets/images/average/${this.image}.jpeg`" />
-        <q-card-section>
-          <div class="text-overline text-orange-9">당신의 결과!</div>
-          <div class="q-pa-md" style="max-width: 350px">
+        <q-card-section class="col-12">
+          <div class="text-overline text-orange-9">{{this.userName}}의 결과!</div>
+          <div class="q-pa-none col">
             <q-list
               bordered
               separator
@@ -53,6 +53,7 @@ export default defineComponent({
   setup() {
     const dialog = ref(false);
     const position = ref('top');
+    let userName: any = null
     return {
       averageModel,
       dialog,
@@ -61,6 +62,7 @@ export default defineComponent({
         position.value = pos;
         dialog.value = true;
       },
+      userName
     };
   },
   data() {
@@ -84,13 +86,13 @@ export default defineComponent({
     ) {
       const resultQuery: string | any = this.$route.query.result;
       const avgQuery: string | any = this.$route.query.avg;
+      const nickName: string | any = this.$q.sessionStorage.getItem('user_nickname')
 
       this.resultList = JSON.parse(resultQuery);
       this.averageList = JSON.parse(avgQuery);
 
+      this.userName = nickName;
     }
-  },
-  methods: {
 
   },
 });

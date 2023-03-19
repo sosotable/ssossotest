@@ -1,8 +1,10 @@
 <template>
-  <div>
-    로딩중
-  </div>
-
+  <q-page class="column items-center justify-evenly">
+    <q-spinner
+      color="primary"
+      size="5em"
+    />
+  </q-page>
 </template>
 
 <script lang="ts">
@@ -46,7 +48,7 @@ export default defineComponent({
           })
           .then((response) => {
             console.log('average' + 1 + ': ' + response.data[0].avg);
-            averageArr[0] = Number(response.data[0].avg);
+            averageArr[0] = Number(Number(response.data[0].avg).toFixed(2))
           })
           .catch((error) => {
             console.log(error);
@@ -60,7 +62,7 @@ export default defineComponent({
           })
           .then((response) => {
             console.log('average' + 2 + ': ' + response.data[0].avg);
-            averageArr[1] = Number(response.data[0].avg);
+            averageArr[1] = Number(Number(response.data[0].avg).toFixed(2))
           })
           .catch((error) => {
             console.log(error);
@@ -74,7 +76,7 @@ export default defineComponent({
           })
           .then((response) => {
             console.log('average' + 3 + ': ' + response.data[0].avg);
-            averageArr[2] = Number(response.data[0].avg);
+            averageArr[2] = Number(Number(response.data[0].avg).toFixed(2))
           })
           .catch((error) => {
             console.log(error);
@@ -88,7 +90,7 @@ export default defineComponent({
           })
           .then((response) => {
             console.log('average' + 4 + ': ' + response.data[0].avg);
-            averageArr[3] = Number(response.data[0].avg);
+            averageArr[3] = Number(Number(response.data[0].avg).toFixed(2))
           })
           .catch((error) => {
             console.log(error);
@@ -102,7 +104,7 @@ export default defineComponent({
           })
           .then((response) => {
             console.log('average' + 5 + ': ' + response.data[0].avg);
-            averageArr[4] = Number(response.data[0].avg);
+            averageArr[4] = Number(Number(response.data[0].avg).toFixed(2))
           })
           .catch((error) => {
             console.log(error);
@@ -116,7 +118,7 @@ export default defineComponent({
           })
           .then((response) => {
             console.log('average' + 6 + ': ' + response.data[0].avg);
-            averageArr[5] = Number(response.data[0].avg);
+            averageArr[5] = Number(Number(response.data[0].avg).toFixed(2))
           })
           .catch((error) => {
             console.log(error);
@@ -130,7 +132,7 @@ export default defineComponent({
           })
           .then((response) => {
             console.log('average' + 7 + ': ' + response.data[0].avg);
-            averageArr[6] = Number(response.data[0].avg);
+            averageArr[6] = Number(Number(response.data[0].avg).toFixed(2))
           })
           .catch((error) => {
             console.log(error);
@@ -144,7 +146,7 @@ export default defineComponent({
           })
           .then((response) => {
             console.log('average' + 8 + ': ' + response.data[0].avg);
-            averageArr[7] = Number(response.data[0].avg);
+            averageArr[7] = Number(Number(response.data[0].avg).toFixed(2))
           })
           .catch((error) => {
             console.log(error);
@@ -158,7 +160,7 @@ export default defineComponent({
           })
           .then((response) => {
             console.log('average' + 9 + ': ' + response.data[0].avg);
-            averageArr[8] = Number(response.data[0].avg);
+            averageArr[8] = Number(Number(response.data[0].avg).toFixed(2))
           })
           .catch((error) => {
             console.log(error);
@@ -172,7 +174,7 @@ export default defineComponent({
           })
           .then((response) => {
             console.log('average' + 10 + ': ' + response.data[0].avg);
-            averageArr[9] = Number(response.data[0].avg);
+            averageArr[9] = Number(Number(response.data[0].avg).toFixed(2))
           })
           .catch((error) => {
             console.log(error);
@@ -186,7 +188,7 @@ export default defineComponent({
           })
           .then((response) => {
             console.log('average' + 11 + ': ' + response.data[0].avg);
-            averageArr[10] = Number(response.data[0].avg);
+            averageArr[10] = Number(Number(response.data[0].avg).toFixed(2));
           })
           .catch((error) => {
             console.log(error);
