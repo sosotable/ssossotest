@@ -10,7 +10,13 @@
             나의 음식 취향을 대한민국 평균과 비교해보세요
           </div>
         </q-card-section>
-        <q-btn class = "float-right" flat color="dark" label="시작하기" @click="start" />
+        <q-btn
+          class="float-right"
+          flat
+          color="dark"
+          label="시작하기"
+          @click="start"
+        />
       </q-card>
     </div>
     <div v-if="this.question && this.questionId < this.averageModel.length">
@@ -26,7 +32,13 @@
                 }}
                 <q-img
                   :src="`/images/average/${questionId}.png`"
-                  style="width: 100%; height: 13pc ;margin-top: 10px; margin-left: 0; margin-right: 0px"
+                  style="
+                    width: 100%;
+                    height: 13pc;
+                    margin-top: 10px;
+                    margin-left: 0;
+                    margin-right: 0px;
+                  "
                 />
               </h6>
               <div class="q-pa-md">
@@ -53,26 +65,30 @@
                 {{ averageModel[questionId].question }}
                 <q-img
                   :src="`/images/average/${questionId}.png`"
-                  style="width: 100%; height: 13pc ;margin-top: 10px; margin-left: 0; margin-right: 0px"
+                  style="
+                    width: 100%;
+                    height: 13pc;
+                    margin-top: 10px;
+                    margin-left: 0;
+                    margin-right: 0px;
+                  "
                 />
               </h6>
-              <transition
-                style="padding: 0 10px 0 0"
-              >
-              <div v-if="!selectedFlag">
-                <div
-                  v-for="(item, i) in this.averageModel[questionId].answer"
-                  :key="i"
-                >
-                  <q-btn
-                    color="white"
-                    text-color="black"
-                    style="width: 100%"
-                    @click="select(i)"
-                    :label="item.answer"
-                  />
+              <transition style="padding: 0 10px 0 0">
+                <div v-if="!selectedFlag">
+                  <div
+                    v-for="(item, i) in this.averageModel[questionId].answer"
+                    :key="i"
+                  >
+                    <q-btn
+                      color="white"
+                      text-color="black"
+                      style="width: 100%"
+                      @click="select(i)"
+                      :label="item.answer"
+                    />
+                  </div>
                 </div>
-              </div>
               </transition>
             </div>
           </div>
@@ -95,7 +111,7 @@ export default defineComponent({
     return {
       averageModel,
       selectedAnswerList,
-      avgString
+      avgString,
     };
   },
   data() {
@@ -110,7 +126,7 @@ export default defineComponent({
       selectedFlag: false,
       rangeValue: 0,
       selectedAnswer: '',
-      resultList: [{answer: ""}],
+      resultList: [{ answer: '' }],
       resultString: '',
     };
   },
@@ -129,17 +145,21 @@ export default defineComponent({
       this.questionId += 1;
       this.selectedFlag = false;
 
-      if (this.questionId == this.averageModel.length
-      && process.env.DAO_ENDPOINT != undefined) {
-
-        this.resultString = JSON.stringify(this.selectedAnswerList).slice(1,-1)
+      if (
+        this.questionId == this.averageModel.length &&
+        process.env.DAO_ENDPOINT != undefined
+      ) {
+        this.resultString = JSON.stringify(this.selectedAnswerList).slice(
+          1,
+          -1
+        );
 
         // MARK: 결과 값 insert
         axios
           .post(process.env.DAO_ENDPOINT, {
             DML: 'INSERT',
             table: 'average_result',
-            values: this.resultString
+            values: this.resultString,
           })
           .then((response) => {
             console.log(response);
@@ -152,11 +172,10 @@ export default defineComponent({
 
         this.$router.push({
           path: '/result/calc-average',
-          query: { result: encodeURI(JSON.stringify(this.selectedAnswerList))
-          },
+          query: { result: encodeURI(JSON.stringify(this.selectedAnswerList)) },
         });
       }
-    }
+    },
   },
 });
 </script>

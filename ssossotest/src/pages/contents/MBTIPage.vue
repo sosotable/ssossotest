@@ -11,7 +11,13 @@
             상황에서<br />나에게 맞는 선택을 하고 결과를 확인해보세요!
           </div>
         </q-card-section>
-        <q-btn class = "float-right" flat color="dark" label="시작하기" @click="start" />
+        <q-btn
+          class="float-right"
+          flat
+          color="dark"
+          label="시작하기"
+          @click="start"
+        />
       </q-card>
     </div>
     <div v-if="this.question && this.questionId < this.mbtiModel.length">
