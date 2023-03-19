@@ -54,10 +54,12 @@ export default defineComponent({
       if (this.user_nickname !== '') {
         this.$q.sessionStorage.set('user_nickname', this.user_nickname);
         if (this.$route.query.friend_id !== undefined) {
-          console.log(this.$route.query.friend)
-          console.log(this.$route.query.friend_id)
-          console.log(this.$route.query.content)
-          const query = encodeURI(`?friend_id=${this.$route.query.friend_id}&friend=${this.$route.query.friend}`);
+          console.log(this.$route.query.friend);
+          console.log(this.$route.query.friend_id);
+          console.log(this.$route.query.content);
+          const query = encodeURI(
+            `?friend_id=${this.$route.query.friend_id}&friend=${this.$route.query.friend}`
+          );
           this.$router.push(`/content/${this.$route.query.content}${query}`);
         } else {
           this.$router.push('/main');
