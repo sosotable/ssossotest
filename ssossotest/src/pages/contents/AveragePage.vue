@@ -152,7 +152,7 @@ export default defineComponent({
 
         this.$router.push({
           path: '/result/calc-average',
-          query: { result: (JSON.stringify(this.selectedAnswerList))
+          query: { result: encodeURI(JSON.stringify(this.selectedAnswerList))
           },
         });
       }

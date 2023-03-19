@@ -14,7 +14,7 @@ import { defineComponent } from 'vue';
 export default defineComponent({
   name: "AverageCalcPage",
   setup() {
-    let avgString: string | undefined;
+    let avgString: string | any;
     return {
       avgString
     };
@@ -29,7 +29,7 @@ export default defineComponent({
       this.$router.push({
         path: '/result/average',
         query: { result: (this.$route.query.result),
-          avg: (this.avgString)
+          avg: encodeURI(this.avgString)
         },
       });
     })

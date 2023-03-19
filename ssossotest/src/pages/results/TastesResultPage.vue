@@ -8,9 +8,17 @@
             <h6><p class="card-title">  {{model.question[0]}}</p></h6>
             <q-separator/>
             <q-separator/>
-            <text-h6><p class = "card-subtitle mb-2 text-muted"> {{tasteModel[index].answer[tasteModel[index].result].answer}}</p></text-h6>
             <div v-if="friendResult">
-              <text-h6><p class = "card-subtitle mb-2 text-muted"> {{friendResult[index]}}</p></text-h6>
+              <div v-if="resultFriend[index] == tasteModel[index].answer[tasteModel[index].result].answer">
+                <text-h6><p class = "card-subtitle mb-2 text-muted" style="font-weight: bold">맞았어요! </p></text-h6>
+              </div>
+              <div v-else>
+                <text-h6><p class = "card-subtitle mb-2 text-muted" style="font-weight: bold">틀렸어요! </p></text-h6>
+              </div>
+            </div>
+            <text-h6><p class = "card-subtitle mb-2 text-muted">내가 선택한 답: {{tasteModel[index].answer[tasteModel[index].result].answer}}</p></text-h6>
+            <div v-if="friendResult">
+              <text-h6><p class = "card-subtitle mb-2 text-muted">친구가 선택한 답: {{resultFriend[index]}}</p></text-h6>
             </div>
             <q-separator/><q-separator/><q-separator/><q-separator/>
           </div>
