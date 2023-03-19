@@ -24,6 +24,10 @@
                   rangeValue +
                   averageModel[questionId].answer[0].unit
                 }}
+                <q-img
+                  :src="`/images/average/${questionId}.png`"
+                  style="width: 100%; height: 13pc ;margin-top: 10px; margin-left: 0; margin-right: 0px"
+                />
               </h6>
               <div class="q-pa-md">
                 <q-slider
@@ -45,9 +49,16 @@
             </div>
 
             <div v-else-if="this.averageModel[questionId].type === 'button'">
-              <h6 class="card text-center">
+              <h6 class="card text-center" style="margin-top: 10px">
                 {{ averageModel[questionId].question }}
+                <q-img
+                  :src="`/images/average/${questionId}.png`"
+                  style="width: 100%; height: 13pc ;margin-top: 10px; margin-left: 0; margin-right: 0px"
+                />
               </h6>
+              <transition
+                style="padding: 0 10px 0 0"
+              >
               <div v-if="!selectedFlag">
                 <div
                   v-for="(item, i) in this.averageModel[questionId].answer"
@@ -62,6 +73,7 @@
                   />
                 </div>
               </div>
+              </transition>
             </div>
           </div>
         </div>
