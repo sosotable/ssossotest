@@ -1,25 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-<<<<<<< HEAD
-  <component name="PublishConfigData" serverName="ssossotest" remoteFilesAllowedToDisappearOnAutoupload="false">
-    <serverData>
-      <paths name="ssossotest">
-        <serverdata>
-          <mappings>
-            <mapping local="$PROJECT_DIR$" web="/" />
-          </mappings>
-        </serverdata>
-      </paths>
-      <paths name="ssossotest-server">
-=======
-
->>>>>>> 4d0d1a67363ce1eeec5371205a462c5ee72b8174
-        <serverdata>
-          <mappings>
-            <mapping local="$PROJECT_DIR$" web="/" />
-          </mappings>
-        </serverdata>
-      </paths>
-    </serverData>
-  </component>
+  <component name="PublishConfigData" serverName="ssossotest" remoteFilesAllowedToDisappearOnAutoupload="false" />
 </project>
