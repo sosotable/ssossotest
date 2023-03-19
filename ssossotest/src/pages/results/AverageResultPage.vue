@@ -90,8 +90,8 @@ export default defineComponent({
       const avgQuery: string | any = this.$route.query.avg;
       const nickName: string | any = this.$q.sessionStorage.getItem('user_nickname')
 
-      this.resultList = JSON.parse(resultQuery);
-      this.averageList = JSON.parse(avgQuery);
+      this.resultList = JSON.parse(decodeURI(resultQuery));
+      this.averageList = JSON.parse(decodeURI(avgQuery));
 
       this.userName = nickName;
     }
