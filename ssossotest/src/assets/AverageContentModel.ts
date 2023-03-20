@@ -17,7 +17,7 @@ export const averageModel: AverageContentModel[] = [
   },
   {
     id: 1,
-    question: '맵기 단계',
+    question: '매운 걸 얼마나 잘 먹나요?',
     answer: [
       { answer: '1단계: 못 먹음', score: 0 },
       { answer: '2단계: 진라면 순한맛', score: 1 },
@@ -30,7 +30,7 @@ export const averageModel: AverageContentModel[] = [
   },
   {
     id: 2,
-    question: '신 맛 단계',
+    question: '신 걸 얼마나 잘 먹나요?',
     answer: [
       { answer: '1단계: 못 먹음', score: 0 },
       { answer: '2단계: 새콤달콤', score: 1 },
@@ -85,7 +85,7 @@ export const averageModel: AverageContentModel[] = [
   },
   {
     id: 6,
-    question: '하루 ',
+    question: '하루에 식사 ',
     answer: [
       {
         pMin: 0,

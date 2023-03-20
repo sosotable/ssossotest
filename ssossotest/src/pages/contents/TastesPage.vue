@@ -3,12 +3,12 @@
     <div v-if="this.title" class="row items-start q-gutter-md">
       <div v-if="friendResult">
         <q-card class="my-card" flat bordered>
-          <q-img src="'src/assets/images/tastes/title.jpg'" />
+          <q-img src="'/images/tastes/title.jpg'" />
           <q-card-section>
             <div class="text-overline text-orange-9"></div>
-            <div class="text-h5 q-mt-sm q-mb-xs">친구 음식 취향 맞추기</div>
+            <div class="text-h5 q-mt-sm q-mb-xs">친구 음식 취향 맞히기</div>
             <div class="text-caption text-grey">
-              친구의 음식 취향을 맞춰보세요!
+              친구의 음식 취향을 맞혀보세요!
             </div>
           </q-card-section>
           <q-btn
@@ -23,12 +23,12 @@
 
       <div v-else>
         <q-card class="my-card" flat bordered>
-          <q-img src="src/assets/images/tastes/title.jpg" />
+          <q-img src="/images/tastes/title.jpg" />
           <q-card-section>
             <div class="text-overline text-orange-9"></div>
-            <div class="text-h5 q-mt-sm q-mb-xs">음식 취향 맞추기</div>
+            <div class="text-h5 q-mt-sm q-mb-xs">음식 취향 맞히기</div>
             <div class="text-caption text-grey">
-              나의 음식 취향을 기록하고 친구들의 음식 취향을 맞춰보세요!
+              나의 음식 취향을 기록하고 친구들의 음식 취향을 맞혀보세요!
             </div>
           </q-card-section>
           <q-btn

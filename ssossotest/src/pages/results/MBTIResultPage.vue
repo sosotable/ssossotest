@@ -212,7 +212,7 @@ export default defineComponent({
           'user_nickname'
         )}&content=mbti`
       );
-      copy(`http://127.0.0.1:9100${query}`);
+      copy(`http://ssossotest.com${query}`);
       alert('링크가 클립보드에 공유되었어요!');
     },
   },

@@ -2,7 +2,7 @@
   <q-page class="row items-center justify-evenly">
     <div v-if="this.title" class="row items-start q-gutter-md">
       <q-card class="my-card" flat bordered>
-        <q-img src="src/assets/images/average/title.jpeg" />
+        <q-img src="/images/average/title.jpg" />
         <q-card-section>
           <div class="text-overline text-orange-9"></div>
           <div class="text-h5 q-mt-sm q-mb-xs">대한민국 음식 평균</div>
