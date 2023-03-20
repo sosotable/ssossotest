@@ -51,12 +51,14 @@
                   label
                   color="orange"
                 />
-                <q-btn
-                  flat
-                  color="dark"
-                  label="다음"
-                  @click="select(rangeValue)"
-                />
+                <div style="display: flex; justify-content: flex-end;">
+                  <q-btn
+                    flat
+                    color="dark"
+                    label="다음"
+                    @click="select(rangeValue)"
+                  />
+                </div>
               </div>
             </div>
 

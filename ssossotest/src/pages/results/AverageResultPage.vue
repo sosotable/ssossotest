@@ -3,8 +3,7 @@
     <div class="row items-start">
       <q-card class="my-card" flat bordered>
         <q-card-section style="width: 300px">
-          <div class="text-orange-9 text-center" style="height: 50px">
-          </div>
+          <div class="text-orange-9 text-center" style="height: 50px"/>
           <div class="q-ma-lg text-center text-h6">
             <div v-if="this.userName">
               {{ this.userName }}님의 결과
@@ -73,11 +72,11 @@
                       <div class="title-div">평균</div>
                       <div style="width: 90px">
                         {{ item.answer[0].answer }} :
-                        {{ 100 - averageList[i] * 100 }}%
+                        {{ 100 - averageList[i].toFixed(2) * 100 }}%
                       </div>
                       <div>
                         {{ item.answer[1].answer }} :
-                        {{ averageList[i] * 100 }}%
+                        {{ averageList[i].toFixed(2) * 100 }}%
                       </div>
                     </div>
 

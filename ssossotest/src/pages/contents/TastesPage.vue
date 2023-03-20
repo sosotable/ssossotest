@@ -98,8 +98,10 @@ import { types } from 'util';
 export default defineComponent({
   name: 'TASTEPage',
   setup() {
+    const selectedAnswerList: any[] = [];
     return {
       tasteModel,
+      selectedAnswerList,
     };
   },
   data() {
@@ -113,12 +115,15 @@ export default defineComponent({
       selectedFlag: false,
       selectedAnswer: '',
       friendResult: false,
-      friend: [],
+      resultFriend: [],
+      score: 0
     };
   },
   mounted() {
     if (this.$route.query.friend_id != undefined) {
       this.friendResult = true;
+      const friendQuery: string | any = this.$route.query.friend;
+      this.resultFriend = JSON.parse((friendQuery));
     }
     console.log(this.$route.query);
     console.log(this.$route.query.friend);
@@ -134,51 +139,44 @@ export default defineComponent({
     // MARK: 문제 버튼 선택 시
     select: function (selected: number) {
       this.selectedFlag = true;
-      this.selectedAnswer = tasteModel[this.questionId].answer[selected].answer;
-      console.log(tasteModel[this.questionId].answer[selected].answer);
-      console.log(this.selectedAnswer);
+      this.selectedAnswerList.push(selected);
       this.tasteModel[this.questionId].result = selected;
       setTimeout(() => {
         this.questionId += 1;
         this.selectedFlag = false;
 
+        const nickName: string | any =
+          this.$q.sessionStorage.getItem('user_nickname');
+
+        if (this.$route.query.friend !== undefined &&
+        selected === Number(this.resultFriend[this.questionId-1])) {
+          this.score++;
+        }
+
         if (this.questionId == this.tasteModel.length) {
-          let result: any = [];
-          for (let i = 0; i < this.tasteModel.length; i++) {
-            result.push(tasteModel[i].answer[this.tasteModel[i].result].answer);
-          }
-          console.log(result);
-
-          if (this.$route.query.friend_id === undefined) {
-            console.log('메인');
-
+          if (this.$route.query.friend === undefined) {
+            console.log("친구 X");
             // MARK: 결과 페이지로 라우팅, 결과는 쿼리스트링을 통해 전달
-            axios.post('/result/tastes', result);
+            axios.post('/result/tastes', this.selectedAnswerList);
+
             this.$router.push({
               path: '/result/tastes',
-              query: { result: encodeURI(JSON.stringify(result)) },
+              query: { result: encodeURI(JSON.stringify(this.selectedAnswerList)),
+              id: encodeURI(nickName)},
             });
           }
 
           // MARK: 공유받아서 들어온 경우
           else {
-            let friend: any = [];
-            friend.push(this.$route.query.friend);
-            console.log(friend);
-            console.log(friend[0]);
-            console.log(friend[1]);
-
-            let friend__result = friend[0].split(',');
-
-            console.log(friend__result);
-            console.log('친구');
-            console.log(this.$route.query.friend);
+            console.log("친구 O");
             this.$router.push({
               path: '/result/tastes',
               query: {
-                result: encodeURI(JSON.stringify(result)),
+                result: encodeURI(JSON.stringify(this.selectedAnswerList)),
                 friend_id: encodeURI(String(this.$route.query.friend_id)),
-                friend_result: friend__result,
+                friend_result: (this.$route.query.friend),
+                id: encodeURI(nickName),
+                score: encodeURI(String(this.score))
               },
             });
           }
