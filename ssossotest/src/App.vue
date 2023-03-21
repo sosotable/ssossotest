@@ -1,4 +1,7 @@
 <template>
+  <head>
+    <link rel="icon" href="favicon.png">
+  </head>
   <router-view />
 </template>
 

@@ -3,7 +3,7 @@ import { TASTEContentModel } from 'components/tastemodels';
 export const tasteModel: TASTEContentModel[] = [
   {
     id: 0,
-    question: ['즐겨 먹는 마라탕 맵기 단계, 엽떡 맵기 단계'],
+    question: ['즐겨 먹는 엽떡 맵기 단계'],
     answer: [
       { answer: '마라탕 안 먹음', score: 1 },
       { answer: '착한맛', score: 2 },
@@ -23,7 +23,6 @@ export const tasteModel: TASTEContentModel[] = [
       { answer: '에이드', score: 3 },
       { answer: '스무디', score: 4 },
       { answer: '티', score: 5 },
-      { answer: '안 먹음', score: 6 },
     ],
     result: -1,
   },

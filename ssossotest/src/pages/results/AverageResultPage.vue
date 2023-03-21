@@ -2,10 +2,19 @@
   <q-page class="row items-center justify-evenly absolute-top">
     <div class="row items-start">
       <q-card class="my-card" flat bordered>
-        <q-img :src="`src/assets/images/average/${this.image}.jpeg`" />
         <q-card-section style="width: 300px">
-          <div class="text-overline text-orange-9">
-            {{ this.userName }}의 결과!
+          <div class="text-orange-9 text-center" style="height: 50px"/>
+          <div class="q-ma-lg text-center text-h6">
+            <div v-if="this.userName">
+              {{ this.userName }}님의 결과
+            </div>
+            <div v-else>
+              당신의 결과
+            </div>
+            <div class="q-ma-lg">
+              💌
+            </div>
+            <q-separator />
           </div>
           <div class="q-pa-none col">
             <q-list
@@ -13,48 +22,95 @@
               separator
               v-for="(item, i) in this.averageModel"
               :key="i"
+              style="margin-bottom: 30px; border-radius: 10px"
             >
-              <q-item-section style="font-weight: bold">{{
-                item.question
-              }}</q-item-section>
 
-              <div v-if="item.type === 'button' && item.answer[resultList[i]]">
-                <q-item-section
-                  >선택한 값 =>
-                  {{ item.answer[resultList[i]].answer }}</q-item-section
-                >
-                <q-item-section style="font-weight: bold">평균</q-item-section>
-                <div v-if="i === 1 || i === 2">
-                  <q-item-section>{{ averageList[i] }}단계</q-item-section>
+              <q-item-section insert>
+                <!-- 질문 -->
+                <div class="question-div">
+                  {{item.question}}
                 </div>
-                <div v-else>
-                  <q-item-section
-                    >{{ item.answer[0].answer }} :
-                    {{ 100 - averageList[i] * 100 }}%</q-item-section
-                  >
-                  <q-item-section
-                    >{{ item.answer[1].answer }} :
-                    {{ averageList[i] * 100 }}%</q-item-section
-                  >
-                </div>
-              </div>
 
-              <div v-else>
-                <q-item-section
-                  >선택한 값 =>
-                  {{ resultList[i] + item.answer[0].unit }}</q-item-section
-                >
-                <q-item-section style="font-weight: bold">평균</q-item-section>
-                <q-item-section>{{
-                  averageList[i] + item.answer[0].unit
-                }}</q-item-section>
-              </div>
+                <!-- 답변 -->
+                <!-- 버튼 -->
+                <div v-if="item.type === 'button' && item.answer[resultList[i]]"
+                class="answer-div">
+
+                  <!-- 버튼: 맵기 & 신 맛 단계 -->
+                  <div v-if="i === 1 || i === 2">
+                    <div class="compare-div">
+                      <div v-if="averageList[i] > resultList[i]"><b>못</b> 먹는 편이군요!</div>
+                      <div v-else-if="averageList[i] < resultList[i]">남들보다 <b>잘</b> 먹어요!</div>
+                      <div v-else><b>평균</b>이에요!</div>
+                    </div>
+
+                    <div class="my-answer-div">
+                      <div class="title-div">나</div>
+                      {{ item.answer[resultList[i]].answer }}
+                    </div>
+
+                    <div class="average-div">
+                      <div class="title-div">평균</div>
+                      {{ averageList[i] }}단계
+                    </div>
+                  </div>
+
+                  <!-- 버튼 이지선다형 -->
+                  <div v-else>
+                    <div class="compare-div">
+                      <div v-if="averageList[i] > resultList[i]">취향이 <b>마이너</b> 하군요!</div>
+                      <div v-else-if="averageList[i] < resultList[i]"><b>과반수 이상</b>의 사람과 취향이 같아요!</div>
+                      <div v-else>평균이에요!</div>
+                    </div>
+
+                    <div class="my-answer-div">
+                      <div class="title-div">나</div>
+                      {{ item.answer[resultList[i]].answer }}
+                    </div>
+
+                    <div class="average-div">
+                      <div class="title-div">평균</div>
+                      <div style="width: 90px">
+                        {{ item.answer[0].answer }} :
+                        {{ 100 - averageList[i].toFixed(2) * 100 }}%
+                      </div>
+                      <div>
+                        {{ item.answer[1].answer }} :
+                        {{ averageList[i].toFixed(2) * 100 }}%
+                      </div>
+                    </div>
+
+                  </div>
+
+                </div>
+
+                <!-- 숫자 답변 -->
+                <div v-else class="answer-div">
+                  <div class="compare-div">
+                    <div v-if="averageList[i] > resultList[i]"><b>못</b> 먹는 편이군요!</div>
+                    <div v-else-if="averageList[i] < resultList[i]">남들보다 <b>잘</b> 먹어요!</div>
+                    <div v-else><b>평균</b>이에요!</div>
+                  </div>
+
+                  <div class="my-answer-div">
+                    <div class="title-div">나</div>
+                    {{ resultList[i] + item.answer[0].unit }}
+                  </div>
+
+                  <div class="average-div">
+                    <div class="title-div">평균</div>
+                    {{averageList[i] + item.answer[0].unit }}
+                  </div>
+
+                </div>
+
+              </q-item-section>
             </q-list>
           </div>
         </q-card-section>
 
         <q-separator />
-        <router-link to="/main" style="width: 100%">
+        <router-link to="/main" style="width: 100%;  padding-bottom: 100px">
           <q-btn flat color="dark" style="width: 100%" label="처음으로" />
         </router-link>
       </q-card>
@@ -116,4 +172,30 @@ export default defineComponent({
   },
 });
 </script>
-<style scoped></style>
+<style scoped>
+.question-div{
+  background-color: #ffe5a6;
+  padding: 4px;
+  text-align: center;
+  font-size: larger;
+}
+.answer-div{
+  padding: 10px;
+}
+.my-answer-div{
+  margin-top: 10px;
+  display: flex;
+}
+.average-div{
+  margin-top: 5px;
+  display: flex;
+}
+.title-div{
+  width: 50px;
+  font-weight: bold;
+  color: #505050;
+}
+.compare-div{
+  color: #f57c00;
+}
+</style>
