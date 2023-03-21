@@ -141,16 +141,10 @@ export default defineComponent({
           axios
             .post('/result/mbti', this.mbtiModel)
             .then((response) => {
-              // MARK: response 결과를 받아 result파싱
-              const title = response.data.title;
-              const desc = response.data.desc;
-              const image = response.data.type;
               // MARK: 보안을 위해 uri인코딩
               const result = encodeURI(
                 JSON.stringify({
-                  title: title,
-                  desc: desc,
-                  image: image,
+                  mbti: response.data.mbti
                 })
               );
               if (this.$route.query.friend_id === undefined) {
