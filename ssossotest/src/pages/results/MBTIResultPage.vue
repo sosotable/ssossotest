@@ -1,71 +1,71 @@
 <template>
-  <q-page class="row items-center justify-evenly absolute-top">
-    <div class="row items-start">
+  <q-page style="width: 100%;" class="column items-center justify-center absolute-center">
+    <q-card style="width: 100%;" class="my-card" flat bordered>
+      <div style="text-align: center;">
+        <h6 style="margin: 20px auto 10px auto;">
+          {{resultTitle}}
+        </h6>
+        <h6 style="margin: 10px;">
+          💌
+        </h6>
+      </div>
+      <div class="flex justify-center">
+        <q-img class="rounded-borders" style="width: 100vh" :src="`/images/mbti/${this.mbti}.jpeg`" />
+      </div>
 
-      <q-card class="my-card" flat bordered>
-        <div style="text-align: center;">
-          <h5 style="margin: 20px auto 10px auto;">
-            {{resultTitle}}
-          </h5>
-          <h5 style="margin: 10px;">
-            💌
-          </h5>
+      <q-card-section>
+        <div class="text-h6">{{ this.title }} : {{ this.mbti }}</div>
+        <div class="text-caption text-grey" v-for="d in desc" v-bind:key="d">
+          {{ d }}
         </div>
-        <q-img :src="`/images/mbti/${this.mbti}.jpeg`" />
-        <q-card-section>
-          <div class="text-h5">{{ this.title }} : {{ this.mbti }}</div>
-          <div class="text-caption text-grey" v-for="d in desc" v-bind:key="d">
-            {{ d }}
-          </div>
-        </q-card-section>
-        <q-separator />
-        <!--        MARK: 공유받아서 들어온 경우에만 보여짐-->
-        <div v-if="friendResult">
-          <q-btn
-            class="text-black"
-            style="width: 100%"
-            label="친구의 결과는 뭐였을까요?"
-            icon="face"
-            color="white"
-            @click="open('bottom')"
-          />
-          <q-dialog v-model="dialog" :position="position">
-            <q-card style="width: 350px">
-              <q-img
-                :src="`/images/mbti/${this.friendResultData.image}.jpeg`"
-              />
-              <q-card-section>
-                <div class="text-overline text-orange-9">친구의 결과!</div>
-                <div class="text-h5 q-mt-sm q-mb-xs">
-                  {{ this.friendResultData.title }} :
-                  {{ this.friendResultData.image }}
-                </div>
-                <div
-                  class="text-caption text-grey"
-                  v-for="d in desc"
-                  v-bind:key="d"
-                >
-                  {{ d }}
-                </div>
-              </q-card-section>
-            </q-card>
-          </q-dialog>
-        </div>
-
-        <q-separator />
-        <router-link to="/main" style="width: 100%">
-          <q-btn flat color="dark" style="width: 100%" label="처음으로" />
-        </router-link>
-        <q-separator />
+      </q-card-section>
+      <q-separator />
+      <!--        MARK: 공유받아서 들어온 경우에만 보여짐-->
+      <div v-if="friendResult">
         <q-btn
-          flat
-          color="dark"
-          @click="copyLink"
+          class="text-black"
           style="width: 100%"
-          label="친구에게 공유하기"
+          label="친구의 결과는 뭐였을까요?"
+          icon="face"
+          color="white"
+          @click="open('bottom')"
         />
-      </q-card>
-    </div>
+        <q-dialog v-model="dialog" :position="position">
+          <q-card style="width: 350px">
+            <q-img
+              :src="`/images/mbti/${this.friendResultData.image}.jpeg`"
+            />
+            <q-card-section>
+              <div class="text-overline text-orange-9">친구의 결과!</div>
+              <div class="text-h5 q-mt-sm q-mb-xs">
+                {{ this.friendResultData.title }} :
+                {{ this.friendResultData.image }}
+              </div>
+              <div
+                class="text-caption text-grey"
+                v-for="d in desc"
+                v-bind:key="d"
+              >
+                {{ d }}
+              </div>
+            </q-card-section>
+          </q-card>
+        </q-dialog>
+      </div>
+
+      <q-separator />
+      <router-link to="/main" style="width: 100%">
+        <q-btn flat color="dark" style="width: 100%" label="처음으로" />
+      </router-link>
+      <q-separator />
+      <q-btn
+        flat
+        color="dark"
+        @click="copyLink"
+        style="width: 100%"
+        label="친구에게 공유하기"
+      />
+    </q-card>
   </q-page>
 </template>
 
