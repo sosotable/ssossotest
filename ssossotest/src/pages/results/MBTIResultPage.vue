@@ -36,10 +36,9 @@
               :src="`/images/mbti/${this.friendResultData.image}.jpeg`"
             />
             <q-card-section>
-              <div class="text-overline text-orange-9">친구의 결과!</div>
+              <div class="text-overline text-orange-9">{{this.friendId}}의 결과!</div>
               <div class="text-h5 q-mt-sm q-mb-xs">
-                {{ this.friendResultData.title }} :
-                {{ this.friendResultData.image }}
+                {{ this.friendResultData.title }}
               </div>
               <div
                 class="text-caption text-grey"
@@ -99,6 +98,7 @@ export default defineComponent({
       desc: ref<string[]>([]),
       friendResult: false,
       friendResultData: {},
+      friendId: '',
     };
   },
   // MARK: 페이지 라우팅 시 받아진 쿼리스트링 처리
@@ -132,11 +132,14 @@ export default defineComponent({
         process.env.DAO_ENDPOINT != undefined
       ) {
         const resultQuery: string | any = this.$route.query.result;
+        const friend: string | any = this.$route.query.friend_id;
         // MARK: 쿼리스트링 디코딩
         const decodedResult = JSON.parse(decodeURI(resultQuery));
+        const decodedFriend = JSON.parse(decodeURI(friend));
         this.mbti = decodedResult.mbti
         this.title = mbtiResultList[this.mbti as keyof typeof mbtiResultList].name;
         this.desc = mbtiResultList[this.mbti as keyof typeof mbtiResultList].desc;
+        this.friendId = decodedFriend
         // MARK: 세션에 저장된 사용자 nickname으로 기록된 mbti결과가 있는지 확인함
         axios
           .post(process.env.DAO_ENDPOINT, {
@@ -230,7 +233,7 @@ export default defineComponent({
         )}&content=mbti`
       );
       copy(`http://ssossotest.com${query}`);
-      // copy(`http://localhost:9100${query}`);
+      //copy(`http://localhost:9100${query}`);
       alert('링크가 클립보드에 공유되었어요!');
     },
   },
