@@ -115,6 +115,14 @@
         <router-link to="/main" style="width: 100%; padding-bottom: 100px">
           <q-btn flat color="dark" style="width: 100%" label="처음으로" />
         </router-link>
+        <q-separator />
+        <q-btn
+          flat
+          color="dark"
+          @click="copyLink"
+          style="width: 100%"
+          label="친구에게 공유하기"
+        />
       </q-card>
     </div>
   </q-page>
@@ -171,6 +179,34 @@ export default defineComponent({
 
       this.userName = nickName;
     }
+  },
+  methods: {
+    // MARK: 공유하기 클릭 시 클립보드에 url 복사
+    copyLink: function () {
+      const copy = (text: string) => {
+        // 임시의 textarea 생성
+        const $textarea = document.createElement('textarea');
+
+        // body 요소에 존재해야 복사가 진행됨
+        document.body.appendChild($textarea);
+
+        // 복사할 특정 텍스트를 임시의 textarea에 넣어주고 모두 셀렉션 상태
+        $textarea.value = text;
+        $textarea.select();
+
+        // 복사 후 textarea 지우기
+        document.execCommand('copy');
+        document.body.removeChild($textarea);
+      };
+      const query = encodeURI(
+        `?friend_id=${this.$q.sessionStorage.getItem(
+          'user_nickname'
+        )}&content=average`
+      );
+      copy(`http://ssossotest.com${query}`);
+      //copy(`http://localhost:9100${query}`);
+      alert('링크가 클립보드에 공유되었어요!');
+    },
   },
 });
 </script>
