@@ -111,6 +111,9 @@ export default defineComponent({
         process.env.DAO_ENDPOINT != undefined
       ) {
         this.friendResult = true;
+        const friend: string | any = this.$route.query.friend_id;
+        console.log(friend)
+        this.friendId = friend
         axios
           .post(process.env.DAO_ENDPOINT, {
             DML: 'SELECT',
@@ -132,14 +135,11 @@ export default defineComponent({
         process.env.DAO_ENDPOINT != undefined
       ) {
         const resultQuery: string | any = this.$route.query.result;
-        const friend: string | any = this.$route.query.friend_id;
         // MARK: 쿼리스트링 디코딩
         const decodedResult = JSON.parse(decodeURI(resultQuery));
-        const decodedFriend = JSON.parse(decodeURI(friend));
         this.mbti = decodedResult.mbti
         this.title = mbtiResultList[this.mbti as keyof typeof mbtiResultList].name;
         this.desc = mbtiResultList[this.mbti as keyof typeof mbtiResultList].desc;
-        this.friendId = decodedFriend
         // MARK: 세션에 저장된 사용자 nickname으로 기록된 mbti결과가 있는지 확인함
         axios
           .post(process.env.DAO_ENDPOINT, {
@@ -232,8 +232,8 @@ export default defineComponent({
           'user_nickname'
         )}&content=mbti`
       );
-      copy(`http://ssossotest.com${query}`);
-      //copy(`http://localhost:9100${query}`);
+      //copy(`http://ssossotest.com${query}`);
+      copy(`http://localhost:9100${query}`);
       alert('링크가 클립보드에 공유되었어요!');
     },
   },
