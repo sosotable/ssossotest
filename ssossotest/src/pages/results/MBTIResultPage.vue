@@ -1,9 +1,9 @@
 <template>
   <q-page style="width: 100%;" class="column items-center justify-center absolute-center">
-    <q-card style="width: 100%;" class="my-card" flat bordered>
+    <q-card style="width: 100%; margin-top: 60px; margin-bottom: 50px" class="my-card" flat bordered>
       <div style="text-align: center;">
-        <h6 style="margin: 20px auto 10px auto;">
-          {{resultTitle}}
+        <h6 style="margin: 50px auto 10px auto;">
+          당신은 ...
         </h6>
         <h6 style="margin: 10px;">
           💌
@@ -14,7 +14,7 @@
       </div>
 
       <q-card-section>
-        <div class="text-h6">{{ this.title }} : {{ this.mbti }}</div>
+        <div class="text-h6" style="margin-bottom: 10px">{{ this.title }}</div>
         <div class="text-caption text-grey" v-for="d in desc" v-bind:key="d">
           {{ d }}
         </div>

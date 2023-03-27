@@ -1,33 +1,30 @@
 <template>
   <q-page class="row items-center justify-evenly absolute-top">
     <div class="row items-start">
-      <q-card class="my-card" flat bordered>
+      <q-card class="my-card" style="margin-bottom: 100px" flat bordered>
         <q-card-section style="width: 300px">
-          <div class="text-orange-9 text-center" style="height: 50px"/>
+          <div class="text-orange-9 text-center" style="height: 50px" />
           <div class="q-ma-lg text-center text-h6">
             <div v-if="friendResult">
               <div v-if="ownerName !== undefined">
                 친구 {{ this.ownerName }}님의 취향
               </div>
-              <div v-else>
-                친구의 취향
-              </div>
+              <div v-else>친구의 취향</div>
             </div>
             <div v-else>
               <div v-if="this.userName !== undefined">
                 {{ this.userName }}님의 취향
               </div>
-              <div v-else>
-                당신의 취향
-              </div>
+              <div v-else>당신의 취향</div>
             </div>
 
-            <div class="q-ma-lg">
-              💌
-            </div>
+            <div class="q-ma-lg">💌</div>
 
-            <div v-if="friendResult" class="q-ma-lg text-subtitle1 text-deep-orange-10">
-              점수 {{this.score}}/{{resultFriend.length}}
+            <div
+              v-if="friendResult"
+              class="q-ma-lg text-subtitle1 text-deep-orange-10"
+            >
+              점수 {{ this.score }}/{{ resultFriend.length }}
               <q-separator />
             </div>
           </div>
@@ -35,37 +32,24 @@
             <q-list
               bordered
               separator
-              style="margin-bottom: 50px; border-radius: 10px">
-              <q-item-section
-                v-if="friendResult">
-                <div class="question-div">
-                  예시
+              style="margin-bottom: 50px; border-radius: 10px"
+            >
+              <q-item-section v-if="friendResult">
+                <div class="question-div">예시</div>
+                <div class="answer-div selected-div">
+                  <div class="selected-mark-div">⭕</div>
+                  <div class="selected-answer-div">← 친구가 고른 정답</div>
+                  <div class="selected-mark-div"></div>
                 </div>
                 <div class="answer-div selected-div">
-                  <div class="selected-mark-div">
-                    ⭕
-                  </div>
-                  <div class="selected-answer-div">
-                    ← 친구가 고른 정답
-                  </div>
-                  <div class="selected-mark-div">
-
-                  </div>
-                </div>
-                <div class="answer-div selected-div">
-                  <div class="selected-mark-div">
-
-                  </div>
+                  <div class="selected-mark-div"></div>
                   <div class="selected-answer-div text-weight-medium">
                     내가 고른 오답 →
                   </div>
-                  <div class="selected-mark-div">
-                    ❌
-                  </div>
+                  <div class="selected-mark-div">❌</div>
                 </div>
               </q-item-section>
             </q-list>
-
 
             <q-list
               bordered
@@ -84,10 +68,7 @@
                   <div v-if="resultFriend[index] === resultList[index]">
                     정답입니다!
                   </div>
-                  <div v-else>
-                    틀렸습니다.
-                  </div>
-
+                  <div v-else>틀렸습니다.</div>
                 </div>
 
                 <!-- 답변 -->
@@ -100,80 +81,71 @@
                   <div v-if="friendResult">
                     <!-- 맞았을 때 -->
                     <div v-if="resultFriend[index] === resultList[index]">
-                      <div v-if="i === resultList[index] + 1"
-                           class="selected-div">
-                        <div class="selected-mark-div">
-                          ⭕
-                        </div>
+                      <div
+                        v-if="i === resultList[index] + 1"
+                        class="selected-div"
+                      >
+                        <div class="selected-mark-div">⭕</div>
                         <div class="selected-answer-div">
-                          {{tasteModel[index].answer[i - 1].answer}}
+                          {{ tasteModel[index].answer[i - 1].answer }}
                         </div>
-                        <div class="selected-mark-div">
-                        </div>
+                        <div class="selected-mark-div"></div>
                       </div>
                       <div v-else>
-                        {{tasteModel[index].answer[i - 1].answer}}
+                        {{ tasteModel[index].answer[i - 1].answer }}
                       </div>
                     </div>
 
                     <!-- 틀렸을 때-->
                     <div v-else>
                       <!-- 친구 정답-->
-                      <div v-if="i === resultFriend[index] + 1"
-                           class="selected-div">
-                        <div class="selected-mark-div">
-                          ⭕
-                        </div>
+                      <div
+                        v-if="i === resultFriend[index] + 1"
+                        class="selected-div"
+                      >
+                        <div class="selected-mark-div">⭕</div>
                         <div class="selected-answer-div">
-                          {{tasteModel[index].answer[i - 1].answer}}
+                          {{ tasteModel[index].answer[i - 1].answer }}
                         </div>
-                        <div class="selected-mark-div">
-                        </div>
+                        <div class="selected-mark-div"></div>
                       </div>
 
                       <!-- 내가 고른 답-->
-                      <div v-else-if="i === resultList[index] + 1"
-                           class="selected-div">
-                        <div class="selected-mark-div">
-                        </div>
+                      <div
+                        v-else-if="i === resultList[index] + 1"
+                        class="selected-div"
+                      >
+                        <div class="selected-mark-div"></div>
                         <div class="selected-answer-div text-weight-medium">
-                          {{tasteModel[index].answer[i - 1].answer}}
+                          {{ tasteModel[index].answer[i - 1].answer }}
                         </div>
-                        <div class="selected-mark-div">
-                          ❌
-                        </div>
+                        <div class="selected-mark-div">❌</div>
                       </div>
                       <div v-else>
-                        {{tasteModel[index].answer[i - 1].answer}}
+                        {{ tasteModel[index].answer[i - 1].answer }}
                       </div>
                     </div>
                   </div>
 
                   <!-- 테스트 생성 -->
                   <div v-else>
-                    <div v-if="i === resultList[index] + 1"
-                    class="selected-div">
-                      <div class="selected-mark-div">
-
-                      </div>
+                    <div
+                      v-if="i === resultList[index] + 1"
+                      class="selected-div"
+                    >
+                      <div class="selected-mark-div"></div>
                       <div class="selected-answer-div">
-                        {{tasteModel[index].answer[i - 1].answer}}
+                        {{ tasteModel[index].answer[i - 1].answer }}
                       </div>
-                      <div class="selected-mark-div">
-                        ✔
-                      </div>
-
+                      <div class="selected-mark-div">✔</div>
                     </div>
                     <div v-else>
-                      {{tasteModel[index].answer[i - 1].answer}}
+                      {{ tasteModel[index].answer[i - 1].answer }}
                     </div>
                   </div>
                 </div>
-
               </q-item-section>
-
             </q-list>
-
           </div>
         </q-card-section>
         <q-separator />
@@ -181,12 +153,12 @@
           <q-btn flat color="dark" style="width: 100%" label="처음으로" />
         </router-link>
         <q-separator />
-        <q-btn
+        <q-btn v-if="!friendResult"
           flat
           color="dark"
           @click="copyLink"
-          style="width: 100%;  margin-bottom: 100px"
-          label="친구에게 공유하기"
+          style="width: 100%;"
+          label="친구에게 나의 취향 테스트 공유하기"
         />
       </q-card>
     </div>
@@ -208,7 +180,7 @@ export default defineComponent({
       tasteModel,
       userName,
       ownerName,
-      score
+      score,
     };
   },
   data() {
@@ -227,7 +199,7 @@ export default defineComponent({
   // MARK: 페이지 라우팅 시 받아진 쿼리스트링 처리
   mounted() {
     this.userName = String(decodeURI(String(this.$route.query.id)));
-    console.log("userName: "+this.userName)
+    console.log('userName: ' + this.userName);
 
     if (this.$route.query.friend_id === undefined) {
       if (this.$route.query.result != null) {
@@ -235,10 +207,9 @@ export default defineComponent({
         // MARK: 쿼리스트링 디코딩
         this.resultList = JSON.parse(decodeURI(resultQuery));
       }
-    }
-    else {
+    } else {
       if (this.$route.query.result != null) {
-        console.log("친구!!!!!!!!")
+        console.log('친구!!!!!!!!');
         this.friendResult = true;
         const resultQuery: string | any = this.$route.query.result;
         const friendQuery: string | any = this.$route.query.friend_result;
@@ -250,10 +221,9 @@ export default defineComponent({
         this.resultFriend = JSON.parse(decodeURI(friendQuery));
         this.ownerName = String(decodeURI(ownerNameQuery));
         this.score = String(decodeURI(scoreQuery));
-        console.log("score: "+this.score)
+        console.log('score: ' + this.score);
       }
     }
-
   },
   methods: {
     // MARK: 공유하기 클릭 시 클립보드에 url 복사
@@ -273,10 +243,8 @@ export default defineComponent({
         document.execCommand('copy');
         document.body.removeChild($textarea);
       };
-      const query = (
-        `?friend_id=${this.$route.query.id}&content=tastes&friend=${this.$route.query.result}`
-      );
-      copy(`http://localhost:9100/${query}`);
+      const query = `?friend_id=${this.$route.query.id}&content=tastes&friend=${this.$route.query.result}`;
+      copy(`http://ssossotest.com/${query}`);
       alert('링크가 클립보드에 공유되었어요!');
     },
   },
@@ -284,32 +252,32 @@ export default defineComponent({
 </script>
 
 <style scoped>
-.question-div{
+.question-div {
   background-color: #ffe5a6;
   padding: 4px;
   text-align: center;
   font-size: larger;
 }
-.answer-div{
+.answer-div {
   padding: 10px;
   text-align: center;
   color: #505050;
 }
-.selected-div{
+.selected-div {
   display: flex;
   text-align: center;
   justify-content: space-between;
   font-weight: bold;
 }
-.selected-answer-div{
+.selected-answer-div {
   text-align: center;
   color: #000000;
 }
-.selected-mark-div{
+.selected-mark-div {
   width: 30px;
   color: #ff7300;
 }
-.compare-div{
+.compare-div {
   color: #f57c00;
   margin: 3px;
 }

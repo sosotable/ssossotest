@@ -1,6 +1,6 @@
 <template>
   <head>
-    <link rel="icon" href="favicon.png">
+    <link rel="icon" href="favicon.png" />
   </head>
   <router-view />
 </template>

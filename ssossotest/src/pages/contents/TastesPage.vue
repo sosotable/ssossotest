@@ -3,10 +3,13 @@
     <div v-if="this.title" class="row items-start q-gutter-md">
       <div v-if="friendResult">
         <q-card class="my-card" flat bordered>
-          <q-img src="'/images/tastes/title.jpg'" />
+          <q-img src="/images/tastes/title.jpg" />
           <q-card-section>
             <div class="text-overline text-orange-9"></div>
-            <div class="text-h5 q-mt-sm q-mb-xs">친구 음식 취향 맞히기</div>
+            <div v-if="friendId !== null" class="text-h5 q-mt-sm q-mb-xs">
+              {{friendId}}님의 음식 취향 맞히기
+            </div>
+            <div v-else class="text-h5 q-mt-sm q-mb-xs">음식 취향 맞히기</div>
             <div class="text-caption text-grey">
               친구의 음식 취향을 맞혀보세요!
             </div>
@@ -46,6 +49,8 @@
       <div class="q-pa-md row justify-center">
         <div style="width: 100%; max-width: 400px">
           <div class="absolute-top">
+            <q-linear-progress :value="questionId/tasteModel.length" color="warning"
+                               style="margin-top: -32px; margin-bottom: 35px" size="6px"/>
             <div
               class="card-header"
               style="background-color: transparent !important"
@@ -53,7 +58,7 @@
               <h6 class="card text-center" style="margin-top: 10px">
                 {{ this.tasteModel[questionId].question[0] }}
                 <q-img
-                  :src="`/images/tastes/${questionId}.png`"
+                  :src="`/images/tastes/${tasteModel[questionId].id}.png`"
                   style="
                     width: 100%;
                     height: 13pc;
@@ -99,9 +104,11 @@ export default defineComponent({
   name: 'TASTEPage',
   setup() {
     const selectedAnswerList: any[] = [];
+    let friendId: any = null;
     return {
       tasteModel,
       selectedAnswerList,
+      friendId,
     };
   },
   data() {
@@ -116,17 +123,20 @@ export default defineComponent({
       selectedAnswer: '',
       friendResult: false,
       resultFriend: [],
-      score: 0
+      score: 0,
     };
   },
   mounted() {
     if (this.$route.query.friend_id != undefined) {
       this.friendResult = true;
+      const friendIdQuery: string | any = this.$route.query.friend_id;
       const friendQuery: string | any = this.$route.query.friend;
-      this.resultFriend = JSON.parse((friendQuery));
+      this.friendId = String(friendIdQuery);
+      this.resultFriend = JSON.parse(friendQuery);
     }
     console.log(this.$route.query);
     console.log(this.$route.query.friend);
+    console.log("친구 닉네임: "+this.friendId);
 
     //&& process.env.DAO_ENDPOINT != undefined
   },
@@ -148,35 +158,39 @@ export default defineComponent({
         const nickName: string | any =
           this.$q.sessionStorage.getItem('user_nickname');
 
-        if (this.$route.query.friend !== undefined &&
-        selected === Number(this.resultFriend[this.questionId-1])) {
+        if (
+          this.$route.query.friend !== undefined &&
+          selected === Number(this.resultFriend[this.questionId - 1])
+        ) {
           this.score++;
         }
 
         if (this.questionId == this.tasteModel.length) {
           if (this.$route.query.friend === undefined) {
-            console.log("친구 X");
+            console.log('친구 X');
             // MARK: 결과 페이지로 라우팅, 결과는 쿼리스트링을 통해 전달
             axios.post('/result/tastes', this.selectedAnswerList);
 
             this.$router.push({
               path: '/result/tastes',
-              query: { result: encodeURI(JSON.stringify(this.selectedAnswerList)),
-              id: encodeURI(nickName)},
+              query: {
+                result: encodeURI(JSON.stringify(this.selectedAnswerList)),
+                id: encodeURI(nickName),
+              },
             });
           }
 
           // MARK: 공유받아서 들어온 경우
           else {
-            console.log("친구 O");
+            console.log('친구 O');
             this.$router.push({
               path: '/result/tastes',
               query: {
                 result: encodeURI(JSON.stringify(this.selectedAnswerList)),
                 friend_id: encodeURI(String(this.$route.query.friend_id)),
-                friend_result: (this.$route.query.friend),
+                friend_result: this.$route.query.friend,
                 id: encodeURI(nickName),
-                score: encodeURI(String(this.score))
+                score: encodeURI(String(this.score)),
               },
             });
           }
