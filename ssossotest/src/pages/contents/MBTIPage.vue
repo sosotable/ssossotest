@@ -24,6 +24,8 @@
       <div class="q-pa-md row justify-center">
         <div style="width: 100%; max-width: 400px">
           <div class="absolute-top">
+            <q-linear-progress :value="questionId/mbtiModel.length" color="warning"
+                               style="margin-top: -32px; margin-bottom: 35px" size="6px"/>
             <q-chat-message
               name="내면의 농담곰"
               avatar="https://i.pinimg.com/564x/43/09/78/43097860e53ce742582262908cfafff8.jpg"

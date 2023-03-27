@@ -23,6 +23,8 @@
       <div class="q-pa-md row justify-center">
         <div style="width: 100%; max-width: 400px">
           <div class="absolute-top">
+            <q-linear-progress :value="questionId/averageModel.length" color="warning"
+                               style="margin-top: -32px; margin-bottom: 35px" size="6px"/>
             <div v-if="this.averageModel[questionId].type === 'range'">
               <h6 class="card text-center">
                 {{
@@ -51,7 +53,7 @@
                   label
                   color="orange"
                 />
-                <div style="display: flex; justify-content: flex-end;">
+                <div style="display: flex; justify-content: flex-end">
                   <q-btn
                     flat
                     color="dark"
