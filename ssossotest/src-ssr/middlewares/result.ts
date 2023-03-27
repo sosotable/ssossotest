@@ -39,14 +39,11 @@ export default ssrMiddleware(
             result = new MBTIResult(answerResult);
             if (result instanceof MBTIResult) {
               result.factory();
+              // REFACTOR: 지금은 하나하나씩 send하는데 추후 나머지 구현 후 일괄적으로 처리 가능하도록 바꾸어야 할 것 같아요
+              res.send({
+                mbti: result.type[0]
+              });
             }
-            // REFACTOR: 지금은 하나하나씩 send하는데 추후 나머지 구현 후 일괄적으로 처리 가능하도록 바꾸어야 할 것 같아요
-            res.send({
-              image: result.resultTitle,
-              title: result.resultTitle,
-              desc: result.resultDesc,
-              type: result.type,
-            });
             break;
           case 'tastes':
             /** TODO: need to imple
