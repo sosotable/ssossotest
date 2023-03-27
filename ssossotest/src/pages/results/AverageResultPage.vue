@@ -49,7 +49,7 @@
 
                     <div class="average-div">
                       <div class="title-div">평균</div>
-                      {{ averageList[i] }}단계
+                      {{ ((averageList[i]) + 1).toFixed(2) }}단계
                     </div>
                   </div>
 
@@ -131,7 +131,7 @@
           color="dark"
           @click="copyLink"
           style="width: 100%"
-          label="친구에게 공유하기"
+          label="테스트 공유하기"
         />
       </q-card>
     </div>
