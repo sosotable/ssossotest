@@ -1,6 +1,7 @@
 <template>
   <q-page class="column items-center justify-evenly">
-    <q-spinner color="primary" size="5em" />
+    <q-spinner color="primary" size="5em" style="margin-top: 100px"/>
+    <div>평균 계산 중...</div>
   </q-page>
 </template>
 
