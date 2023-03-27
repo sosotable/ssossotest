@@ -84,16 +84,6 @@ export default class MBTIResult extends Result {
     // MARK: 계산된 mbti 속성값을 이용해 mbti point를 계산합니다
     this.mbti = this.MBTIPOINT[this.type[0]];
   }
-  setTitle() {
-    if (this.mbti !== undefined && this.mbti !== null) {
-      this.resultTitle[0] = resultModels.mbtiRestList[this.mbti].name;
-    }
-  }
-  setDescBuffer() {
-    if (this.mbti !== undefined && this.mbti !== null) {
-      this.resultDesc = resultModels.mbtiRestList[this.mbti].desc;
-    }
-  }
   factory() {
     /**MARK
      * template method 패턴 통해서 메서드 하나로 일괄처리
@@ -102,9 +92,5 @@ export default class MBTIResult extends Result {
     this.setType();
     // MARK: mbti point 계산
     this.setMBTI();
-    // MARK: mbti title 지정
-    this.setTitle();
-    // MARK: mbti 설명 text 지정
-    this.setDescBuffer();
   }
 }
