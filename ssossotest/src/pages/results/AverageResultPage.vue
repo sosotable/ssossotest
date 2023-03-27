@@ -56,11 +56,21 @@
                   <!-- 버튼 이지선다형 -->
                   <div v-else>
                     <div class="compare-div">
-                      <div v-if="averageList[i] > resultList[i]">
-                        취향이 <b>마이너</b> 하군요!
+                      <div v-if="averageList[i]< 0.5">
+                        <div v-if="resultList[i] === 0">
+                          <b>과반수 이상</b>의 사람과 취향이 같아요!
+                        </div>
+                        <div v-else>
+                          취향이 <b>마이너</b> 하군요!
+                        </div>
                       </div>
-                      <div v-else-if="averageList[i] < resultList[i]">
-                        <b>과반수 이상</b>의 사람과 취향이 같아요!
+                      <div v-else-if="averageList[i] > 0.5">
+                        <div v-if="resultList[i] === 1">
+                          <b>과반수 이상</b>의 사람과 취향이 같아요!
+                        </div>
+                        <div v-else>
+                          취향이 <b>마이너</b> 하군요!
+                        </div>
                       </div>
                       <div v-else>평균이에요!</div>
                     </div>
