@@ -9,10 +9,11 @@
     "lint": "eslint --ext .js,.ts,.vue ./",
     "format": "prettier --write \"**/*.{js,ts,vue,scss,html,md,json}\" --ignore-path .gitignore",
     "test": "echo \"No test specified\" && exit 0",
-    "dev": "quasar dev -m ssr",
-    "build": "quasar build -m ssr",
-    "build:pwa": "quasar build -m pwa",
-    "start": "pm2 start dist/ssr/index.js --watch"
+    "_comment" : "cross-env 모듈을 사용하여 개발 모드 인식",
+    "dev": "cross-env NODE_ENV=production quasar dev -m ssr",
+    "build": "cross-env NODE_ENV=production quasar build -m ssr",
+    "build:pwa": "cross-env NODE_ENV=production build -m pwa",
+    "start": "cross-env NODE_ENV=production pm2 start dist/ssr/index.js --watch"
   },
   "dependencies": {
     "@quasar/extras": "^1.0.0",

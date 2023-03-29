@@ -32,7 +32,6 @@ export default defineComponent({
     };
   },
   mounted() {
-    console.log(this.$route.query);
     // MARK: 사용자 세션 존재 시 main화면으로 라우팅
     if (this.$q.sessionStorage.has('user_nickname')) {
       this.$q.loading.show();

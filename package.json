@@ -1,5 +1,8 @@
 {
   "devDependencies": {
     "@types/node": "^18.15.3"
+  },
+  "dependencies": {
+    "cross-env": "^7.0.3"
   }
 }

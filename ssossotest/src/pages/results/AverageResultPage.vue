@@ -213,8 +213,14 @@ export default defineComponent({
           'user_nickname'
         )}&content=average`
       );
-      copy(`http://ssossotest.com${query}`);
-      //copy(`http://localhost:9100${query}`);
+      // MARK: 현재 모드가 개발 모드인지 배포 모드인지 확인하여 해당 주소값 복사
+      if(process.env.NODE_ENV == 'development') {
+        copy(`http://localhost:9100${query}`);
+      }
+      // MARK: process.env.NODE_ENV == 'production'
+      else {
+        copy(`http://ssossotest.com${query}`);
+      }
       alert('링크가 클립보드에 공유되었어요!');
     },
   },

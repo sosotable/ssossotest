@@ -98,7 +98,7 @@ export default defineComponent({
       desc: ref<string[]>([]),
       friendResult: false,
       friendResultData: {},
-      friendId: '',
+      friendId: ref<string>(''),
     };
   },
   // MARK: 페이지 라우팅 시 받아진 쿼리스트링 처리
@@ -112,8 +112,8 @@ export default defineComponent({
       ) {
         this.friendResult = true;
         const friend: string | any = this.$route.query.friend_id;
-        console.log(friend)
-        this.friendId = friend
+        // MARK: 친구 아이디 디코딩
+        this.friendId = decodeURI(friend)
         axios
           .post(process.env.DAO_ENDPOINT, {
             DML: 'SELECT',
@@ -232,8 +232,14 @@ export default defineComponent({
           'user_nickname'
         )}&content=mbti`
       );
-      copy(`http://ssossotest.com${query}`);
-      //copy(`http://localhost:9100${query}`);
+      // MARK: 현재 모드가 개발 모드인지 배포 모드인지 확인하여 해당 주소값 복사
+      if(process.env.NODE_ENV == 'development') {
+        copy(`http://localhost:9100${query}`);
+      }
+      // MARK: process.env.NODE_ENV == 'production'
+      else {
+        copy(`http://ssossotest.com${query}`);
+      }
       alert('링크가 클립보드에 공유되었어요!');
     },
   },
