@@ -28,7 +28,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
 
       - name: build files
-        working-directory: ./ssossotest/
+        working-directory: ./
         run: |
           npm i
           npm run build
