@@ -52,7 +52,7 @@ jobs:
 
       - name: deploy with AWS codeDeploy
         run: aws deploy create-deployment
-          --application-name app
+          --application-name ssossotest
           --deployment-config-name CodeDeployDefault.OneAtATime
           --deployment-group-name group
           --s3-location bucket=uds-cicd,bundleType=zip,key=public/cicd-app.zip
