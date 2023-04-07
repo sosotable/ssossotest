@@ -1,7 +1,7 @@
 <template>
   <q-page class="row items-center justify-evenly">
     <div v-if="this.title" class="row justify-center items-start absolute-top">
-      <q-card class="my-card" style="width: 100%" flat bordered>
+      <q-card class="my-card" flat bordered>
         <q-img src="/images/mbti/title.jpeg" />
         <q-card-section>
           <div class="text-overline text-orange-9"></div>
@@ -24,6 +24,7 @@
       <div class="q-pa-md row justify-center">
         <div style="width: 100%; max-width: 400px">
           <div class="absolute-top">
+            <div class="test-page">
             <q-linear-progress :value="questionId/mbtiModel.length" color="warning"
                                style="margin-top: -32px; margin-bottom: 35px" size="6px"/>
             <q-chat-message
@@ -64,11 +65,13 @@
                 <q-spinner-dots size="2rem" />
               </div>
             </q-chat-message>
+            </div>
           </div>
           <Transition
             class="absolute-bottom flex column"
             style="padding: 0 0 200px 0"
           >
+            <div class="test-page">
             <div v-if="!selectedFlag">
               <q-btn
                 color="white"
@@ -82,6 +85,7 @@
                 @click="select(2)"
                 :label="mbtiModel[questionId].answer[1].answer"
               />
+            </div>
             </div>
           </Transition>
         </div>

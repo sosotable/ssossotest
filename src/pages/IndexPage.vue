@@ -3,7 +3,7 @@
     <q-avatar rounded size="240px">
       <img src="/logo.png" />
     </q-avatar>
-    <div style="width: 100%; padding: 0 20% 0 25%">
+    <div @keyup.enter="onSubmit()" style="width: 100%; padding: 0 20% 0 25%">
       <q-input bottom-slots v-model="user_nickname" counter maxlength="16">
         <template v-slot:hint> 별명을 입력해주세요 </template>
         <template v-slot:after>

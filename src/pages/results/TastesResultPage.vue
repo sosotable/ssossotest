@@ -4,6 +4,7 @@
       <q-card class="my-card" style="margin-bottom: 100px" flat bordered>
         <q-card-section style="width: 300px">
           <div class="text-orange-9 text-center" style="height: 50px" />
+          <div class="result-page">
           <div class="q-ma-lg text-center text-h6">
             <div v-if="friendResult">
               <div v-if="ownerName !== undefined">
@@ -146,6 +147,7 @@
                 </div>
               </q-item-section>
             </q-list>
+          </div>
           </div>
         </q-card-section>
         <q-separator />
