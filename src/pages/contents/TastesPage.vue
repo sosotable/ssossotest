@@ -49,6 +49,7 @@
       <div class="q-pa-md row justify-center">
         <div style="width: 100%; max-width: 400px">
           <div class="absolute-top">
+            <div class="test-page">
             <q-linear-progress :value="questionId/tasteModel.length" color="warning"
                                style="margin-top: -32px; margin-bottom: 35px" size="6px"/>
             <div
@@ -86,6 +87,7 @@
                 </template>
               </div>
             </transition>
+            </div>
           </div>
         </div>
       </div>

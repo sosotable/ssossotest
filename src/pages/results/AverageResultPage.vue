@@ -4,6 +4,7 @@
       <q-card class="my-card" flat bordered>
         <q-card-section style="width: 300px">
           <div class="text-orange-9 text-center" style="height: 50px" />
+          <div class="result-page">
           <div class="q-ma-lg text-center text-h6">
             <div v-if="this.userName">{{ this.userName }}님의 결과</div>
             <div v-else>당신의 결과</div>
@@ -118,6 +119,7 @@
                 </div>
               </q-item-section>
             </q-list>
+          </div>
           </div>
         </q-card-section>
 

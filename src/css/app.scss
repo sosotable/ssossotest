@@ -3,6 +3,34 @@ body {
   background: radial-gradient(white, #f5f5dc);
 }
 
+@media ( min-width: 768px ) {
+  .container {
+    width: 480px;
+    margin: auto;
+    background: radial-gradient(white, #EBEBB8);
+  }
+  .footer {
+    width: 480px;
+    margin: auto;
+  }
+  .header {
+    width: 480px;
+    margin: auto;
+  }
+  .my-card {
+    width: 480px;
+    margin: auto;
+  }
+  .test-page {
+    width: 480px;
+    margin: auto;
+  }
+  .result-page {
+    width: 480px;
+    margin: auto;
+  }
+}
+
 :root {
   --q-primary: wheat;
 }
