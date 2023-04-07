@@ -48,11 +48,11 @@ jobs:
           aws-region: us-east-2
 
       - name: upload to S3
-        run: aws s3 cp --region us-east-2 ./cicd-app.zip s3://uds-cicd/public/
+        run: aws s3 cp --region us-east-2 ./cicd-app.zip s3://ssossotest/public/
 
       - name: deploy with AWS codeDeploy
         run: aws deploy create-deployment
           --application-name ssossotest
           --deployment-config-name CodeDeployDefault.OneAtATime
           --deployment-group-name group
-          --s3-location bucket=uds-cicd,bundleType=zip,key=public/cicd-app.zip
+          --s3-location bucket=ssossotest,bundleType=zip,key=public/cicd-app.zip
