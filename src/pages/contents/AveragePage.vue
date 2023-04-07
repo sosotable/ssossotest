@@ -19,10 +19,12 @@
         />
       </q-card>
     </div>
+    <div class = "test-page">
     <div v-if="this.question && this.questionId < this.averageModel.length">
       <div class="q-pa-md row justify-center">
         <div style="width: 100%; max-width: 400px">
           <div class="absolute-top">
+            <div class="test-page">
             <q-linear-progress :value="questionId/averageModel.length" color="warning"
                                style="margin-top: -32px; margin-bottom: 35px" size="6px"/>
             <div v-if="this.averageModel[questionId].type === 'range'">
@@ -96,8 +98,10 @@
               </transition>
             </div>
           </div>
+          </div>
         </div>
       </div>
+    </div>
     </div>
   </q-page>
 </template>
