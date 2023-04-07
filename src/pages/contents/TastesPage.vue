@@ -134,10 +134,6 @@ export default defineComponent({
       this.friendId = String(friendIdQuery);
       this.resultFriend = JSON.parse(friendQuery);
     }
-    console.log(this.$route.query);
-    console.log(this.$route.query.friend);
-    console.log("친구 닉네임: "+this.friendId);
-
     //&& process.env.DAO_ENDPOINT != undefined
   },
   methods: {
@@ -182,12 +178,13 @@ export default defineComponent({
 
           // MARK: 공유받아서 들어온 경우
           else {
-            console.log('친구 O');
             this.$router.push({
               path: '/result/tastes',
               query: {
                 result: encodeURI(JSON.stringify(this.selectedAnswerList)),
                 friend_id: encodeURI(String(this.$route.query.friend_id)),
+                // 사용자 key(uuid) 추가
+                friend_key: encodeURI(String(this.$route.query.friend_key)),
                 friend_result: this.$route.query.friend,
                 id: encodeURI(nickName),
                 score: encodeURI(String(this.score)),

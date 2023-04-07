@@ -52,12 +52,11 @@ export default defineComponent({
       // MARK: 사용자 닉네임 세션 저장 후 main으로 이동
       if (this.user_nickname !== '') {
         this.$q.sessionStorage.set('user_nickname', this.user_nickname);
+        // MARK: 브라우저 식별값(uuid) 할당
+        this.$q.sessionStorage.set('user_key', crypto.randomUUID())
         if (this.$route.query.friend_id !== undefined) {
-          console.log(this.$route.query.friend);
-          console.log(this.$route.query.friend_id);
-          console.log(this.$route.query.content);
           const query = encodeURI(
-            `?friend_id=${this.$route.query.friend_id}&friend=${this.$route.query.friend}`
+            `?friend_id=${this.$route.query.friend_id}&friend_key=${this.$route.query.friend_key}&friend=${this.$route.query.friend}`
           );
           this.$router.push(`/content/${this.$route.query.content}${query}`);
         } else {
