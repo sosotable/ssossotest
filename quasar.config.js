@@ -86,9 +86,9 @@ module.exports = configure(function (/* ctx */) {
     devServer: {
       https: true,
       https: {
-        key: readFileSync('/etc/letsencrypt/live/ssossotest.com/privkey.pem'),
-        cert: readFileSync('/etc/letsencrypt/live/ssossotest.com/cert.pem'),
-        ca: readFileSync('/etc/letsencrypt/live/ssossotest.com/chain.pem'),
+        key: readFileSync('public/ssossotest.com/privkey.pem'),
+        cert: readFileSync('public/ssossotest.com/cert.pem'),
+        ca: readFileSync('public/ssossotest.com/chain.pem'),
       },
       open: true, // opens browser window automatically
     },
