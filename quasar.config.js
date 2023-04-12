@@ -9,6 +9,7 @@
 // https://v2.quasar.dev/quasar-cli-vite/quasar-config-js
 
 const { configure } = require('quasar/wrappers');
+const {readFileSync} = require("fs");
 require('dotenv').config();
 
 module.exports = configure(function (/* ctx */) {
@@ -83,7 +84,12 @@ module.exports = configure(function (/* ctx */) {
 
     // Full list of options: https://v2.quasar.dev/quasar-cli-vite/quasar-config-js#devServer
     devServer: {
-      // https: true
+      https: true,
+      https: {
+        key: readFileSync('/etc/letsencrypt/live/ssossotest.com/privkey.pem'),
+        cert: readFileSync('/etc/letsencrypt/live/ssossotest.com/cert.pem'),
+        ca: readFileSync('/etc/letsencrypt/live/ssossotest.com/chain.pem'),
+      },
       open: true, // opens browser window automatically
     },
 
@@ -108,6 +114,8 @@ module.exports = configure(function (/* ctx */) {
         'SessionStorage',
         // 로딩 플러그인
         'Loading',
+        // 메타 플러그인(SEO)
+        'Meta',
       ],
     },
 
