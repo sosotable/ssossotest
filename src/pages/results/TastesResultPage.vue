@@ -201,29 +201,72 @@ export default defineComponent({
   // MARK: 페이지 라우팅 시 받아진 쿼리스트링 처리
   mounted() {
     this.userName = String(decodeURI(String(this.$route.query.id)));
-    console.log('userName: ' + this.userName);
-
     if (this.$route.query.friend_id === undefined) {
       if (this.$route.query.result != null) {
         const resultQuery: string | any = this.$route.query.result;
         // MARK: 쿼리스트링 디코딩
         this.resultList = JSON.parse(decodeURI(resultQuery));
       }
-    } else {
+    }
+    /**
+     * MARK: 공유받아서 들어온 경우 성적값 db 추가
+     * 새로운 성적값 처리 후 성적값들 db에서 불러와서 랭킹 매기는 식으로 하면 될 것 같아요
+     */
+    else {
       if (this.$route.query.result != null) {
-        console.log('친구!!!!!!!!');
-        this.friendResult = true;
-        const resultQuery: string | any = this.$route.query.result;
-        const friendQuery: string | any = this.$route.query.friend_result;
-        const ownerNameQuery: string | any = this.$route.query.friend_id;
-        const scoreQuery: string | any = this.$route.query.score;
-        // MARK: 쿼리스트링 디코딩
+        // MARK: 기존 평가정보 확인
+        axios.post(String(process.env.DAO_ENDPOINT),
+          {
+            DML: 'SELECT',
+            columns : '*',
+            table : 'tastes_score',
+            where : `from_key = '${this.$route.query.friend_key}' and to_key = '${this.$q.sessionStorage.getItem("user_key")}'`
+            })
+          .then((response) => {
+            // MARK: 기존 평가정보가 존재하는 경우 => UPDATE
+            if(response.data.length > 0) {
+              axios.post(String(process.env.DAO_ENDPOINT),
+                {
+                  DML: 'UPDATE',
+                  table: 'tastes_score',
+                  set: `score = ${String(decodeURI(String(this.$route.query.score)))}`,
+                  where: `from_key = '${this.$route.query.friend_key}' and to_key = '${this.$q.sessionStorage.getItem("user_key")}'`
+                })
+            }
+            // MARK: 기존 평가정보가 존재하지 않는 경우 => INSERT
+            else {
+              axios.post(String(process.env.DAO_ENDPOINT),
+                {
+                  DML: 'INSERT',
+                  table: 'tastes_score',
+                  columns: 'from_key, to_key, from_nickname, to_nickname, score',
+                  values: `'${this.$route.query.friend_key}',
+            '${this.$q.sessionStorage.getItem("user_key")}',
+            '${String(decodeURI(String(this.$route.query.friend_id)))}',
+            '${this.$q.sessionStorage.getItem("user_nickname")}',
+            ${String(decodeURI(String(this.$route.query.score)))}`})
+                .then((response) => {
+                  this.friendResult = true;
+                  const resultQuery: string | any = this.$route.query.result;
+                  const friendQuery: string | any = this.$route.query.friend_result;
+                  const ownerNameQuery: string | any = this.$route.query.friend_id;
+                  const scoreQuery: string | any = this.$route.query.score;
+                  // MARK: 쿼리스트링 디코딩
+                  this.resultList = JSON.parse(decodeURI(resultQuery));
+                  this.resultFriend = JSON.parse(decodeURI(friendQuery));
+                  this.ownerName = String(decodeURI(ownerNameQuery));
+                  this.score = String(decodeURI(scoreQuery));
+                })
+                .catch(function (error) {
+                  console.log(error);
+                });
+            }
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
 
-        this.resultList = JSON.parse(decodeURI(resultQuery));
-        this.resultFriend = JSON.parse(decodeURI(friendQuery));
-        this.ownerName = String(decodeURI(ownerNameQuery));
-        this.score = String(decodeURI(scoreQuery));
-        console.log('score: ' + this.score);
+
       }
     }
   },
@@ -245,7 +288,7 @@ export default defineComponent({
         document.execCommand('copy');
         document.body.removeChild($textarea);
       };
-      const query = `?friend_id=${this.$route.query.id}&content=tastes&friend=${this.$route.query.result}`;
+      const query = `?friend_id=${this.$route.query.id}&friend_key=${this.$q.sessionStorage.getItem('user_key')}&content=tastes&friend=${this.$route.query.result}`;
       // MARK: 현재 모드가 개발 모드인지 배포 모드인지 확인하여 해당 주소값 복사
       if(process.env.NODE_ENV == 'development') {
         copy(`http://localhost:9100${query}`);

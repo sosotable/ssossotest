@@ -1,6 +1,6 @@
 <template>
   <div class="q-pa-md">
-    <q-header bordered class="bg-white text-black">
+    <q-header bordered class="bg-white text-black header">
       <q-toolbar>
         <q-toolbar-title class="text-center">
           <router-link to="/">
