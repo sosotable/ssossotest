@@ -1,5 +1,5 @@
 <template>
-  <q-page class="row items-center justify-evenly">
+  <q-page class="row items-center justify-center">
     <div v-if="this.title" class="row items-start q-gutter-md">
       <q-card class="my-card" flat bordered>
         <q-img src="/images/average/title.jpg" />
@@ -19,7 +19,6 @@
         />
       </q-card>
     </div>
-    <div class = "test-page">
     <div v-if="this.question && this.questionId < this.averageModel.length">
       <div class="q-pa-md row justify-center">
         <div style="width: 100%; max-width: 400px">
@@ -101,7 +100,6 @@
           </div>
         </div>
       </div>
-    </div>
     </div>
   </q-page>
 </template>
