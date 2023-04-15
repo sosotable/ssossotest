@@ -57,7 +57,7 @@
               separator
               v-for="(model, index) in tasteModel"
               :key="index"
-              class="my-card"
+              class="my-card-taste"
               style="margin-bottom: 30px; border-radius: 10px"
             >
               <q-item-section>

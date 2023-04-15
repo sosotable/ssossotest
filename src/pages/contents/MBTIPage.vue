@@ -1,6 +1,6 @@
 <template>
   <q-page class="row items-center justify-evenly">
-    <div v-if="this.title" class="row justify-center items-start absolute-top">
+    <div v-if="this.title" class="row items-start q-gutter-md">
       <q-card class="my-card" flat bordered>
         <q-img src="/images/mbti/title.jpeg" />
         <q-card-section>
