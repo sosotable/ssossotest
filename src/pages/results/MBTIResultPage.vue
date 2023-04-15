@@ -72,13 +72,18 @@
 import { defineComponent, ref } from 'vue';
 import { mbtiResultList } from 'assets/MBTIResultModel';
 import axios from 'axios';
+import {useMBTIStore} from "stores/mbti";
+import {storeToRefs} from "pinia";
 import {useQuasar} from 'quasar';
 
 export default defineComponent({
   name: 'MBTIResultPage',
   setup() {
     const dialog = ref(false);
-    const position = ref('top');
+    const position = ref<string>('top');
+    const store = useMBTIStore()
+    const {mbti, title, desc,
+      friendResult, friendResultData, friendId} = storeToRefs(store)
     return {
       dialog,
       position,
@@ -86,19 +91,14 @@ export default defineComponent({
         position.value = pos;
         dialog.value = true;
       },
-      $q: useQuasar()
+      $q: useQuasar(),
+      mbti, title, desc,
+      friendResult, friendResultData, friendId
     };
   },
   data() {
     return {
-      resultTitle: '당신은...',
-      resultTitleFlag: false,
-      mbti: '',
-      title: '',
-      desc: ref<string[]>([]),
-      friendResult: false,
-      friendResultData: {},
-      friendId: ref<string>(''),
+      //
     };
   },
   // MARK: 페이지 라우팅 시 받아진 쿼리스트링 처리
@@ -205,7 +205,6 @@ export default defineComponent({
             console.log(error);
           });
       }
-      this.resultTitle = `${this.mbti} 군요!`
       this.$q.loading.hide()
     }, 1000)
   },
