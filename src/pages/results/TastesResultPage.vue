@@ -23,10 +23,39 @@
 
             <div
               v-if="friendResult"
-              class="q-ma-lg text-subtitle1 text-deep-orange-10"
             >
-              점수 {{ this.score }}/{{ resultFriend.length }}
+              <div
+                class="q-ma-lg text-subtitle1 text-deep-orange-10">
+                점수 {{ this.score }}/{{ resultFriend.length }}
+              </div>
               <q-separator />
+
+
+              <div class="q-ma-lg">🏆 Ranking 🏆</div>
+              <q-list
+                bordered
+                separator
+                v-for="(model, index) in rankModel"
+                :key="index"
+                class="my-card"
+                style="margin-bottom: 30px; border-radius: 10px"
+              >
+                <q-item-section>
+                  <div class="q-pa-xs text-subtitle1 selected-div" style="font-weight: normal">
+                    <div>
+                      {{index+1}}등
+                    </div>
+                    <div>
+                      {{model.name}}
+                    </div>
+                    <div>
+                      {{model.score}}점
+                    </div>
+                  </div>
+                </q-item-section>
+
+              </q-list>
+
             </div>
           </div>
           <div class="q-pa-none col">
@@ -171,6 +200,7 @@
 import { defineComponent, ref } from 'vue';
 import axios from 'axios';
 import { tasteModel } from 'src/assets/tasteContentModel';
+import { response } from "express";
 
 export default defineComponent({
   name: 'TastesResultPage',
@@ -178,11 +208,14 @@ export default defineComponent({
     let userName: any = null;
     let ownerName: any = null;
     let score: number | any = 0;
+    let rankModel: any = null;
+
     return {
       tasteModel,
       userName,
       ownerName,
       score,
+      rankModel
     };
   },
   data() {
@@ -266,6 +299,20 @@ export default defineComponent({
             console.log(error);
           });
 
+        axios.post(String(process.env.DAO_ENDPOINT),
+          {
+            DML: 'SELECT',
+            columns : 'to_nickname AS name, score',
+            table : 'tastes_score',
+            where : `from_key = '${this.$route.query.friend_key}' ORDER BY score DESC`
+          })
+          .then((response) => {
+            console.log(response.data)
+            this.rankModel = response.data;
+          })
+          .catch((error) => {
+            console.log(error);
+          });
 
       }
     }
@@ -298,7 +345,8 @@ export default defineComponent({
         copy(`http://ssossotest.com${query}`);
       }
       alert('링크가 클립보드에 공유되었어요!');
-    },
+    }
+
   },
 });
 </script>
