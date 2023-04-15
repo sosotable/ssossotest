@@ -1,6 +1,6 @@
 <template>
   <q-page class="row items-center justify-evenly">
-    <div v-if="this.title" class="row justify-center items-start absolute-top">
+    <div v-if="this.titleFlag" class="row justify-center items-start absolute-top">
       <q-card class="my-card" flat bordered>
         <q-img src="/images/mbti/title.jpeg" />
         <q-card-section>
@@ -95,27 +95,26 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import {defineComponent, ref} from 'vue';
 // MARK: 사용 데이터 외부화
 import { mbtiModel } from 'src/assets/ContentModel';
+import {useMBTIStore} from "stores/mbti";
+import {storeToRefs} from "pinia";
+
 import axios from 'axios';
 export default defineComponent({
   name: 'MBTIPage',
   setup() {
+    const store = useMBTIStore()
+    const {titleFlag, question, questionId, selectedFlag, selectedAnswer} = storeToRefs(store)
     return {
       mbtiModel,
+      titleFlag, question, questionId, selectedFlag, selectedAnswer
     };
   },
   data() {
     return {
-      // MARK: 타이틀 플래그 : true일 경우 테스트 설명이 보여짐
-      title: true,
-      // MARK: 문제 플래그: true일 경우 문제들이 보여짐, default value는 false(처음엔 보여지지 않음)
-      question: false,
-      // MARK: 문제 아이디: 해당 id의 문제만을 보여지도록 함
-      questionId: 0,
-      selectedFlag: false,
-      selectedAnswer: '',
+      //
     };
   },
   mounted() {
@@ -124,7 +123,7 @@ export default defineComponent({
   methods: {
     // MARK: 시작하기 버튼을 누를 경우 타이틀 이미지를 보이지 않게(false) 변환, 문제를 보이게(true) 변환
     start: function () {
-      this.title = false;
+      this.titleFlag = false;
       this.question = true;
     },
     // MARK: 문제 버튼 선택 시
@@ -184,7 +183,6 @@ export default defineComponent({
 .q-btn {
   margin: 5px !important;
 }
-/* we will explain what these classes do next! */
 .v-enter-active,
 .v-leave-active {
   transition: opacity 0.5s ease;

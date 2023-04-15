@@ -4,7 +4,7 @@
       <img src="/logo.png" />
     </q-avatar>
     <div @keyup.enter="onSubmit()" style="width: 100%; padding: 0 20% 0 25%">
-      <q-input bottom-slots v-model="user_nickname" counter maxlength="16">
+      <q-input bottom-slots v-model="userNickname" counter maxlength="16">
         <template v-slot:hint> 별명을 입력해주세요 </template>
         <template v-slot:after>
           <q-btn round flat icon="send" @click="onSubmit()" />
@@ -17,18 +17,21 @@
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
 import { useQuasar } from 'quasar';
-import axios from 'axios';
+import {useUserStore} from "stores/user";
+import {storeToRefs} from "pinia";
 
 export default defineComponent({
   name: 'IndexPage',
   setup() {
+    const store = useUserStore()
+    const { userNickname } = storeToRefs(store)
     return {
       $q: useQuasar(),
+      userNickname
     };
   },
   data() {
     return {
-      user_nickname: '',
     };
   },
   mounted() {
@@ -50,8 +53,8 @@ export default defineComponent({
   methods: {
     onSubmit: function () {
       // MARK: 사용자 닉네임 세션 저장 후 main으로 이동
-      if (this.user_nickname !== '') {
-        this.$q.sessionStorage.set('user_nickname', this.user_nickname);
+      if (this.userNickname !== '') {
+        this.$q.sessionStorage.set('user_nickname', this.userNickname);
         // MARK: 브라우저 식별값(uuid) 할당
         this.$q.sessionStorage.set('user_key', crypto.randomUUID())
         if (this.$route.query.friend_id !== undefined) {
