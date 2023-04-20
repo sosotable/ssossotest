@@ -1,6 +1,6 @@
 ## 소소테스트 
 
-#### http://ssossotest.com
+#### https://ssossotest.com
 
 ### Frontend client
 
