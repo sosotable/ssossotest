@@ -99,30 +99,38 @@
 import { defineComponent, ref } from 'vue';
 // MARK: 사용 데이터 외부화
 import { tasteModel } from 'src/assets/tasteContentModel';
+import {useTastesStore} from "stores/tastes";
+import {storeToRefs} from "pinia";
+
 import axios from 'axios';
 import { stringify } from 'querystring';
 import { types } from 'util';
 export default defineComponent({
   name: 'TASTEPage',
   setup() {
+    const store = useTastesStore()
+    const {titleFlag, question, questionId, selectedFlag, selectedAnswer} = storeToRefs(store)
     const selectedAnswerList: any[] = [];
     let friendId: any = null;
     return {
       tasteModel,
       selectedAnswerList,
       friendId,
+      titleFlag, question, questionId, selectedFlag, selectedAnswer
     };
   },
   data() {
     return {
       // MARK: 타이틀 플래그 : true일 경우 테스트 설명이 보여짐
       title: true,
+      /*
       // MARK: 문제 플래그: true일 경우 문제들이 보여짐, default value는 false(처음엔 보여지지 않음)
       question: false,
       // MARK: 문제 아이디: 해당 id의 문제만을 보여지도록 함
       questionId: 0,
       selectedFlag: false,
       selectedAnswer: '',
+      */
       friendResult: false,
       resultFriend: [],
       score: 0,
