@@ -1,5 +1,5 @@
 <template>
-  <q-page class="column items-center justify-center">
+  <q-page class="container column items-center justify-center">
     <q-avatar rounded size="240px">
       <img src="/logo.png" />
     </q-avatar>

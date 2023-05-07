@@ -3,22 +3,73 @@ body {
   background: radial-gradient(white, #f5f5dc);
 }
 
-@media ( min-width: 768px ) {
+@media screen and (max-width: 768px) {
   .container {
-    width: 480px;
+    width: 100%!important;
     margin: auto;
     background: radial-gradient(white, #EBEBB8);
   }
   .footer {
-    width: 480px;
+    width: 100%!important;
     margin: auto;
   }
   .header {
-    width: 480px;
+    width: 100%!important;
     margin: auto;
+  }
+  .q-page-container {
+    width: 100%;
+  }
+  .page {
+    width: 100%!important;
+  }
+  .page-div {
+    width: 100%!important;
+  }
+  .content-intro {
+    width: 100%!important;
+    height: 100vh;
+    padding-top: 3rem;
+  }
+  .content-container {
+    width: 100%!important;
+  }
+  .content-view {
+    width: 100%!important;
+    margin: auto;
+    padding-top: 5rem!important;
+  }
+  .content-card {
+    height: 100vh;
+    padding-top: 4rem
   }
 }
 
 :root {
   --q-primary: wheat;
+}
+.container {
+  width: 480px;
+  margin: auto;
+  background: radial-gradient(white, #EBEBB8);
+}
+.footer {
+  width: 480px;
+  margin: auto;
+}
+.header {
+  width: 480px;
+  margin: auto;
+}
+.content-intro {
+  width: 480px;
+  height: 100vh;
+}
+.content-container {
+  width: 480px;
+}
+.content-view {
+  width: 480px;
+  margin: auto;
+  padding-top: 2rem;
 }

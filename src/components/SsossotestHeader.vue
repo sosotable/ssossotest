@@ -1,5 +1,5 @@
 <template>
-  <div class="q-pa-md">
+  <div class="">
     <q-header bordered class="bg-white text-black header">
       <q-toolbar>
         <q-toolbar-title class="text-center">
