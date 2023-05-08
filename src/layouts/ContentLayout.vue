@@ -1,7 +1,7 @@
 <template>
-  <q-layout view="lHh Lpr lFf">
+  <q-layout view="lHh Lpr lFf" class="flex justify-center container">
     <ssossotest-header />
-    <q-page-container>
+    <q-page-container style="padding: 0!important;">
       <router-view />
     </q-page-container>
     <ssossotest-footer />

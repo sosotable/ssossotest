@@ -1,9 +1,9 @@
 <template>
-  <q-page class="row items-center justify-evenly">
-    <div v-if="this.title" class="row items-start q-gutter-md">
-      <div v-if="friendResult">
-        <q-card class="my-card" flat bordered>
-          <q-img src="/images/tastes/title.jpg" />
+  <q-page class="flex page column items-center justify-center">
+    <div v-if="this.title" class="flex page-div column items-center" style="margin: auto">
+      <div class="content-intro" v-if="friendResult">
+        <q-card flat bordered class="content-card" >
+          <q-img src="/images/tastes/title.jpg"/>
           <q-card-section>
             <div class="text-overline text-orange-9"></div>
             <div v-if="friendId !== null" class="text-h5 q-mt-sm q-mb-xs">
@@ -14,18 +14,21 @@
               친구의 음식 취향을 맞혀보세요!
             </div>
           </q-card-section>
-          <q-btn
-            class="float-right"
-            flat
-            color="dark"
-            label="시작하기"
-            @click="start"
-          />
+          <q-card-actions>
+            <q-btn
+              class="float-right"
+              flat
+              color="dark"
+              label="시작하기"
+              @click="start"
+            />
+          </q-card-actions>
+
         </q-card>
       </div>
 
-      <div v-else>
-        <q-card class="my-card" flat bordered>
+      <div v-else class="content-intro" style="margin: auto">
+        <q-card flat bordered class="content-card">
           <q-img src="/images/tastes/title.jpg" />
           <q-card-section>
             <div class="text-overline text-orange-9"></div>
@@ -34,22 +37,24 @@
               나의 음식 취향을 기록하고 친구들의 음식 취향을 맞혀보세요!
             </div>
           </q-card-section>
-          <q-btn
-            class="float-right"
-            flat
-            color="dark"
-            label="시작하기"
-            @click="start"
-          />
+          <q-card-actions>
+            <q-btn
+              class="float-right"
+              flat
+              color="dark"
+              label="시작하기"
+              @click="start"
+            />
+          </q-card-actions>
         </q-card>
       </div>
     </div>
 
     <div v-if="this.question && this.questionId < this.tasteModel.length">
-      <div class="q-pa-md row justify-center">
+      <div class="content-card flex column justify-center">
         <div style="width: 100%; max-width: 400px">
-          <div class="absolute-top">
-            <div class="test-page">
+          <div class="content-card absolute-top">
+            <div >
             <q-linear-progress :value="questionId/tasteModel.length" color="warning"
                                style="margin-top: -32px; margin-bottom: 35px" size="6px"/>
             <div

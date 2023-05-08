@@ -2,7 +2,7 @@
   <q-page class="column items-center justify-center">
     <!--    MARK: 테스트 선택 페이지: v-for을 통한 카드 반복 -->
     <template v-for="card in cards" v-bind:key="card">
-      <q-card class="my-card" style="width: 70%; margin: 8px">
+      <q-card class="main-card" style="width: 70%; margin: 8px">
         <q-img :src="card.image" height="140px">
           <div class="absolute-bottom">
             <div class="text-h6">{{ card.title }}</div>

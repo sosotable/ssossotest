@@ -1,7 +1,7 @@
 <template>
-  <q-page class="row items-center justify-center">
-    <div v-if="this.title" class="row items-start q-gutter-md">
-      <q-card class="my-card" flat bordered>
+  <q-page class="flex page column items-center justify-center">
+    <div v-if="this.title" class="flex page-div column items-center">
+      <q-card class="content-intro" flat bordered>
         <q-img src="/images/average/title.jpg" />
         <q-card-section>
           <div class="text-overline text-orange-9"></div>
@@ -19,11 +19,12 @@
         />
       </q-card>
     </div>
-    <div v-if="this.question && this.questionId < this.averageModel.length">
+    <div class="content-intro">
+      <div v-if="this.question && this.questionId < this.averageModel.length">
       <div class="q-pa-md row justify-center">
         <div style="width: 100%; max-width: 400px">
           <div class="absolute-top">
-            <div class="test-page">
+            <div class="content-card">
             <q-linear-progress :value="questionId/averageModel.length" color="warning"
                                style="margin-top: -32px; margin-bottom: 35px" size="6px"/>
             <div v-if="this.averageModel[questionId].type === 'range'">
