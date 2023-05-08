@@ -17,7 +17,7 @@
         <q-img
           class="rounded-borders"
           style="width: 100vh"
-          :src="`images/mbti/${this.mbti}.jpeg`"
+          :src="`/images/mbti/${this.mbti}.jpeg`"
         />
       </div>
 
@@ -40,7 +40,7 @@
         />
         <q-dialog v-model="dialog" :position="position">
           <q-card style="width: 350px">
-            <q-img :src="`images/mbti/${this.friendResultData.image}.jpeg`" />
+            <q-img :src="`/images/mbti/${this.friendResultData.image}.jpeg`" />
             <q-card-section>
               <div class="text-overline text-orange-9">
                 {{ this.friendId }}의 결과!
@@ -143,7 +143,7 @@ export default defineComponent({
           });
       }
       if (
-        this.$route.query.result != null &&
+        this.$route.query.result != undefined &&
         process.env.DAO_ENDPOINT != undefined
       ) {
         const resultQuery: string | any = this.$route.query.result;
@@ -154,6 +154,9 @@ export default defineComponent({
           mbtiResultList[this.mbti as keyof typeof mbtiResultList].name;
         this.desc =
           mbtiResultList[this.mbti as keyof typeof mbtiResultList].desc;
+        console.log(
+          this.mbti, this.title, this.desc
+        )
         // MARK: 세션에 저장된 사용자 nickname으로 기록된 mbti결과가 있는지 확인함
         axios
           .post(process.env.DAO_ENDPOINT, {

@@ -126,6 +126,7 @@ export default defineComponent({
   mounted() {
     this.titleFlag = true
     this.question = false
+    this.questionId = 0
   },
   methods: {
     // MARK: 시작하기 버튼을 누를 경우 타이틀 이미지를 보이지 않게(false) 변환, 문제를 보이게(true) 변환

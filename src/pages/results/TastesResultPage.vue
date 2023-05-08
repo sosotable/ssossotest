@@ -1,8 +1,8 @@
 <template>
-  <q-page class="row items-center justify-evenly absolute-top">
+  <q-page class="row items-center justify-center absolute-top">
     <div class="row items-start">
-      <q-card class="my-card" style="margin-bottom: 100px" flat bordered>
-        <q-card-section style="width: 300px">
+      <q-card   flat bordered>
+        <q-card-section class="content-card">
           <div class="text-orange-9 text-center" style="height: 50px" />
           <div class="result-page">
             <div class="q-ma-lg text-center text-h6">
@@ -51,7 +51,7 @@
                 </q-list>
               </div>
             </div>
-            <div class="q-pa-none col">
+            <div class="q-pa-none col" style="max-height: 60vh; overflow: auto">
               <q-list
                 bordered
                 separator
@@ -172,19 +172,24 @@
             </div>
           </div>
         </q-card-section>
-        <q-separator />
-        <router-link to="/main" style="width: 100%">
-          <q-btn flat color="dark" style="width: 100%" label="처음으로" />
-        </router-link>
-        <q-separator />
-        <q-btn
-          v-if="!friendResult"
-          flat
-          color="dark"
-          @click="copyLink"
-          style="width: 100%"
-          label="친구에게 나의 취향 테스트 공유하기"
-        />
+        <div style="margin-bottom: 50px">
+          <q-separator />
+          <router-link to="/main" style="width: 100%">
+            <q-btn flat color="dark" style="width: 100%" label="처음으로" />
+          </router-link>
+          <q-separator />
+          <q-btn
+            v-if="!friendResult"
+            flat
+            color="dark"
+            @click="copyLink"
+            style="width: 100%"
+            label="친구에게 나의 취향 테스트 공유하기"
+          />
+          <q-separator />
+        </div>
+
+
       </q-card>
     </div>
   </q-page>

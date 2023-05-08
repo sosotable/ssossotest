@@ -161,6 +161,12 @@ export default defineComponent({
       this.friendId = String(friendIdQuery);
       this.resultFriend = JSON.parse(friendQuery);
     }
+    // MARK: 문제 플래그: true일 경우 문제들이 보여짐, default value는 false(처음엔 보여지지 않음)
+    this.question = false
+    // MARK: 문제 아이디: 해당 id의 문제만을 보여지도록 함
+    this.questionId = 0
+    this.selectedFlag = false
+    this.selectedAnswer = ''
     //&& process.env.DAO_ENDPOINT != undefined
   },
   methods: {
