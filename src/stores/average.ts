@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia';
-import {ref} from "vue";
+import { ref } from 'vue';
 
 export const useAverageStore = defineStore('average', {
   state: () => ({
@@ -16,13 +16,9 @@ export const useAverageStore = defineStore('average', {
 
     /** MARK: average result
      * **/
-
-
   }),
 
-  getters: {
-  },
+  getters: {},
 
-  actions: {
-  }
+  actions: {},
 });

@@ -2,7 +2,7 @@
   <q-layout class="flex column justify-center container" view="lHh Lpr lFf">
     <ssossotest-header />
     <q-page-container style="padding-top: 21px">
-      <ssossotest-side-bar/>
+      <ssossotest-side-bar />
       <router-view />
     </q-page-container>
     <ssossotest-footer />
@@ -19,7 +19,7 @@ export default defineComponent({
   components: {
     SsossotestHeader,
     SsossotestFooter,
-    SsossotestSideBar
+    SsossotestSideBar,
   },
   setup() {
     return {};

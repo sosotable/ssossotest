@@ -41,7 +41,7 @@ export default ssrMiddleware(
               result.factory();
               // REFACTOR: 지금은 하나하나씩 send하는데 추후 나머지 구현 후 일괄적으로 처리 가능하도록 바꾸어야 할 것 같아요
               res.send({
-                mbti: result.type[0]
+                mbti: result.type[0],
               });
             }
             break;

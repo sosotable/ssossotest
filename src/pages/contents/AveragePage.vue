@@ -21,83 +21,91 @@
     </div>
     <div class="content-intro">
       <div v-if="this.question && this.questionId < this.averageModel.length">
-      <div class="q-pa-md row justify-center">
-        <div style="width: 100%; max-width: 400px">
-          <div class="absolute-top">
-            <div class="content-card">
-            <q-linear-progress :value="questionId/averageModel.length" color="warning"
-                               style="margin-top: -32px; margin-bottom: 35px" size="6px"/>
-            <div v-if="this.averageModel[questionId].type === 'range'">
-              <h6 class="card text-center">
-                {{
-                  averageModel[questionId].question +
-                  rangeValue +
-                  averageModel[questionId].answer[0].unit
-                }}
-                <q-img
-                  :src="`/images/average/${questionId}.png`"
-                  style="
-                    width: 100%;
-                    height: 13pc;
-                    margin-top: 10px;
-                    margin-left: 0;
-                    margin-right: 0px;
-                  "
+        <div class="q-pa-md row justify-center">
+          <div style="width: 100%; max-width: 400px">
+            <div class="absolute-top">
+              <div class="content-card">
+                <q-linear-progress
+                  :value="questionId / averageModel.length"
+                  color="warning"
+                  style="margin-top: -32px; margin-bottom: 35px"
+                  size="6px"
                 />
-              </h6>
-              <div class="q-pa-md">
-                <q-slider
-                  v-model="rangeValue"
-                  :min="averageModel[questionId].answer[0].pMin"
-                  :max="averageModel[questionId].answer[0].pMax"
-                  :step="averageModel[questionId].answer[0].pStep"
-                  snap
-                  label
-                  color="orange"
-                />
-                <div style="display: flex; justify-content: flex-end">
-                  <q-btn
-                    flat
-                    color="dark"
-                    label="다음"
-                    @click="select(rangeValue)"
-                  />
+                <div v-if="this.averageModel[questionId].type === 'range'">
+                  <h6 class="card text-center">
+                    {{
+                      averageModel[questionId].question +
+                      rangeValue +
+                      averageModel[questionId].answer[0].unit
+                    }}
+                    <q-img
+                      :src="`/images/average/${questionId}.png`"
+                      style="
+                        width: 100%;
+                        height: 13pc;
+                        margin-top: 10px;
+                        margin-left: 0;
+                        margin-right: 0px;
+                      "
+                    />
+                  </h6>
+                  <div class="q-pa-md">
+                    <q-slider
+                      v-model="rangeValue"
+                      :min="averageModel[questionId].answer[0].pMin"
+                      :max="averageModel[questionId].answer[0].pMax"
+                      :step="averageModel[questionId].answer[0].pStep"
+                      snap
+                      label
+                      color="orange"
+                    />
+                    <div style="display: flex; justify-content: flex-end">
+                      <q-btn
+                        flat
+                        color="dark"
+                        label="다음"
+                        @click="select(rangeValue)"
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                <div
+                  v-else-if="this.averageModel[questionId].type === 'button'"
+                >
+                  <h6 class="card text-center" style="margin-top: 10px">
+                    {{ averageModel[questionId].question }}
+                    <q-img
+                      :src="`/images/average/${questionId}.png`"
+                      style="
+                        width: 100%;
+                        height: 13pc;
+                        margin-top: 10px;
+                        margin-left: 0;
+                        margin-right: 0px;
+                      "
+                    />
+                  </h6>
+                  <transition style="padding: 0 10px 0 0">
+                    <div v-if="!selectedFlag">
+                      <div
+                        v-for="(item, i) in this.averageModel[questionId]
+                          .answer"
+                        :key="i"
+                      >
+                        <q-btn
+                          color="white"
+                          text-color="black"
+                          style="width: 100%"
+                          @click="select(i)"
+                          :label="item.answer"
+                        />
+                      </div>
+                    </div>
+                  </transition>
                 </div>
               </div>
             </div>
-
-            <div v-else-if="this.averageModel[questionId].type === 'button'">
-              <h6 class="card text-center" style="margin-top: 10px">
-                {{ averageModel[questionId].question }}
-                <q-img
-                  :src="`/images/average/${questionId}.png`"
-                  style="
-                    width: 100%;
-                    height: 13pc;
-                    margin-top: 10px;
-                    margin-left: 0;
-                    margin-right: 0px;
-                  "
-                />
-              </h6>
-              <transition style="padding: 0 10px 0 0">
-                <div v-if="!selectedFlag">
-                  <div
-                    v-for="(item, i) in this.averageModel[questionId].answer"
-                    :key="i"
-                  >
-                    <q-btn
-                      color="white"
-                      text-color="black"
-                      style="width: 100%"
-                      @click="select(i)"
-                      :label="item.answer"
-                    />
-                  </div>
-                </div>
-              </transition>
-            </div>
-          </div>
           </div>
         </div>
       </div>
@@ -108,17 +116,18 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { averageModel } from 'src/assets/AverageContentModel';
-import {useAverageStore} from "stores/average";
-import {storeToRefs} from "pinia";
+import { useAverageStore } from 'stores/average';
+import { storeToRefs } from 'pinia';
 
 import axios from 'axios';
-import { useTastesStore } from "stores/tastes";
+import { useTastesStore } from 'stores/tastes';
 
 export default defineComponent({
   name: 'AveragePage',
   setup() {
-    const store = useAverageStore()
-    const {titleFlag, question, questionId, selectedFlag, selectedAnswer} = storeToRefs(store)
+    const store = useAverageStore();
+    const { titleFlag, question, questionId, selectedFlag, selectedAnswer } =
+      storeToRefs(store);
 
     const selectedAnswerList: any[] = [];
     let avgString: string | undefined;

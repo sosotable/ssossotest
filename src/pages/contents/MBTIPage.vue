@@ -1,6 +1,6 @@
 <template>
   <q-page class="page row items-center justify-evenly">
-    <div v-if="this.titleFlag" class="page-div justify-center items-start" >
+    <div v-if="this.titleFlag" class="page-div justify-center items-start">
       <q-card class="content-intro" flat bordered>
         <q-img src="/images/mbti/title.jpeg" />
         <q-card-section>
@@ -22,55 +22,56 @@
     </div>
     <div v-if="this.question && this.questionId < this.mbtiModel.length">
       <div class="q-pa-md row justify-center">
-        <div class="content-container" >
+        <div class="content-container">
           <div class="content-view absolute-top justify-center items-center">
             <div class="test-page">
-            <q-linear-progress :value="questionId/mbtiModel.length" color="warning"
-                               style="margin-top: -32px; margin-bottom: 35px" size="6px"/>
-            <q-chat-message
-              name="내면의 농담곰"
-              avatar="https://i.pinimg.com/564x/43/09/78/43097860e53ce742582262908cfafff8.jpg"
-              stamp="1 minutes ago"
-              sent
-              text-color="black"
-              bg-color="primary"
-              style="margin: 10px"
-            >
-              <div>
-                {{ this.mbtiModel[questionId].question[0] }}
-              </div>
-              <div>
-                {{ this.mbtiModel[questionId].question[1] }}
-                <div id="avatar">
-                  <img
-                    :src="this.mbtiModel[questionId].question[2]"
-                    style="width: 28px"
-                    class="my-emoticon"
-                  />
+              <q-linear-progress
+                :value="questionId / mbtiModel.length"
+                color="warning"
+                style="margin-top: -32px; margin-bottom: 35px"
+                size="6px"
+              />
+              <q-chat-message
+                name="내면의 농담곰"
+                avatar="https://i.pinimg.com/564x/43/09/78/43097860e53ce742582262908cfafff8.jpg"
+                stamp="1 minutes ago"
+                sent
+                text-color="black"
+                bg-color="primary"
+                style="margin: 10px"
+              >
+                <div>
+                  {{ this.mbtiModel[questionId].question[0] }}
                 </div>
-              </div>
-            </q-chat-message>
+                <div>
+                  {{ this.mbtiModel[questionId].question[1] }}
+                  <div id="avatar">
+                    <img
+                      :src="this.mbtiModel[questionId].question[2]"
+                      style="width: 28px"
+                      class="my-emoticon"
+                    />
+                  </div>
+                </div>
+              </q-chat-message>
 
-            <q-chat-message
-              name="나"
-              avatar="https://i.pinimg.com/564x/c7/ab/9a/c7ab9a58e98a9d0b688957428856aaf4.jpg"
-              bg-color="amber"
-              style="margin: 10px"
-            >
-              <!--              MARK: 답안을 선택했다면 해당 답안을 chat message로 보여줌-->
-              <div v-if="selectedFlag">
-                {{ selectedAnswer }}
-              </div>
-              <div v-else>
-                <q-spinner-dots size="2rem" />
-              </div>
-            </q-chat-message>
+              <q-chat-message
+                name="나"
+                avatar="https://i.pinimg.com/564x/c7/ab/9a/c7ab9a58e98a9d0b688957428856aaf4.jpg"
+                bg-color="amber"
+                style="margin: 10px"
+              >
+                <!--              MARK: 답안을 선택했다면 해당 답안을 chat message로 보여줌-->
+                <div v-if="selectedFlag">
+                  {{ selectedAnswer }}
+                </div>
+                <div v-else>
+                  <q-spinner-dots size="2rem" />
+                </div>
+              </q-chat-message>
             </div>
           </div>
-          <Transition
-            class="absolute-bottom flex column"
-            style=""
-          >
+          <Transition class="absolute-bottom flex column" style="">
             <div class="content-view">
               <div v-if="!selectedFlag">
                 <q-btn
@@ -95,21 +96,26 @@
 </template>
 
 <script lang="ts">
-import {defineComponent, ref} from 'vue';
+import { defineComponent, ref } from 'vue';
 // MARK: 사용 데이터 외부화
 import { mbtiModel } from 'src/assets/ContentModel';
-import {useMBTIStore} from "stores/mbti";
-import {storeToRefs} from "pinia";
+import { useMBTIStore } from 'stores/mbti';
+import { storeToRefs } from 'pinia';
 
 import axios from 'axios';
 export default defineComponent({
   name: 'MBTIPage',
   setup() {
-    const store = useMBTIStore()
-    const {titleFlag, question, questionId, selectedFlag, selectedAnswer} = storeToRefs(store)
+    const store = useMBTIStore();
+    const { titleFlag, question, questionId, selectedFlag, selectedAnswer } =
+      storeToRefs(store);
     return {
       mbtiModel,
-      titleFlag, question, questionId, selectedFlag, selectedAnswer
+      titleFlag,
+      question,
+      questionId,
+      selectedFlag,
+      selectedAnswer,
     };
   },
   data() {
@@ -149,7 +155,7 @@ export default defineComponent({
               // MARK: 보안을 위해 uri인코딩
               const result = encodeURI(
                 JSON.stringify({
-                  mbti: response.data.mbti
+                  mbti: response.data.mbti,
                 })
               );
               if (this.$route.query.friend_id === undefined) {

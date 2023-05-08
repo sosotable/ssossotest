@@ -9,17 +9,18 @@
       v-if="isVisibleSideBar"
     >
       <div class="side-bar">
-        <div class = "title-area">
-          <textarea id="idea" v-model="message" placeholder="의견을 입력하세요" style="width: 300px"></textarea>
+        <div class="title-area">
+          <textarea
+            id="idea"
+            v-model="message"
+            placeholder="의견을 입력하세요"
+            style="width: 300px"
+          ></textarea>
           <q-btn type="submit" @click="send">보내기</q-btn>
         </div>
       </div>
     </VueResizable>
-    <BButton
-      class="side-bar-active-btn"
-      size="sm"
-      @click="showSideBar"
-    >
+    <BButton class="side-bar-active-btn" size="sm" @click="showSideBar">
       {{ isVisibleSideBar ? '💌' : '💌' }}
     </BButton>
   </div>
@@ -32,19 +33,19 @@ export default {
   name: 'SsossotestSideBar',
   data() {
     return {
-      isVisibleSideBar: false
-    }
+      isVisibleSideBar: false,
+    };
   },
   methods: {
     showSideBar() {
       this.isVisibleSideBar = !this.isVisibleSideBar;
     },
     send() {
-      document.getElementById("idea").value='';
+      document.getElementById('idea').value = '';
       this.isVisibleSideBar = !this.isVisibleSideBar;
-    }
-  }
-}
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>
@@ -68,7 +69,9 @@ export default {
       > .title-area {
         padding: 20px 10px;
 
-        input, input::placeholder, input:focus {
+        input,
+        input::placeholder,
+        input:focus {
           font-size: 2rem;
           font-weight: bold;
           color: #fff;
@@ -77,8 +80,6 @@ export default {
           border: none;
         }
       }
-
-
     }
   }
 

@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia';
-import {ref} from "vue";
+import { ref } from 'vue';
 
 export const useMBTIStore = defineStore('MBTI', {
   state: () => ({
@@ -21,16 +21,14 @@ export const useMBTIStore = defineStore('MBTI', {
     desc: ref<string[]>([]),
     friendResult: ref<boolean>(false),
     friendResultData: ref<{
-      title: string,
-      desc: string[],
-      image: string
+      title: string;
+      desc: string[];
+      image: string;
     } | null>(null),
-    friendId: ref<string>('')
+    friendId: ref<string>(''),
   }),
 
-  getters: {
-  },
+  getters: {},
 
-  actions: {
-  }
+  actions: {},
 });

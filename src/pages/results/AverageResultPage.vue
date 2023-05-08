@@ -5,34 +5,94 @@
         <q-card-section style="width: 300px">
           <div class="text-orange-9 text-center" style="height: 50px" />
           <div class="result-page">
-          <div class="q-ma-lg text-center text-h6">
-            <div v-if="this.userName">{{ this.userName }}님의 결과</div>
-            <div v-else>당신의 결과</div>
-            <div class="q-ma-lg">💌</div>
-            <q-separator />
-          </div>
-          <div class="q-pa-none col">
-            <q-list
-              bordered
-              separator
-              v-for="(item, i) in this.averageModel"
-              :key="i"
-              style="margin-bottom: 30px; border-radius: 10px"
-            >
-              <q-item-section insert>
-                <!-- 질문 -->
-                <div class="question-div">
-                  {{ item.question }}
-                </div>
+            <div class="q-ma-lg text-center text-h6">
+              <div v-if="this.userName">{{ this.userName }}님의 결과</div>
+              <div v-else>당신의 결과</div>
+              <div class="q-ma-lg">💌</div>
+              <q-separator />
+            </div>
+            <div class="q-pa-none col">
+              <q-list
+                bordered
+                separator
+                v-for="(item, i) in this.averageModel"
+                :key="i"
+                style="margin-bottom: 30px; border-radius: 10px"
+              >
+                <q-item-section insert>
+                  <!-- 질문 -->
+                  <div class="question-div">
+                    {{ item.question }}
+                  </div>
 
-                <!-- 답변 -->
-                <!-- 버튼 -->
-                <div
-                  v-if="item.type === 'button' && item.answer[resultList[i]]"
-                  class="answer-div"
-                >
-                  <!-- 버튼: 맵기 & 신 맛 단계 -->
-                  <div v-if="i === 1 || i === 2">
+                  <!-- 답변 -->
+                  <!-- 버튼 -->
+                  <div
+                    v-if="item.type === 'button' && item.answer[resultList[i]]"
+                    class="answer-div"
+                  >
+                    <!-- 버튼: 맵기 & 신 맛 단계 -->
+                    <div v-if="i === 1 || i === 2">
+                      <div class="compare-div">
+                        <div v-if="averageList[i] > resultList[i]">
+                          <b>못</b> 먹는 편이군요!
+                        </div>
+                        <div v-else-if="averageList[i] < resultList[i]">
+                          남들보다 <b>잘</b> 먹어요!
+                        </div>
+                        <div v-else><b>평균</b>이에요!</div>
+                      </div>
+
+                      <div class="my-answer-div">
+                        <div class="title-div">나</div>
+                        {{ item.answer[resultList[i]].answer }}
+                      </div>
+
+                      <div class="average-div">
+                        <div class="title-div">평균</div>
+                        {{ (averageList[i] + 1).toFixed(2) }}단계
+                      </div>
+                    </div>
+
+                    <!-- 버튼 이지선다형 -->
+                    <div v-else>
+                      <div class="compare-div">
+                        <div v-if="averageList[i] < 0.5">
+                          <div v-if="resultList[i] === 0">
+                            <b>과반수 이상</b>의 사람과 취향이 같아요!
+                          </div>
+                          <div v-else>취향이 <b>마이너</b> 하군요!</div>
+                        </div>
+                        <div v-else-if="averageList[i] > 0.5">
+                          <div v-if="resultList[i] === 1">
+                            <b>과반수 이상</b>의 사람과 취향이 같아요!
+                          </div>
+                          <div v-else>취향이 <b>마이너</b> 하군요!</div>
+                        </div>
+                        <div v-else>평균이에요!</div>
+                      </div>
+
+                      <div class="my-answer-div">
+                        <div class="title-div">나</div>
+                        {{ item.answer[resultList[i]].answer }}
+                      </div>
+
+                      <div class="average-div">
+                        <div class="title-div">평균</div>
+                        <div style="width: 90px">
+                          {{ item.answer[0].answer }} :
+                          {{ 100 - averageList[i].toFixed(2) * 100 }}%
+                        </div>
+                        <div>
+                          {{ item.answer[1].answer }} :
+                          {{ averageList[i].toFixed(2) * 100 }}%
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- 숫자 답변 -->
+                  <div v-else class="answer-div">
                     <div class="compare-div">
                       <div v-if="averageList[i] > resultList[i]">
                         <b>못</b> 먹는 편이군요!
@@ -45,81 +105,17 @@
 
                     <div class="my-answer-div">
                       <div class="title-div">나</div>
-                      {{ item.answer[resultList[i]].answer }}
+                      {{ resultList[i] + item.answer[0].unit }}
                     </div>
 
                     <div class="average-div">
                       <div class="title-div">평균</div>
-                      {{ ((averageList[i]) + 1).toFixed(2) }}단계
+                      {{ averageList[i] + item.answer[0].unit }}
                     </div>
                   </div>
-
-                  <!-- 버튼 이지선다형 -->
-                  <div v-else>
-                    <div class="compare-div">
-                      <div v-if="averageList[i]< 0.5">
-                        <div v-if="resultList[i] === 0">
-                          <b>과반수 이상</b>의 사람과 취향이 같아요!
-                        </div>
-                        <div v-else>
-                          취향이 <b>마이너</b> 하군요!
-                        </div>
-                      </div>
-                      <div v-else-if="averageList[i] > 0.5">
-                        <div v-if="resultList[i] === 1">
-                          <b>과반수 이상</b>의 사람과 취향이 같아요!
-                        </div>
-                        <div v-else>
-                          취향이 <b>마이너</b> 하군요!
-                        </div>
-                      </div>
-                      <div v-else>평균이에요!</div>
-                    </div>
-
-                    <div class="my-answer-div">
-                      <div class="title-div">나</div>
-                      {{ item.answer[resultList[i]].answer }}
-                    </div>
-
-                    <div class="average-div">
-                      <div class="title-div">평균</div>
-                      <div style="width: 90px">
-                        {{ item.answer[0].answer }} :
-                        {{ 100 - averageList[i].toFixed(2) * 100 }}%
-                      </div>
-                      <div>
-                        {{ item.answer[1].answer }} :
-                        {{ averageList[i].toFixed(2) * 100 }}%
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- 숫자 답변 -->
-                <div v-else class="answer-div">
-                  <div class="compare-div">
-                    <div v-if="averageList[i] > resultList[i]">
-                      <b>못</b> 먹는 편이군요!
-                    </div>
-                    <div v-else-if="averageList[i] < resultList[i]">
-                      남들보다 <b>잘</b> 먹어요!
-                    </div>
-                    <div v-else><b>평균</b>이에요!</div>
-                  </div>
-
-                  <div class="my-answer-div">
-                    <div class="title-div">나</div>
-                    {{ resultList[i] + item.answer[0].unit }}
-                  </div>
-
-                  <div class="average-div">
-                    <div class="title-div">평균</div>
-                    {{ averageList[i] + item.answer[0].unit }}
-                  </div>
-                </div>
-              </q-item-section>
-            </q-list>
-          </div>
+                </q-item-section>
+              </q-list>
+            </div>
           </div>
         </q-card-section>
 
@@ -216,7 +212,7 @@ export default defineComponent({
         )}&content=average`
       );
       // MARK: 현재 모드가 개발 모드인지 배포 모드인지 확인하여 해당 주소값 복사
-      if(process.env.NODE_ENV == 'development') {
+      if (process.env.NODE_ENV == 'development') {
         copy(`http://localhost:9100${query}`);
       }
       // MARK: process.env.NODE_ENV == 'production'

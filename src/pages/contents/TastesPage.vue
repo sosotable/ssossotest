@@ -1,13 +1,17 @@
 <template>
   <q-page class="flex page column items-center justify-center">
-    <div v-if="this.title" class="flex page-div column items-center" style="margin: auto">
+    <div
+      v-if="this.title"
+      class="flex page-div column items-center"
+      style="margin: auto"
+    >
       <div class="content-intro" v-if="friendResult">
-        <q-card flat bordered class="content-card" >
-          <q-img src="/images/tastes/title.jpg"/>
+        <q-card flat bordered class="content-card">
+          <q-img src="/images/tastes/title.jpg" />
           <q-card-section>
             <div class="text-overline text-orange-9"></div>
             <div v-if="friendId !== null" class="text-h5 q-mt-sm q-mb-xs">
-              {{friendId}}님의 음식 취향 맞히기
+              {{ friendId }}님의 음식 취향 맞히기
             </div>
             <div v-else class="text-h5 q-mt-sm q-mb-xs">음식 취향 맞히기</div>
             <div class="text-caption text-grey">
@@ -23,7 +27,6 @@
               @click="start"
             />
           </q-card-actions>
-
         </q-card>
       </div>
 
@@ -54,44 +57,48 @@
       <div class="content-card flex column justify-center">
         <div style="width: 100%; max-width: 400px">
           <div class="content-card absolute-top">
-            <div >
-            <q-linear-progress :value="questionId/tasteModel.length" color="warning"
-                               style="margin-top: -32px; margin-bottom: 35px" size="6px"/>
-            <div
-              class="card-header"
-              style="background-color: transparent !important"
-            >
-              <h6 class="card text-center" style="margin-top: 10px">
-                {{ this.tasteModel[questionId].question[0] }}
-                <q-img
-                  :src="`/images/tastes/${tasteModel[questionId].id}.png`"
-                  style="
-                    width: 100%;
-                    height: 13pc;
-                    margin-top: 10px;
-                    margin-left: 0;
-                    margin-right: 0px;
-                  "
-                />
-              </h6>
-            </div>
-            <transition style="padding: 0 10px 0 0">
-              <div v-if="!selectedFlag">
-                <template
-                  v-for="index in tasteModel[questionId].answer.length"
-                  :key="index"
-                >
-                  <q-btn
-                    color="white"
-                    text-color="black"
-                    style="width: 100%"
-                    @click="select(index - 1)"
-                    :label="tasteModel[questionId].answer[index - 1].answer"
-                  >
-                  </q-btn>
-                </template>
+            <div>
+              <q-linear-progress
+                :value="questionId / tasteModel.length"
+                color="warning"
+                style="margin-top: -32px; margin-bottom: 35px"
+                size="6px"
+              />
+              <div
+                class="card-header"
+                style="background-color: transparent !important"
+              >
+                <h6 class="card text-center" style="margin-top: 10px">
+                  {{ this.tasteModel[questionId].question[0] }}
+                  <q-img
+                    :src="`/images/tastes/${tasteModel[questionId].id}.png`"
+                    style="
+                      width: 100%;
+                      height: 13pc;
+                      margin-top: 10px;
+                      margin-left: 0;
+                      margin-right: 0px;
+                    "
+                  />
+                </h6>
               </div>
-            </transition>
+              <transition style="padding: 0 10px 0 0">
+                <div v-if="!selectedFlag">
+                  <template
+                    v-for="index in tasteModel[questionId].answer.length"
+                    :key="index"
+                  >
+                    <q-btn
+                      color="white"
+                      text-color="black"
+                      style="width: 100%"
+                      @click="select(index - 1)"
+                      :label="tasteModel[questionId].answer[index - 1].answer"
+                    >
+                    </q-btn>
+                  </template>
+                </div>
+              </transition>
             </div>
           </div>
         </div>
@@ -104,8 +111,8 @@
 import { defineComponent, ref } from 'vue';
 // MARK: 사용 데이터 외부화
 import { tasteModel } from 'src/assets/tasteContentModel';
-import {useTastesStore} from "stores/tastes";
-import {storeToRefs} from "pinia";
+import { useTastesStore } from 'stores/tastes';
+import { storeToRefs } from 'pinia';
 
 import axios from 'axios';
 import { stringify } from 'querystring';
@@ -113,15 +120,20 @@ import { types } from 'util';
 export default defineComponent({
   name: 'TASTEPage',
   setup() {
-    const store = useTastesStore()
-    const {titleFlag, question, questionId, selectedFlag, selectedAnswer} = storeToRefs(store)
+    const store = useTastesStore();
+    const { titleFlag, question, questionId, selectedFlag, selectedAnswer } =
+      storeToRefs(store);
     const selectedAnswerList: any[] = [];
     let friendId: any = null;
     return {
       tasteModel,
       selectedAnswerList,
       friendId,
-      titleFlag, question, questionId, selectedFlag, selectedAnswer
+      titleFlag,
+      question,
+      questionId,
+      selectedFlag,
+      selectedAnswer,
     };
   },
   data() {

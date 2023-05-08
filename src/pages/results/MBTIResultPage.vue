@@ -1,16 +1,24 @@
 <template>
-  <q-page style="width: 100%;" class="column items-center justify-center absolute-center">
-    <q-card style="width: 100%; margin-top: 60px; margin-bottom: 50px" class="my-card" flat bordered>
-      <div style="text-align: center;">
-        <h6 style="margin: 50px auto 10px auto;">
-          당신은 ...
-        </h6>
-        <h6 style="margin: 10px;">
-          💌
-        </h6>
+  <q-page
+    style="width: 100%"
+    class="column items-center justify-center absolute-center"
+  >
+    <q-card
+      style="width: 100%; margin-top: 60px; margin-bottom: 50px"
+      class="my-card"
+      flat
+      bordered
+    >
+      <div style="text-align: center">
+        <h6 style="margin: 50px auto 10px auto">당신은 ...</h6>
+        <h6 style="margin: 10px">💌</h6>
       </div>
       <div class="flex justify-center">
-        <q-img class="rounded-borders" style="width: 100vh" :src="`/images/mbti/${this.mbti}.jpeg`" />
+        <q-img
+          class="rounded-borders"
+          style="width: 100vh"
+          :src="`/images/mbti/${this.mbti}.jpeg`"
+        />
       </div>
 
       <q-card-section>
@@ -32,11 +40,11 @@
         />
         <q-dialog v-model="dialog" :position="position">
           <q-card style="width: 350px">
-            <q-img
-              :src="`/images/mbti/${this.friendResultData.image}.jpeg`"
-            />
+            <q-img :src="`/images/mbti/${this.friendResultData.image}.jpeg`" />
             <q-card-section>
-              <div class="text-overline text-orange-9">{{this.friendId}}의 결과!</div>
+              <div class="text-overline text-orange-9">
+                {{ this.friendId }}의 결과!
+              </div>
               <div class="text-h5 q-mt-sm q-mb-xs">
                 {{ this.friendResultData.title }}
               </div>
@@ -72,18 +80,18 @@
 import { defineComponent, ref } from 'vue';
 import { mbtiResultList } from 'assets/MBTIResultModel';
 import axios from 'axios';
-import {useMBTIStore} from "stores/mbti";
-import {storeToRefs} from "pinia";
-import {useQuasar} from 'quasar';
+import { useMBTIStore } from 'stores/mbti';
+import { storeToRefs } from 'pinia';
+import { useQuasar } from 'quasar';
 
 export default defineComponent({
   name: 'MBTIResultPage',
   setup() {
     const dialog = ref(false);
     const position = ref<string>('top');
-    const store = useMBTIStore()
-    const {mbti, title, desc,
-      friendResult, friendResultData, friendId} = storeToRefs(store)
+    const store = useMBTIStore();
+    const { mbti, title, desc, friendResult, friendResultData, friendId } =
+      storeToRefs(store);
     return {
       dialog,
       position,
@@ -92,8 +100,12 @@ export default defineComponent({
         dialog.value = true;
       },
       $q: useQuasar(),
-      mbti, title, desc,
-      friendResult, friendResultData, friendId
+      mbti,
+      title,
+      desc,
+      friendResult,
+      friendResultData,
+      friendId,
     };
   },
   data() {
@@ -103,8 +115,8 @@ export default defineComponent({
   },
   // MARK: 페이지 라우팅 시 받아진 쿼리스트링 처리
   mounted() {
-    this.$q.loading.show()
-    setTimeout(()=>{
+    this.$q.loading.show();
+    setTimeout(() => {
       // MARK: 공유받아서 들어온 경우: 친구의 결과도 보여줌
       if (
         this.$route.query.friend_id != undefined &&
@@ -113,7 +125,7 @@ export default defineComponent({
         this.friendResult = true;
         const friend: string | any = this.$route.query.friend_id;
         // MARK: 친구 아이디 디코딩
-        this.friendId = decodeURI(friend)
+        this.friendId = decodeURI(friend);
         axios
           .post(process.env.DAO_ENDPOINT, {
             DML: 'SELECT',
@@ -137,9 +149,11 @@ export default defineComponent({
         const resultQuery: string | any = this.$route.query.result;
         // MARK: 쿼리스트링 디코딩
         const decodedResult = JSON.parse(decodeURI(resultQuery));
-        this.mbti = decodedResult.mbti
-        this.title = mbtiResultList[this.mbti as keyof typeof mbtiResultList].name;
-        this.desc = mbtiResultList[this.mbti as keyof typeof mbtiResultList].desc;
+        this.mbti = decodedResult.mbti;
+        this.title =
+          mbtiResultList[this.mbti as keyof typeof mbtiResultList].name;
+        this.desc =
+          mbtiResultList[this.mbti as keyof typeof mbtiResultList].desc;
         // MARK: 세션에 저장된 사용자 nickname으로 기록된 mbti결과가 있는지 확인함
         axios
           .post(process.env.DAO_ENDPOINT, {
@@ -205,8 +219,8 @@ export default defineComponent({
             console.log(error);
           });
       }
-      this.$q.loading.hide()
-    }, 1000)
+      this.$q.loading.hide();
+    }, 1000);
   },
   methods: {
     // MARK: 공유하기 클릭 시 클립보드에 url 복사
@@ -232,7 +246,7 @@ export default defineComponent({
         )}&content=mbti`
       );
       // MARK: 현재 모드가 개발 모드인지 배포 모드인지 확인하여 해당 주소값 복사
-      if(process.env.NODE_ENV == 'development') {
+      if (process.env.NODE_ENV == 'development') {
         copy(`http://localhost:9100${query}`);
       }
       // MARK: process.env.NODE_ENV == 'production'

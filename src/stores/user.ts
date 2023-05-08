@@ -1,20 +1,20 @@
 import { defineStore } from 'pinia';
-import {ref} from "vue";
+import { ref } from 'vue';
 
 export const useUserStore = defineStore('user', {
   state: () => ({
-    userNickname: ref<string>('')
+    userNickname: ref<string>(''),
   }),
 
   getters: {
-    getUserNickname (state: { userNickname: string; }) {
-      return state.userNickname
-    }
+    getUserNickname(state: { userNickname: string }) {
+      return state.userNickname;
+    },
   },
 
   actions: {
-    setUserNickname (_userNickname: string) {
-      this.userNickname = _userNickname
-    }
-  }
+    setUserNickname(_userNickname: string) {
+      this.userNickname = _userNickname;
+    },
+  },
 });

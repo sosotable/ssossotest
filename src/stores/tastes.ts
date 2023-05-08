@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia';
-import {ref} from "vue";
+import { ref } from 'vue';
 
 export const useTastesStore = defineStore('tastes', {
   state: () => ({
@@ -16,13 +16,9 @@ export const useTastesStore = defineStore('tastes', {
 
     /** MARK: tastes result
      * **/
-
-
   }),
 
-  getters: {
-  },
+  getters: {},
 
-  actions: {
-  }
+  actions: {},
 });

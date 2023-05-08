@@ -5,43 +5,44 @@ body {
 
 @media screen and (max-width: 768px) {
   .container {
-    width: 100%!important;
+    width: 100% !important;
     margin: auto;
-    background: radial-gradient(white, #EBEBB8);
+    background: radial-gradient(white, #ebebb8);
   }
   .footer {
-    width: 100%!important;
+    width: 100% !important;
     margin: auto;
   }
   .header {
-    width: 100%!important;
+    width: 100% !important;
     margin: auto;
   }
   .q-page-container {
     width: 100%;
   }
   .page {
-    width: 100%!important;
+    width: 100% !important;
   }
   .page-div {
-    width: 100%!important;
+    width: 100% !important;
   }
   .content-intro {
-    width: 100%!important;
+    width: 100% !important;
     height: 100vh;
     padding-top: 3rem;
   }
   .content-container {
-    width: 100%!important;
+    width: 100% !important;
   }
   .content-view {
-    width: 100%!important;
+    width: 100% !important;
     margin: auto;
-    padding-top: 5rem!important;
+    padding-top: 5rem !important;
   }
   .content-card {
     height: 100vh;
-    padding-top: 4rem
+    padding-top: 4rem;
+  }
   .result-page {
     width: 450px;
     margin: 0px;
@@ -54,7 +55,7 @@ body {
 .container {
   width: 480px;
   margin: auto;
-  background: radial-gradient(white, #EBEBB8);
+  background: radial-gradient(white, #ebebb8);
 }
 .footer {
   width: 480px;

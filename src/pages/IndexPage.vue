@@ -17,22 +17,21 @@
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
 import { useQuasar } from 'quasar';
-import {useUserStore} from "stores/user";
-import {storeToRefs} from "pinia";
+import { useUserStore } from 'stores/user';
+import { storeToRefs } from 'pinia';
 
 export default defineComponent({
   name: 'IndexPage',
   setup() {
-    const store = useUserStore()
-    const { userNickname } = storeToRefs(store)
+    const store = useUserStore();
+    const { userNickname } = storeToRefs(store);
     return {
       $q: useQuasar(),
-      userNickname
+      userNickname,
     };
   },
   data() {
-    return {
-    };
+    return {};
   },
   mounted() {
     // MARK: 사용자 세션 존재 시 main화면으로 라우팅
@@ -56,7 +55,7 @@ export default defineComponent({
       if (this.userNickname !== '') {
         this.$q.sessionStorage.set('user_nickname', this.userNickname);
         // MARK: 브라우저 식별값(uuid) 할당
-        this.$q.sessionStorage.set('user_key', crypto.randomUUID())
+        this.$q.sessionStorage.set('user_key', crypto.randomUUID());
         if (this.$route.query.friend_id !== undefined) {
           const query = encodeURI(
             `?friend_id=${this.$route.query.friend_id}&friend_key=${this.$route.query.friend_key}&friend=${this.$route.query.friend}`
