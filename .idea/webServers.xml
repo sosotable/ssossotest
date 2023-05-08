@@ -3,7 +3,8 @@
   <component name="WebServers">
     <option name="servers">
       <webServer id="d7a55bca-584d-4260-a60b-7a000dabfe64" name="ssossotest">
-        <fileTransfer accessType="SFTP" host="3.144.87.26" port="22" sshConfigId="10b26bc9-d956-46f8-b5e0-486395c0d02c" sshConfig="ubuntu@3.144.87.26:22 key" keyPair="true">
+
+        <fileTransfer accessType="SFTP" host="3.144.87.26" port="22" sshConfigId="aea00d0a-b894-4074-931a-7a0ef1cfe936" sshConfig="ubuntu@3.144.87.26:22 key" keyPair="true">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
           </advancedOptions>

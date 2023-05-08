@@ -2,7 +2,7 @@
 <project version="4">
   <component name="SshConfigs">
     <configs>
-      <sshConfig host="3.145.5.230" id="aea00d0a-b894-4074-931a-7a0ef1cfe936" keyPath="$PROJECT_DIR$/../Downloads/ssossoTEST.pem" port="22" nameFormat="DESCRIPTIVE" username="ubuntu" useOpenSSHConfig="true" />
+      <sshConfig connectionConfig="{&quot;serverAliveInterval&quot;:300}" host="3.144.87.26" id="aea00d0a-b894-4074-931a-7a0ef1cfe936" keyPath="C:\Code\SST_projects\server-info\ssossotest\ssossotest.pem" port="22" nameFormat="DESCRIPTIVE" username="ubuntu" useOpenSSHConfig="true" />
     </configs>
   </component>
 </project>

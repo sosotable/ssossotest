@@ -102,18 +102,24 @@
         </div>
       </div>
     </div>
-    </div>
   </q-page>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { averageModel } from 'src/assets/AverageContentModel';
+import {useAverageStore} from "stores/average";
+import {storeToRefs} from "pinia";
+
 import axios from 'axios';
+import { useTastesStore } from "stores/tastes";
 
 export default defineComponent({
   name: 'AveragePage',
   setup() {
+    const store = useAverageStore()
+    const {titleFlag, question, questionId, selectedFlag, selectedAnswer} = storeToRefs(store)
+
     const selectedAnswerList: any[] = [];
     let avgString: string | undefined;
     return {
