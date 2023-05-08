@@ -17,7 +17,7 @@
         <q-img
           class="rounded-borders"
           style="width: 100vh"
-          :src="`/images/mbti/${this.mbti}.jpeg`"
+          :src="`images/mbti/${this.mbti}.jpeg`"
         />
       </div>
 
@@ -40,7 +40,7 @@
         />
         <q-dialog v-model="dialog" :position="position">
           <q-card style="width: 350px">
-            <q-img :src="`/images/mbti/${this.friendResultData.image}.jpeg`" />
+            <q-img :src="`images/mbti/${this.friendResultData.image}.jpeg`" />
             <q-card-section>
               <div class="text-overline text-orange-9">
                 {{ this.friendId }}의 결과!

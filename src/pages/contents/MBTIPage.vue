@@ -71,9 +71,9 @@
               </q-chat-message>
             </div>
           </div>
-          <Transition class="absolute-bottom flex column" style="">
+          <Transition class="absolute-bottom flex column">
             <div class="content-view">
-              <div v-if="!selectedFlag">
+              <div v-if="!selectedFlag" class="flex column">
                 <q-btn
                   color="white"
                   text-color="black"
@@ -124,7 +124,8 @@ export default defineComponent({
     };
   },
   mounted() {
-    //
+    this.titleFlag = true
+    this.question = false
   },
   methods: {
     // MARK: 시작하기 버튼을 누를 경우 타이틀 이미지를 보이지 않게(false) 변환, 문제를 보이게(true) 변환
